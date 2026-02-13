@@ -23,48 +23,48 @@ export default function Home() {
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* CARD */}
-              <div className="bg-green-100 rounded-lg p-4 flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-green-500 flex-shrink-0"></div>
+              <div className="bg-[#EAFCDC] rounded-lg p-4 flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-[#7FC248] flex-shrink-0"></div>
 
                 <div>
-                  <h3 className="text-sm font-semibold text-green-800">Zakat Online</h3>
-                  <p className="text-xs text-green-700 mt-1">
+                  <h3 className="text-sm font-semibold text-[#13832C]">Zakat Online</h3>
+                  <p className="text-xs text-[#707070] mt-1">
                     Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana.
                   </p>
                 </div>
               </div>
 
               {/* CARD */}
-              <div className="bg-green-100 rounded-lg p-4 flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-green-500 flex-shrink-0"></div>
+              <div className="bg-[#EAFCDC] rounded-lg p-4 flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-[#7FC248] flex-shrink-0"></div>
 
                 <div>
-                  <h3 className="text-sm font-semibold text-green-800">Program Sosial</h3>
-                  <p className="text-xs text-green-700 mt-1">
+                  <h3 className="text-sm font-semibold text-[#13832C]">Program Sosial</h3>
+                  <p className="text-xs text-[#707070] mt-1">
                     Penyaluran bantuan untuk masyarakat yang membutuhkan.
                   </p>
                 </div>
               </div>
 
               {/* CARD */}
-              <div className="bg-green-100 rounded-lg p-4 flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-green-500 flex-shrink-0"></div>
+              <div className="bg-[#EAFCDC] rounded-lg p-4 flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-[#7FC248] flex-shrink-0"></div>
 
                 <div>
-                  <h3 className="text-sm font-semibold text-green-800">Laporan Transparan</h3>
-                  <p className="text-xs text-green-700 mt-1">
+                  <h3 className="text-sm font-semibold text-[#13832C]">Laporan Transparan</h3>
+                  <p className="text-xs text-[#707070] mt-1">
                     Informasi distribusi dana yang terbuka dan terpercaya.
                   </p>
                 </div>
               </div>
 
               {/* CARD */}
-              <div className="bg-green-100 rounded-lg p-4 flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full bg-green-500 flex-shrink-0"></div>
+              <div className="bg-[#EAFCDC] rounded-lg p-4 flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full bg-[#7FC248] flex-shrink-0"></div>
 
                 <div>
-                  <h3 className="text-sm font-semibold text-green-800">Donasi Mudah</h3>
-                  <p className="text-xs text-green-700 mt-1">
+                  <h3 className="text-sm font-semibold text-[#13832C]">Donasi Mudah</h3>
+                  <p className="text-xs text-[#707070] mt-1">
                     Proses donasi cepat dan aman untuk semua kalangan.
                   </p>
                 </div>
