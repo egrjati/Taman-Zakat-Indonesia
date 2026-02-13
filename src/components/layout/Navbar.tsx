@@ -53,17 +53,17 @@ export default function Navbar() {
         </ul>
       </div>
       {/* Logo Taza & Donation */}
-      <div className="w-full h-20 flex gap-5 justify- items-center bg-[#5DA630]">
+      <div className="w-full h-20 flex gap-5  justify-between items-center bg-[#5DA630]">
         <Image
           src="/images/icon/Taman Zakat Horizontal.png"
           alt="Logo Taman Zakat Indonesia"
           width={500}
           height={120}
-          className="h-12 sm:h-12 w-auto ml-5 "
+          className="h-12 ml-5 sm:h-12 w-auto "
           priority
         />
 
-        <div className="flex gap-5 justify-end ml-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex gap-5 mr-5">
           {/* Program */}
           <a
             href="#"
