@@ -87,10 +87,20 @@ export default function Home() {
 
           {/* End map */}
         </section>
-      </main>
 
-      <div className="mb-64">
-      </div>
+        {/* Tentang Kami */}
+        <section className="mt-14 ">
+          <div className="border border-[#71C935] border-b-0 border-l-0 rounded-l-none rounded-b-none rounded-t-lg p-1 w-52 text-center">
+            <h2 className="font-bold text-2xl text-black">
+              Tentang <span className="font-bold text-2xl text-[#71C935]">Kami</span>
+            </h2>
+          </div>
+          <div className="border border-[#71C935] border-t-0 border-l-0 border-r-0">
+            <h2 className="text-black font-semibold">Yayasan Taman Zakat Indonesia</h2>
+          </div>
+        </section>
+      </main>
+      <div className="mb-64"></div>
       {/* Section End */}
     </section>
   );

@@ -59,7 +59,7 @@ export default function Navbar() {
           alt="Logo Taman Zakat Indonesia"
           width={500}
           height={120}
-          className="h-12 ml-5 sm:h-12 w-auto "
+          className="h-14 ml-5 sm:h-14 w-auto "
           priority
         />
 

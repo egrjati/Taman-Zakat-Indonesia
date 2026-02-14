@@ -14,7 +14,7 @@ export default function IndonesiaMap() {
       </div>
     </div>
 
-      <h3 className="ml-20 text-xl text-zinc-700">
+      <h3 className="ml-20 -mt-12 text-xl text-zinc-700">
         Sebanyak <span className="font-bold text-2xl text-[#71C935]">102.088</span> <br /> penerima
         manfaat telah menerima <br /> program taman zakat
       </h3>
