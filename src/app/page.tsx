@@ -1,3 +1,5 @@
+import IndonesiaMap from "@/components/ui/indonesia-map";
+
 export default function Home() {
   return (
     <section className="w-full min-h-screen flex flex-col bg-white">
@@ -10,16 +12,17 @@ export default function Home() {
         </div>
       </header>
 
-      <main className="">
+      <main>
         {/* Page Fitur */}
         <section>
-          <h2 className="font-semibold text-zinc-800 text-xl text-center mt-10">
+          <h2 className="font-medium text-black text-xl text-center mt-10">
             Semua dalam Satu Platform
           </h2>
           <p className="text-zinc-600 text-center mt-2 mb-10 max-w-xl mx-auto">
             Akses berbagai layanan zakat digital dalam satu pengalaman yang sederhana dan efisien.
           </p>
 
+          {/* Grid 4 */}
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {/* CARD */}
@@ -72,7 +75,23 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Map Indonesia */}
+        <section className="mt-18 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-black font-bold text-2xl">
+            Sebaran Aksi <span className="font-bold text-[#71C935]">Taman Zakat</span>
+          </h1>
+
+          {/* Taruh Dibawah sini map nya */}
+          <IndonesiaMap />
+
+          {/* End map */}
+        </section>
       </main>
+
+      <div className="mb-64">
+      </div>
+      {/* Section End */}
     </section>
   );
 }
