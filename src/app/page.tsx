@@ -1,3 +1,4 @@
+import Image from "next/image";
 import IndonesiaMap from "@/components/ui/indonesia-map";
 
 export default function Home() {
@@ -90,25 +91,21 @@ export default function Home() {
 
         {/* Tentang Kami */}
         <section className="mt-14">
-          {/* title about us */}
-          <div className="flex">
-            <div className="border border-[#71C935] border-b-0 border-l-0 rounded-l-none rounded-b-none rounded-t-lg p-1 w-52 text-center">
-              <h2 className="font-bold text-2xl text-black">
-                Tentang <span className="font-bold text-2xl text-[#71C935]">Kami</span>
-              </h2>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            {/* title about us */}
+            <div className="flex items-end">
+              <div className="rounded-t-lg border border-[#71C935] border-b-0 px-3 py-1 sm:px-4">
+                <h2 className="text-2xl font-bold leading-none text-black sm:text-3xl">
+                  Tentang <span className="text-[#71C935]">Kami</span>
+                </h2>
+              </div>
+              <div className="mb-px h-px flex-1 bg-[#71C935]"></div>
             </div>
-            <div className="flex-1 border border-[#71C935] border-t-0 border-l-0 border-r-0 font-bold flex items-end">
-              <h2 className="text-black ml-1 font-semibold text-lg leading-none mb-2">
-                Yayasan Taman Zakat Indonesia{" "}
-                <span className="font-light text-sm text-slate-600">- Berdiri Tahun 2018</span>
-              </h2>
-            </div>
-          </div>
 
-          {/* isi about us */}
-          <div className="flex px-5 gap-4 mt-8">
-            <div className="text-black w-5xl">
-              <p>
+            {/* isi about us */}
+            <div className="mt-6 grid items-start gap-6 rounded-xl bg-[#F5F5F5] p-4 sm:grid-cols-[minmax(0,1fr)_300px] sm:p-6">
+              <div className="max-w-4xl break-words text-black text-sm leading-relaxed sm:text-base">
+                <p>
                 Lembaga Filantropi Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk
                 Pengembangan Alqur’an, Pendidikan, Kesehatan dan Kemanusiaan. Lembaga Filantropi
                 Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk Pengembangan
@@ -117,8 +114,8 @@ export default function Home() {
                 punggung gerakan kebaikan ummat. Lembaga Filantropi Profesional dan terpercaya yang
                 berfokus pada Sarana dakwah untuk Pengembangan Alqur’an, Pendidikan, Kesehatan dan
                 Kemanusiaan
-              </p>
-              <p className="mt-2">
+                </p>
+                <p className="mt-3">
                 Kami Memfasilitasi perkembangan generasi yang penuh berkah dan Kami mempunyai mimpi
                 bisa menjadi salah satu tulang punggung gerakan kebaikan ummat. Lembaga Filantropi
                 Profesional dan terpercaya yang berfokus pada Sarana dakwah untuk Pengembangan
@@ -126,32 +123,42 @@ export default function Home() {
                 generasi yang penuh berkah dan Kami mempunyai mimpi bisa menjadi salah satu tulang
                 punggung gerakan kebaikan ummat. Lembaga Filantropi Profesional dan terpercaya yang
                 berfokus pada Sarana dakwah untuk Pengembangan Alqur’an,
-              </p>
-            </div>
+                </p>
+                <div className="mt-8">
+                  <a
+                    href=""
+                    className="inline-flex w-fit items-center rounded-md bg-[#71C935] px-5 py-2 text-white shadow-md transition-transform hover:scale-105"
+                  >
+                    Selengkapnya ➜
+                  </a>
+                </div>
+              </div>
 
-            <div className="w-80 h-52 bg-black rounded-md"></div>
-          </div>
-          <div className="px-5 mt-8">
-            <a
-              href=""
-              className="inline-flex w-fit items-center text-white bg-[#71C935] px-3 py-2 rounded-md font-light text-md shadow-md hover:scale-105 transition-transform"
-            >
-              Selengkapnya ➜
-            </a>
+              <div className="h-52 w-full rounded-md bg-black sm:h-64"></div>
+            </div>
           </div>
         </section>
 
         {/* Program */}
         <section className="mt-36">
           {/* pembatas */}
-          <div>
-            {/* kiri */}
-            <div className="flex justify-start">
-              <div className="bg-[#71C935] w-2xl h-12 rounded-tr-[200px]"></div>
-            </div>
-            {/* kanan */}
-            <div className="flex justify-end">
-              <div className="bg-[#71C935] w-2xl h-12 rounded-bl-[200px]"></div>
+          <div className="mx-auto max-w-7xl">
+            <div className="relative h-[clamp(5.25rem,16vw,6.5rem)] w-full">
+              <div className="absolute left-0 top-0 flex h-[clamp(2.6rem,7vw,3.5rem)] w-[58%] items-center justify-center rounded-tr-[200px] bg-[#71C935] px-3">
+                <h2 className="text-[clamp(1rem,3.8vw,2.25rem)] font-bold text-white">Program</h2>
+              </div>
+              <div className="absolute bottom-0 right-0 flex h-[clamp(2.6rem,7vw,3.5rem)] w-[58%] items-center justify-center rounded-bl-[200px] bg-[#71C935] px-3">
+                <h2 className="text-[clamp(1rem,3.8vw,2.25rem)] font-bold text-white">Unggulan</h2>
+              </div>
+              <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+                <Image
+                  src="/images/icon/taza bulat.png"
+                  alt="Ikon bulat Taza"
+                  width={96}
+                  height={96}
+                  className="h-[clamp(4rem,11vw,6rem)] w-[clamp(4rem,11vw,6rem)] object-contain"
+                />
+              </div>
             </div>
           </div>
           {/* grid */}
@@ -230,6 +237,8 @@ export default function Home() {
             </a>
           </div>
         </section>
+
+        {/* Section Artikel */}
       </main>
       <div className="mb-64"></div>
       {/* Section End */}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -53,24 +54,24 @@ export default function Navbar() {
         </ul>
       </div>
       {/* Logo Taza & Donation */}
-      <div className="w-full h-20 flex gap-5  justify-between items-center bg-[#5DA630]">
+      <div className="w-full h-16 flex gap-5  justify-between items-center bg-[#5DA630]">
         <Image
           src="/images/icon/Taman Zakat Horizontal.png"
           alt="Logo Taman Zakat Indonesia"
           width={500}
           height={120}
-          className="h-14 ml-5 sm:h-14 w-auto "
+          className="h-12 ml-5 sm:h-14 w-auto "
           priority
         />
 
         <div className="flex gap-5 mr-5">
           {/* Program */}
-          <a
-            href="#"
+          <Link
+            href="/program"
             className="h-8 px-3 border-2 border-black text-black flex items-center justify-center"
           >
             Program
-          </a>
+          </Link>
           {/* Donasi */}
           <a
             href="#"
