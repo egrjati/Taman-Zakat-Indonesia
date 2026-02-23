@@ -5,22 +5,22 @@ export default function ProgramPage() {
   return (
     <section className="min-h-screen w-full bg-[#faf7f0] overflow-x-hidden">
       {/* header */}
-      <header className="w-full flex flex-col md:flex-row min-h-[560px] md:min-h-[430px] lg:min-h-[500px]">
+      <header className="w-full flex flex-col bg-black md:flex-row md:h-[400px]">
         {/* Gambar */}
         <div className="w-full md:w-1/2 h-56 sm:h-72 md:h-auto bg-gray-300"></div>
         {/* text */}
         <div className="w-full md:w-1/2 bg-[#30353B] flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 sm:py-10 md:px-12 lg:px-16 text-center md:text-left items-center md:items-start">
-          <h1 className="text-white text-2xl sm:text-3xl lg:text-4xl font-light font-newsreader pb-2 border-b-2 border-[#7FC248]">
+          <h1 className="text-white text-xl md:text-3xl lg:text-4xl font-light font-newsreader pb-2 border-b-2 border-[#7FC248]">
             It's time to take action.
           </h1>
-          <p className="text-white text-base sm:text-lg font-light leading-relaxed max-w-xl">
+          <p className="text-white text-sm md:text-lg font-light leading-relaxed max-w-xl">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, maiores porro
             quaerat, vitae sed odio maxime facilis voluptatum alias consectetur veritatis quod ad.
           </p>
         </div>
       </header>
       {/* content */}
-      <main className="bg-[#FAF7F0] w-full md:py-16 lg:py-20 px-5">
+      <main className="bg-[#FAF7F0] w-full md:py-10 lg:py-8 px-5">
         {/* pembuka */}
         <section className="w-full">
           <h2 className="text-2xl md:text-2xl lg:text-3xl text-black font-medium font-newsreader text-center mt-10 mb-2 tracking-wide">
@@ -86,7 +86,7 @@ export default function ProgramPage() {
                 {/*
              {/* CTA / BOX PUTIH DI BAWAH */}
                 <a
-                  href=""
+                  href="/program/desa-pelopor"
                   className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
                        hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
                 >
@@ -123,7 +123,7 @@ export default function ProgramPage() {
                 {/*
              {/* CTA / BOX PUTIH DI BAWAH */}
                 <a
-                  href=""
+                  href="/program/beasiswa-bintang"
                   className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
                        hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
                 >
@@ -387,81 +387,156 @@ export default function ProgramPage() {
             Other ways to take action
           </h2>
 
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-            <article className="min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 py-4 md:px-5 md:py-5 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
-              <svg className="h-8 w-8 text-[#7FC248]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18M9 7.5h4a2.5 2.5 0 1 1 0 5H11a2.5 2.5 0 1 0 0 5h4" />
-              </svg>
-              <h3 className="mt-3 text-2xl font-medium font-newsreader text-zinc-900">Bayar Zakat</h3>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-10">
+            {/* Bayar Zakat */}
+            <article className="relative overflow-visible min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 pb-5 pt-12 md:px-5 md:pb-6 md:pt-14 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
+              {/* ICON MELAYANG LANGSUNG IMG */}
+              <img
+                src="/images/icon/Dollar Bag.svg"
+                alt="Icon Bayar Zakat"
+                className="absolute -top-6 left-1/2 -translate-x-1/2 h-14 w-14"
+              />
+
+              {/* CONTENT */}
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">Bayar Zakat</h3>
+
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Tunaikan zakat maal, zakat fitrah, dan zakat lainnya dengan mudah, aman, dan terpercaya.
+                Tunaikan zakat maal, zakat fitrah, dan zakat lainnya dengan mudah, aman, dan
+                terpercaya.
               </p>
-              <a href="#" className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4">
+
+              <a
+                href="#"
+                className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
+              >
                 Bayar Zakat Sekarang
               </a>
             </article>
 
-            <article className="min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 py-4 md:px-5 md:py-5 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
-              <svg className="h-8 w-8 text-[#7FC248]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 12.5c0-2 1.5-3.5 3.5-3.5 1.2 0 2.3.6 3 1.6.7-1 1.8-1.6 3-1.6 2 0 3.5 1.5 3.5 3.5 0 3.4-4.6 6.4-6.5 7.5-1.9-1.1-6.5-4.1-6.5-7.5z" />
-              </svg>
-              <h3 className="mt-3 text-2xl font-medium font-newsreader text-zinc-900">Dukung Program Kebaikan</h3>
+            {/* Dukung Program Kebaikan*/}
+            <article className="relative overflow-visible min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 pb-5 pt-12 md:px-5 md:pb-6 md:pt-14 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
+              {/* ICON MELAYANG LANGSUNG IMG */}
+              <img
+                src="/images/icon/Handshake Heart.svg"
+                alt="Icon Dukung Program Kebaikan"
+                className="absolute -top-6 left-1/2 -translate-x-1/2 h-14 w-14"
+              />
+
+              {/* CONTENT */}
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+                Dukung Program Kebaikan
+              </h3>
+
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Bantu berbagai program sosial seperti pendidikan, kesehatan, dan bantuan kemanusiaan.
+                Bantu berbagai program sosial seperti pendidikan, kesehatan, dan bantuan
+                kemanusiaan.
               </p>
-              <a href="#" className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4">
+
+              <a
+                href="#"
+                className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
+              >
                 Lihat Program
               </a>
             </article>
 
-            <article className="min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 py-4 md:px-5 md:py-5 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
-              <svg className="h-8 w-8 text-[#7FC248]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 11h9M4 15h9M16 9l4-2v10l-4-2V9z" />
-              </svg>
-              <h3 className="mt-3 text-2xl font-medium font-newsreader text-zinc-900">Fundraiser</h3>
+            {/* Fundraiser*/}
+            <article className="relative overflow-visible min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 pb-5 pt-12 md:px-5 md:pb-6 md:pt-14 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
+              {/* ICON MELAYANG LANGSUNG IMG */}
+              <img
+                src="/images/icon/Commercial.svg"
+                alt="Icon Dukung Program Kebaikan"
+                className="absolute -top-6 left-1/2 -translate-x-1/2 h-14 w-14"
+              />
+
+              {/* CONTENT */}
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">Fundraiser</h3>
+
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Mulai kampanye kebaikan Anda dan ajak orang lain berdonasi untuk dampak yang lebih luas.
+                Mulai kampanye kebaikan Anda dan ajak orang lain berdonasi
               </p>
-              <a href="#" className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4">
+
+              <a
+                href="#"
+                className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
+              >
                 Mulai Fundraiser
               </a>
             </article>
 
-            <article className="min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 py-4 md:px-5 md:py-5 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
-              <svg className="h-8 w-8 text-[#7FC248]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12M8 9h8M8 3h8a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z" />
-              </svg>
-              <h3 className="mt-3 text-2xl font-medium font-newsreader text-zinc-900">Ajukan Bantuan</h3>
+            {/* Ajukan Bantuan*/}
+            <article className="relative overflow-visible min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 pb-5 pt-12 md:px-5 md:pb-6 md:pt-14 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
+              {/* ICON MELAYANG LANGSUNG IMG */}
+              <img
+                src="/images/icon/Treatment.svg"
+                alt="Icon Dukung Program Kebaikan"
+                className="absolute -top-6 left-1/2 -translate-x-1/2 h-14 w-14"
+              />
+
+              {/* CONTENT */}
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">Ajukan Bantuan</h3>
+
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Ajukan bantuan untuk diri sendiri atau orang lain yang sedang membutuhkan.
+                Ajukan bantuan untuk diri sendiri atau orang lain yang membutuhkan.
               </p>
-              <a href="#" className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4">
+
+              <a
+                href="#"
+                className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
+              >
                 Ajukan Sekarang
               </a>
             </article>
 
-            <article className="min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 py-4 md:px-5 md:py-5 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
-              <svg className="h-8 w-8 text-[#7FC248]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 5h10v10H5zM18 18l-4-4M9 9h2M9 12h4" />
-              </svg>
-              <h3 className="mt-3 text-2xl font-medium font-newsreader text-zinc-900">Laporan Penyaluran</h3>
+            {/* Laporkan Penyaluran*/}
+            <article className="relative overflow-visible min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 pb-5 pt-12 md:px-5 md:pb-6 md:pt-14 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
+              {/* ICON MELAYANG LANGSUNG IMG */}
+              <img
+                src="/images/icon/Inscription.svg"
+                alt="Icon Dukung Program Kebaikan"
+                className="absolute -top-6 left-1/2 -translate-x-1/2 h-14 w-14"
+              />
+
+              {/* CONTENT */}
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+                Laporkan Penyaluran
+              </h3>
+
               <p className="mt-2 text-sm leading-snug text-zinc-700">
-                Pantau transparansi dan akuntabilitas penyaluran zakat serta donasi Anda secara terbuka.
+                Pantau transparansi dan akuntabilitas penyaluran zakat serta donasi Anda secara
+                terbuka.
               </p>
-              <a href="#" className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4">
+
+              <a
+                href="#"
+                className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
+              >
                 Lihat Laporan
               </a>
             </article>
 
-            <article className="min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 py-4 md:px-5 md:py-5 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
-              <svg className="h-8 w-8 text-[#7FC248]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l8 3v5c0 5.2-3.3 8.6-8 10-4.7-1.4-8-4.8-8-10V6l8-3zM9.5 12.5l1.8 1.8 3.3-3.8" />
-              </svg>
-              <h3 className="mt-3 text-2xl font-medium font-newsreader text-zinc-900">Legalitas & Transparansi</h3>
+            {/* Laporkan Penyaluran*/}
+            <article className="relative overflow-visible min-h-[185px] rounded-sm border border-zinc-200 bg-[#F7F7F7] px-4 pb-5 pt-12 md:px-5 md:pb-6 md:pt-14 shadow-[0_2px_6px_rgba(0,0,0,0.08)] text-center flex flex-col items-center">
+              {/* ICON MELAYANG LANGSUNG IMG */}
+              <img
+                src="/images/icon/Inscription.svg"
+                alt="Icon Dukung Program Kebaikan"
+                className="absolute -top-6 left-1/2 -translate-x-1/2 h-14 w-14"
+              />
+
+              {/* CONTENT */}
+              <h3 className="text-2xl font-medium font-newsreader text-zinc-900">
+                Legalitas & Transparansi
+              </h3>
+
               <p className="mt-2 text-sm leading-snug text-zinc-700">
                 Kami berkomitmen menjalankan amanah secara profesional dan transparan.
               </p>
-              <a href="#" className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4">
+
+              <a
+                href="#"
+                className="mt-auto pt-3 text-sm font-medium text-zinc-900 underline decoration-[#7FC248] underline-offset-4"
+              >
                 Lihat Detail
               </a>
             </article>
@@ -472,10 +547,10 @@ export default function ProgramPage() {
       {/* bottom*/}
       <section className="w-full bg-[#F8EED3] py-16 md:py-20 lg:py-24">
         <div className="mx-auto w-full max-w-4xl px-6 text-center">
-          <h2 className="font-newsreader text-4xl md:text-5xl font-medium text-zinc-900">
+          <h2 className="font-newsreader text-2xl font-medium text-zinc-900">
             You deserve to give with confidence
           </h2>
-          <p className="mt-6 text-xl md:text-2xl leading-relaxed text-zinc-900">
+          <p className="mt-6 text-lg md:text-xl leading-relaxed text-zinc-900">
             All of our operational expenses are funded by a private community of donors, so you can
             trust 100% of your donation will go directly to water solutions, every cent, every time.
             But we do not stop there. From our commitment to equipping local partners, to our tech,
