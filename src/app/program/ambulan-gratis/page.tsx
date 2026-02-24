@@ -115,6 +115,16 @@ export default function AmbulanGratisPage() {
           animation: speedLine 1.0s ease-out forwards;
         }
 
+        @keyframes borderWiggle {
+          0%   { transform: translateX(-4px) rotate(-2deg); }
+          50%  { transform: translateX(-4px) rotate(2deg); }
+          100% { transform: translateX(-4px) rotate(-2deg); }
+        }
+        .border-wiggle {
+          animation: borderWiggle 2.5s ease-in-out infinite;
+          transform-origin: center center;
+        }
+
         @keyframes badgeBounce {
           0%   { transform: translateX(500px) translateY(-80px); opacity: 0; }
           5%   { opacity: 1; }
@@ -258,7 +268,7 @@ export default function AmbulanGratisPage() {
                   <div className="relative inline-block mt-6">
                     <div
                       aria-hidden
-                      className="absolute inset-0 z-20 -translate-x-1 rotate-[-1deg] rounded-sm border-2 border-black"
+                      className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
                     />
                     <a
                       href="#donasi"
@@ -525,7 +535,7 @@ export default function AmbulanGratisPage() {
           <div className="relative mx-auto mt-8 inline-block">
             <div
               aria-hidden
-              className="absolute inset-0 z-20 -translate-x-1 rotate-[-1deg] rounded-sm border-2 border-white"
+              className="absolute inset-0 z-20 rounded-sm border-2 border-white border-wiggle"
             />
 
             <a
