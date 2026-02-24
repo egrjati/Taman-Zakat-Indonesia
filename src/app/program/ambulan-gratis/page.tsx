@@ -1,20 +1,63 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
 
+const HADITH_TEXT = "Jika seseorang meninggal dunia, maka terputuslah amalannya kecuali tiga perkara (yaitu): sedekah jariyah, ilmu yang di manfaatkan, atau do'a anak yang shalih.";
+
 export default function AmbulanGratisPage() {
   const [animateAmbulance, setAnimateAmbulance] = useState(false);
+  const [hadithVisible, setHadithVisible] = useState(false);
+  const [typedText, setTypedText] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const hadithRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    // Small delay to ensure the page has rendered before starting animation
     const timer = setTimeout(() => {
       setAnimateAmbulance(true);
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
+  // IntersectionObserver for hadith typing effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hadithVisible) {
+          setHadithVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (hadithRef.current) {
+      observer.observe(hadithRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hadithVisible]);
+
+  // Typing effect
+  useEffect(() => {
+    if (!hadithVisible) return;
+
+    setIsTyping(true);
+    let i = 0;
+
+    const interval = setInterval(() => {
+      if (i < HADITH_TEXT.length) {
+        setTypedText(HADITH_TEXT.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(interval);
+        setIsTyping(false);
+      }
+    }, 40);
+
+    return () => clearInterval(interval);
+  }, [hadithVisible]);
 
   return (
     <section className="min-h-screen w-full bg-white overflow-x-hidden">
@@ -277,15 +320,15 @@ export default function AmbulanGratisPage() {
       </section>
 
       {/* ==================== KUTIPAN HADITS ==================== */}
-      <section className="w-full bg-white px-4 py-10 md:py-14">
+      <section className="w-full bg-white px-4 py-10 md:py-14" ref={hadithRef}>
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-newsreader text-lg font-semibold italic text-[#3a7d1c] md:text-2xl leading-relaxed">
             Rasulullah Shallallahu &apos;alaihi wasallam bersabda:
           </h2>
           <blockquote className="mt-4 font-newsreader text-base italic leading-relaxed text-zinc-700 md:text-lg">
-            &ldquo;Jika seseorang meninggal du*ia, maka terputuslah amalannya kecuali
-            tiga perkara (yaitu): sedekah jariyah, ilmu yang di manfaatkan, atau
-            do&apos;a anak yang shalih.&rdquo; (HR. Muslim)
+            &ldquo;{typedText}
+            {isTyping && <span className="inline-block w-[2px] h-[1em] bg-zinc-700 align-text-bottom ml-[1px] animate-pulse" />}
+            {!isTyping && hadithVisible && <span>&rdquo; (HR. Muslim)</span>}
           </blockquote>
         </div>
       </section>
