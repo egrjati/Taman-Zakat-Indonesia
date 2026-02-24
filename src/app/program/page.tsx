@@ -114,11 +114,11 @@ export default function ProgramPage() {
                   </p>
                 </a>
               </div>
-              {/* End Card 1 */}
+              {/* End Card*/}
               {/* ================= CARD 2 ================= */}
               <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
                 <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Desa Pelopor
+                  Beasiswa Bintang
                 </h3>
                 {/*
              {/* CTA / BOX PUTIH DI BAWAH */}
@@ -151,11 +151,11 @@ export default function ProgramPage() {
                   </p>
                 </a>
               </div>
-              {/* End Card 2 */}
+              {/* End Card */}
               {/* ================= CARD 3 ================= */}
               <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
                 <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Desa Pelopor
+                  SEKOLAH BINTANG
                 </h3>
                 {/*
              {/* CTA / BOX PUTIH DI BAWAH */}
@@ -188,11 +188,11 @@ export default function ProgramPage() {
                   </p>
                 </a>
               </div>
-              {/* End Card 3 */}
+              {/* End Card */}
               {/* ================= CARD 4 ================= */}
               <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
                 <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Desa Pelopor
+                  Ambulance Gratis
                 </h3>
                 {/*
              {/* CTA / BOX PUTIH DI BAWAH */}
