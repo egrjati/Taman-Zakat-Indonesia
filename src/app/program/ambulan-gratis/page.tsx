@@ -1,12 +1,80 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
 
 export default function AmbulanGratisPage() {
+  const [animateAmbulance, setAnimateAmbulance] = useState(false);
+
+  useEffect(() => {
+    // Small delay to ensure the page has rendered before starting animation
+    const timer = setTimeout(() => {
+      setAnimateAmbulance(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section className="min-h-screen w-full bg-white overflow-x-hidden">
+      {/* Ambulance drive-in animation */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes ambulanceDriveIn {
+          0% {
+            transform: translateX(-150%) scale(0.4);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+          }
+        }
+        .ambulance-animate {
+          animation: ambulanceDriveIn 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .ambulance-hidden {
+          transform: translateX(-150%) scale(0.4);
+          opacity: 0;
+        }
+
+        @keyframes speedLine {
+          0% {
+            transform: scaleX(0);
+            opacity: 0;
+          }
+          30% {
+            transform: scaleX(1);
+            opacity: 0.8;
+          }
+          70% {
+            transform: scaleX(0.6);
+            opacity: 0.6;
+          }
+          100% {
+            transform: scaleX(0);
+            opacity: 0;
+          }
+        }
+        .speed-line {
+          position: absolute;
+          height: 3px;
+          border-radius: 4px;
+          background: rgb(93, 166, 48);
+          opacity: 0;
+          pointer-events: none;
+          transform-origin: right center;
+        }
+        .speed-line-animate {
+          animation: speedLine 1.0s ease-out forwards;
+        }
+      `}} />
+
       {/* ==================== HERO: AMBULANCE + CARD ==================== */}
-      <section className="relative w-full overflow-hidden">
+      <section className="relative w-full overflow-x-clip">
 
         {/* Background: top half cream, bottom half green */}
         <div
@@ -14,16 +82,31 @@ export default function AmbulanGratisPage() {
           style={{ background: "linear-gradient(to bottom, #F0E6DA 50%, #A8D87B 50%)" }}
         >
           <div className="mx-auto flex w-full max-w-7xl flex-col md:flex-row items-stretch">
-            {/* LEFT: Green stripe + Ambulance image */}
-            <div className="relative w-full md:w-[55%] flex items-center">
+            {/* LEFT: Ambulance image */}
+            <div className="relative w-full md:w-[55%] flex items-center overflow-visible">
 
               <div className="relative w-full h-full flex items-center justify-center px-4 py-8 md:py-12 md:pl-8 md:pr-4">
+                {/* Speed lines - wind effect */}
+                {animateAmbulance && (
+                  <>
+                    <span className="speed-line speed-line-animate" style={{ width: '200px', height: '4px', top: '25%', left: '-10%', animationDelay: '0.3s' }} />
+                    <span className="speed-line speed-line-animate" style={{ width: '260px', height: '3px', top: '35%', left: '-15%', animationDelay: '0.15s' }} />
+                    <span className="speed-line speed-line-animate" style={{ width: '180px', height: '4px', top: '45%', left: '-5%', animationDelay: '0.4s' }} />
+                    <span className="speed-line speed-line-animate" style={{ width: '300px', height: '3px', top: '50%', left: '-20%', animationDelay: '0.1s' }} />
+                    <span className="speed-line speed-line-animate" style={{ width: '220px', height: '4px', top: '60%', left: '-8%', animationDelay: '0.25s' }} />
+                    <span className="speed-line speed-line-animate" style={{ width: '160px', height: '3px', top: '70%', left: '-3%', animationDelay: '0.35s' }} />
+                    <span className="speed-line speed-line-animate" style={{ width: '240px', height: '3px', top: '42%', left: '-12%', animationDelay: '0.2s' }} />
+                    <span className="speed-line speed-line-animate" style={{ width: '140px', height: '4px', top: '55%', left: '0%', animationDelay: '0.45s' }} />
+                  </>
+                )}
                 <Image
                   src="/images/gambardetaile/ambulance-removebg.svg"
                   alt="Ambulan Gratis Taman Zakat"
                   width={700}
                   height={420}
-                  className="h-auto w-full max-w-[600px] object-contain"
+                  className={`h-auto w-full max-w-[600px] object-contain ${
+                    animateAmbulance ? "ambulance-animate" : "ambulance-hidden"
+                  }`}
                   priority
                 />
               </div>
