@@ -10,9 +10,11 @@ const HADITH_TEXT = "Jika seseorang meninggal dunia, maka terputuslah amalannya 
 export default function AmbulanGratisPage() {
   const [animateAmbulance, setAnimateAmbulance] = useState(false);
   const [hadithVisible, setHadithVisible] = useState(false);
+  const [facilitiesVisible, setFacilitiesVisible] = useState(false);
   const [typedText, setTypedText] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const hadithRef = useRef<HTMLElement>(null);
+  const facilitiesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,6 +40,24 @@ export default function AmbulanGratisPage() {
 
     return () => observer.disconnect();
   }, [hadithVisible]);
+
+  // IntersectionObserver for facilities entrance animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !facilitiesVisible) {
+          setFacilitiesVisible(true);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (facilitiesRef.current) {
+      observer.observe(facilitiesRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [facilitiesVisible]);
 
   // Typing effect
   useEffect(() => {
@@ -162,6 +182,23 @@ export default function AmbulanGratisPage() {
           animation: badgeBounce 1.8s linear forwards;
           animation-delay: 1.5s;
           opacity: 0;
+        }
+
+        @keyframes facilityFadeIn {
+          0% {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        .facility-circle {
+          opacity: 0;
+        }
+        .facility-animate {
+          animation: facilityFadeIn 0.8s ease-out forwards;
         }
       `}} />
 
@@ -335,10 +372,17 @@ export default function AmbulanGratisPage() {
           <h2 className="font-newsreader text-lg font-semibold italic text-[#3a7d1c] md:text-2xl leading-relaxed">
             Rasulullah Shallallahu &apos;alaihi wasallam bersabda:
           </h2>
-          <blockquote className="mt-4 font-newsreader text-base italic leading-relaxed text-zinc-700 md:text-lg">
-            &ldquo;{typedText}
-            {isTyping && <span className="inline-block w-[2px] h-[1em] bg-zinc-700 align-text-bottom ml-[1px] animate-pulse" />}
-            {!isTyping && hadithVisible && <span>&rdquo; (HR. Muslim)</span>}
+          <blockquote className="relative mt-4 font-newsreader text-base italic leading-relaxed text-zinc-700 md:text-lg">
+            {/* Invisible text to reserve space and prevent layout shifts */}
+            <div className="invisible" aria-hidden="true">
+              &ldquo;{HADITH_TEXT}&rdquo; (HR. Muslim)
+            </div>
+            {/* Actual animated text */}
+            <div className="absolute inset-0">
+              &ldquo;{typedText}
+              {isTyping && <span className="inline-block w-[2px] h-[1em] bg-zinc-700 align-text-bottom ml-[1px] animate-pulse" />}
+              {!isTyping && hadithVisible && <span>&rdquo; (HR. Muslim)</span>}
+            </div>
           </blockquote>
         </div>
       </section>
@@ -355,10 +399,13 @@ export default function AmbulanGratisPage() {
           </p>
 
           {/* 3 ikon fasilitas */}
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-8">
+          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3 md:gap-8" ref={facilitiesRef}>
             {/* Fasilitas 1 */}
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24">
+              <div 
+                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 ${facilitiesVisible ? 'facility-animate' : 'facility-circle'}`}
+                style={{ animationDelay: '0.1s' }}
+              >
                 <Image
                   src="/images/icon/layanan-antar-jemput.svg"
                   alt="Gratis Antar Jemput Pasien"
@@ -375,7 +422,10 @@ export default function AmbulanGratisPage() {
 
             {/* Fasilitas 2 */}
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24">
+              <div 
+                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 ${facilitiesVisible ? 'facility-animate' : 'facility-circle'}`}
+                style={{ animationDelay: '0.3s' }}
+              >
                 <Image
                   src="/images/icon/mobil-sehat-keliling.svg"
                   alt="Mobil Sehat Keliling"
@@ -392,7 +442,10 @@ export default function AmbulanGratisPage() {
 
             {/* Fasilitas 3 */}
             <div className="flex flex-col items-center text-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24">
+              <div 
+                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 ${facilitiesVisible ? 'facility-animate' : 'facility-circle'}`}
+                style={{ animationDelay: '0.5s' }}
+              >
                 <Image
                   src="/images/icon/mobil-tanggap-bencana.svg"
                   alt="Mobil Pasien Darurat"
