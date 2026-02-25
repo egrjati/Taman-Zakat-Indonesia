@@ -184,21 +184,14 @@ export default function AmbulanGratisPage() {
           opacity: 0;
         }
 
-        @keyframes facilityFadeIn {
-          0% {
-            transform: translateY(20px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
         .facility-circle {
           opacity: 0;
+          transform: translateY(40px);
+          transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .facility-animate {
-          animation: facilityFadeIn 0.8s ease-out forwards;
+        .facility-visible {
+          opacity: 1;
+          transform: translateY(0);
         }
       `}} />
 
@@ -403,8 +396,8 @@ export default function AmbulanGratisPage() {
             {/* Fasilitas 1 */}
             <div className="flex flex-col items-center text-center">
               <div 
-                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 ${facilitiesVisible ? 'facility-animate' : 'facility-circle'}`}
-                style={{ animationDelay: '0.1s' }}
+                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 facility-circle ${facilitiesVisible ? 'facility-visible' : ''}`}
+                style={{ transitionDelay: '0.1s' }}
               >
                 <Image
                   src="/images/icon/layanan-antar-jemput.svg"
@@ -423,8 +416,8 @@ export default function AmbulanGratisPage() {
             {/* Fasilitas 2 */}
             <div className="flex flex-col items-center text-center">
               <div 
-                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 ${facilitiesVisible ? 'facility-animate' : 'facility-circle'}`}
-                style={{ animationDelay: '0.3s' }}
+                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 facility-circle ${facilitiesVisible ? 'facility-visible' : ''}`}
+                style={{ transitionDelay: '0.3s' }}
               >
                 <Image
                   src="/images/icon/mobil-sehat-keliling.svg"
@@ -443,8 +436,8 @@ export default function AmbulanGratisPage() {
             {/* Fasilitas 3 */}
             <div className="flex flex-col items-center text-center">
               <div 
-                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 ${facilitiesVisible ? 'facility-animate' : 'facility-circle'}`}
-                style={{ animationDelay: '0.5s' }}
+                className={`flex h-20 w-20 items-center justify-center rounded-full bg-white shadow-md md:h-24 md:w-24 facility-circle ${facilitiesVisible ? 'facility-visible' : ''}`}
+                style={{ transitionDelay: '0.5s' }}
               >
                 <Image
                   src="/images/icon/mobil-tanggap-bencana.svg"
