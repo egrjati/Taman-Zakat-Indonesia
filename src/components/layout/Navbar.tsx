@@ -6,6 +6,8 @@ export default function Navbar() {
     <nav>
       {/* Logo Taza & Donation */}
       <div className="w-full h-12 md:h-16 flex gap-5 justify-between items-center bg-[#5DA630]">
+        
+        <a href="/">
         <Image
           src="/images/icon/Taman Zakat Horizontal.png"
           alt="Logo Taman Zakat Indonesia"
@@ -14,6 +16,7 @@ export default function Navbar() {
           className="h-9 ml-3 md:ml-5 md:h-12 w-auto "
           priority
         />
+        </a>
 
         <div className="flex gap-3 md:gap-5 mr-3 md:mr-5">
           {/* Program */}
