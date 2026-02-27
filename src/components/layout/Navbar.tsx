@@ -6,14 +6,17 @@ export default function Navbar() {
     <nav>
       {/* Logo Taza & Donation */}
       <div className="w-full h-12 md:h-16 flex gap-5 justify-between items-center bg-[#5DA630]">
-        <Image
-          src="/images/icon/Taman Zakat Horizontal.png"
-          alt="Logo Taman Zakat Indonesia"
-          width={500}
-          height={120}
-          className="h-9 ml-3 md:ml-5 md:h-12 w-auto "
-          priority
-        />
+
+        <Link href="/" aria-label="Ke halaman utama">
+          <Image
+            src="/images/icon/Taman Zakat Horizontal.png"
+            alt="Logo Taman Zakat Indonesia"
+            width={500}
+            height={120}
+            className="h-9 ml-3 md:ml-5 md:h-12 w-auto "
+            priority
+          />
+        </Link>
 
         <div className="flex gap-3 md:gap-5 mr-3 md:mr-5">
           {/* Program */}
