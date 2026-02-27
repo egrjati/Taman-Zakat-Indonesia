@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav>
+    <nav className="relative z-[999] bg-white">
       {/* Logo Taza & Donation */}
       <div className="w-full h-12 md:h-16 flex gap-5 justify-between items-center bg-[#5DA630]">
 
@@ -45,18 +45,10 @@ export default function Navbar() {
               className="group inline-flex w-full cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent"
             >
               Tentang Kami
-              <svg
-                className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 md:h-4 md:w-5 md:text-black"
-                viewBox="4 2 18 17"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
             </Link>
           </li>
 
-          <li className="group inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent">
+          <li className="group relative inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent">
             Layanan{" "}
             <svg
               className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 md:h-4 md:w-5 md:text-black"
@@ -66,8 +58,26 @@ export default function Navbar() {
             >
               <path d="M6 9l6 6 6-6" />
             </svg>
+            
+            {/* Dropdown Menu */}
+            <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+              <div className="flex w-44 flex-col overflow-hidden rounded-xl bg-white shadow-xl border border-zinc-100 p-1.5">
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+              </div>
+            </div>
           </li>
-          <li className="group inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent">
+          <li className="group relative inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent">
             Kolaborasi
             <svg
               className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 md:h-4 md:w-5 md:text-black"
@@ -77,8 +87,23 @@ export default function Navbar() {
             >
               <path d="M6 9l6 6 6-6" />
             </svg>
+
+            {/* Dropdown Menu */}
+            <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+              <div className="flex w-48 flex-col overflow-hidden rounded-xl bg-white shadow-xl border border-zinc-100 p-1.5">
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+              </div>
+            </div>
           </li>
-          <li className="group inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent">
+          <li className="group relative inline-flex shrink-0 cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent">
             Tata Kelola
             <svg
               className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 md:h-4 md:w-5 md:text-black"
@@ -88,6 +113,21 @@ export default function Navbar() {
             >
               <path d="M6 9l6 6 6-6" />
             </svg>
+
+            {/* Dropdown Menu */}
+            <div className="absolute right-0 md:left-auto md:-right-4 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+              <div className="flex w-44 flex-col overflow-hidden rounded-xl bg-white shadow-xl border border-zinc-100 p-1.5">
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+                <Link href="#" className="flex items-center rounded-lg px-3 py-2 text-sm text-zinc-600 hover:bg-[#F2F9EC] hover:text-[#5DA630] font-medium transition-colors">
+                  lorem
+                </Link>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
