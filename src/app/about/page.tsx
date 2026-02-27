@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 /* ───────── tab data ───────── */
@@ -155,6 +155,29 @@ const legalCards = [
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Sejarah");
+  const [activeColor, setActiveColor] = useState<string>("#5DA630");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const color = entry.target.getAttribute("data-color");
+            if (color) setActiveColor(color);
+          }
+        });
+      },
+      {
+        // Zona observasi diatur pada 20vh, tepat di mana titik bertabrakan
+        rootMargin: "-20% 0px -75% 0px",
+      }
+    );
+
+    const elements = document.querySelectorAll(".milestone-container");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="w-full min-h-screen flex flex-col bg-white">
@@ -208,52 +231,57 @@ export default function AboutPage() {
             </p>
 
             {/* timeline */}
-            <div className="relative mt-20 max-w-3xl mx-auto">
-              {/* vertical line */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-[1px] bg-zinc-300 hidden md:block" />
+            <div className="relative mt-20 max-w-4xl mx-auto w-full">
+              {/* vertical line track */}
+              <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1px] bg-zinc-300 block" />
 
-              <div className="flex flex-col gap-16 md:gap-24">
+              <div className="flex flex-col w-full">
                 {milestones.map((m) => (
                   <div
                     key={m.year}
-                    className={`relative flex flex-col md:flex-row items-center justify-between w-full`}
+                    data-year={m.year}
+                    data-color={m.color}
+                    className="relative w-full h-[50vh] md:h-[60vh] milestone-container"
                   >
-                    {/* Left Side Content */}
-                    <div className="w-full md:w-1/2 flex justify-center md:justify-end md:pr-14">
-                      {m.align === "left" ? (
-                        m.logoRender()
-                      ) : (
-                        <div className="flex flex-col text-center md:text-right mt-6 md:mt-0">
-                           <span className="text-xl md:text-2xl font-bold" style={{ color: m.color }}>
-                             {m.year}
-                           </span>
-                           <h3 className="text-sm md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
-                             {m.title}
-                           </h3>
-                        </div>
-                      )}
-                    </div>
+                    <div className="sticky top-[20vh] w-full flex flex-row items-center justify-between py-6 md:py-8 pointer-events-none z-10 transition-transform duration-300">
+                      
+                      {/* Left Side Content */}
+                      <div className="w-1/2 flex justify-end pr-4 sm:pr-8 md:pr-14 pointer-events-auto">
+                        {m.align === "left" ? (
+                          <div className="scale-[0.6] sm:scale-75 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
+                        ) : (
+                          <div className="flex flex-col text-right bg-white/80 md:bg-transparent p-2 sm:p-4 md:p-0 rounded-xl backdrop-blur-sm md:backdrop-blur-none">
+                             <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
+                               {m.year}
+                             </span>
+                             <h3 className="text-xs md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
+                               {m.title}
+                             </h3>
+                          </div>
+                        )}
+                      </div>
 
-                    {/* Center dot */}
-                    <div 
-                      className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-2 z-10" 
-                      style={{ borderColor: m.color }} 
-                    />
+                      {/* Center dot */}
+                      <div 
+                        className={`flex absolute left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full bg-white border-2 z-20 transition-colors duration-500`} 
+                        style={{ borderColor: activeColor }} 
+                      />
 
-                    {/* Right Side Content */}
-                    <div className="w-full md:w-1/2 flex justify-center md:justify-start md:pl-14">
-                      {m.align === "left" ? (
-                         <div className="flex flex-col text-center md:text-left mt-6 md:mt-0">
-                           <span className="text-xl md:text-2xl font-bold" style={{ color: m.color }}>
-                             {m.year}
-                           </span>
-                           <h3 className="text-sm md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
-                             {m.title}
-                           </h3>
-                        </div>
-                      ) : (
-                        m.logoRender()
-                      )}
+                      {/* Right Side Content */}
+                      <div className="w-1/2 flex justify-start pl-4 sm:pl-8 md:pl-14 pointer-events-auto">
+                        {m.align === "left" ? (
+                           <div className="flex flex-col text-left bg-white/80 md:bg-transparent p-2 sm:p-4 md:p-0 rounded-xl backdrop-blur-sm md:backdrop-blur-none">
+                             <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
+                               {m.year}
+                             </span>
+                             <h3 className="text-xs md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
+                               {m.title}
+                             </h3>
+                          </div>
+                        ) : (
+                          <div className="scale-[0.6] sm:scale-75 md:scale-100 origin-left flex items-center">{m.logoRender()}</div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ))}
