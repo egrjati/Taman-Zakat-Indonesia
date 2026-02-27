@@ -321,9 +321,11 @@ export default function AboutPage() {
             <div className="mt-10">
               <div className="flex flex-col md:flex-row gap-6 lg:gap-8">
                 {/* Side Image */}
-                <div className="h-56 sm:h-[260px] w-full md:w-[320px] lg:w-[380px] bg-[#D9D9D9] flex items-center justify-center flex-shrink-0">
-                  <span className="text-white font-bold text-xl md:text-2xl">Gambar</span>
-                </div>
+                {activeTab === "Sejarah" && (
+                  <div className="h-56 sm:h-[260px] w-full md:w-[320px] lg:w-[380px] bg-[#D9D9D9] flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-xl md:text-2xl">Gambar</span>
+                  </div>
+                )}
 
                 {/* Top Text Content */}
                 <div className="text-black text-[13px] md:text-[15px] leading-relaxed flex-1">
