@@ -130,7 +130,6 @@ export default function ProgramPage() {
                   {/*
               block:
               - Biar <a> bisa punya width/height dengan benar
-
               w-5/6:
               - Lebar box putih 5/6 dari card (lebih kecil dari card)
               - Kalau mau responsif:
