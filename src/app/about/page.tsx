@@ -51,8 +51,8 @@ const tabContent: Record<Tab, { topText: React.ReactNode; bottomText: React.Reac
           Taman Zakat Indonesia merupakan lembaga yang telah resmi terdaftar dan memiliki legalitas yang lengkap:
         </p>
         <ul className="list-disc pl-5 mt-4 space-y-2">
-          <li>SK Kemenkumham RI: AHU-0012345.AH.01.04</li>
-          <li>NPWP Lembaga: 00.000.000.0-000.000</li>
+          <li>SK Kemenkumham RI: lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</li>
+          <li>NPWP Lembaga: lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</li>
           <li>Terdaftar di BAZNAS (Badan Amil Zakat Nasional)</li>
           <li>Anggota FOZ (Forum Zakat)</li>
           <li>Predikat WTP (Wajar Tanpa Pengecualian) dari auditor independen</li>
