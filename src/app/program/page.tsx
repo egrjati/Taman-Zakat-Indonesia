@@ -228,7 +228,7 @@ export default function ProgramPage() {
               {/* ================= CARD 5 ================= */}
               <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
                 <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Desa Pelopor
+                  Sedekah Beras Rakyat
                 </h3>
                 {/*
              {/* CTA / BOX PUTIH DI BAWAH */}
@@ -265,12 +265,12 @@ export default function ProgramPage() {
               {/* ================= CARD 6 ================= */}
               <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
                 <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Desa Pelopor
+                  Wakaf
                 </h3>
                 {/*
              {/* CTA / BOX PUTIH DI BAWAH */}
                 <a
-                  href=""
+                  href="/program/wakaf"
                   className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
                        hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
                 >
