@@ -1,7 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function WakafPage() {
+  const [cycle, setCycle] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCycle((prev) => prev + 1);
+    }, 10000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const collageImages = [
+    '/images/gambardetaile/pak pantau 1.svg',
+    '/images/gambardetaile/maspion 1.svg',
+    '/images/gambardetaile/bangunan 1.svg'
+  ];
+
   return (
     <div className="w-full flex flex-col bg-white overflow-x-hidden">
       <style dangerouslySetInnerHTML={{ __html: `
@@ -14,6 +32,14 @@ export default function WakafPage() {
           animation: borderWiggle 2.5s ease-in-out infinite;
           transform-origin: center center;
         }
+        @keyframes floating {
+          0% { transform: translateY(0px); }
+          50% { transform: translateY(-15px); }
+          100% { transform: translateY(0px); }
+        }
+        .animate-floating-0 { animation: floating 8s ease-in-out infinite; }
+        .animate-floating-1 { animation: floating 8s ease-in-out infinite 2.5s; }
+        .animate-floating-2 { animation: floating 8s ease-in-out infinite 5s; }
       `}} />
       {/* 1. Hero Section */}
       <section className="w-full flex flex-col md:flex-row min-h-[450px] md:min-h-[500px]">
@@ -145,22 +171,36 @@ export default function WakafPage() {
           </div>
 
           {/* Right Collage Content */}
-          <div className="w-full lg:w-[50%] flex flex-col gap-6 md:gap-8 mt-10 lg:mt-0">
-            
-            <div 
-              className="w-[75%] sm:w-[70%] lg:w-[65%] aspect-video bg-zinc-300 bg-cover bg-center shadow-md self-start rounded-sm" 
-              style={{ backgroundImage: `url('/images/gambardetaile/pak pantau 1.svg')` }} 
-            />
-            
-            <div 
-              className="w-[85%] sm:w-[80%] lg:w-[75%] aspect-video bg-zinc-300 bg-cover bg-center shadow-xl self-end rounded-sm" 
-              style={{ backgroundImage: `url('/images/gambardetaile/maspion 1.svg')` }} 
-            />
-            
-            <div 
-              className="w-[85%] sm:w-[80%] lg:w-[75%] aspect-video bg-zinc-300 bg-cover bg-center shadow-lg self-start ml-[8%] sm:ml-[15%] lg:ml-[15%] rounded-sm" 
-              style={{ backgroundImage: `url('/images/gambardetaile/bangunan 1.svg')` }} 
-            />
+          <div className="w-full lg:w-[50%] relative h-[550px] sm:h-[650px] lg:h-[750px] mt-10 lg:mt-0 pb-10">
+            {collageImages.map((img, i) => {
+              const pos = (i + cycle) % 3;
+              
+              let posClasses = "";
+              if (pos === 0) {
+                // Top (Posisi atas, di kiri, sedikit lebih besar dari sebelumnya)
+                posClasses = "top-0 left-0 w-[65%] sm:w-[70%] lg:w-[65%]";
+              } else if (pos === 1) {
+                // Middle (Posisi tengah, merapat maksimal ke kanan)
+                posClasses = "top-[33%] left-[35%] sm:left-[30%] lg:left-[35%] w-[65%] sm:w-[70%] lg:w-[65%]";
+              } else {
+                // Bottom (Posisi bawah, terbesar, di sentral ke kanan)
+                posClasses = "top-[66%] left-[15%] sm:left-[15%] lg:left-[20%] w-[80%] sm:w-[85%] lg:w-[80%]";
+              }
+
+              return (
+                <div 
+                  key={i}
+                  // Menggunakan custom transition agar z-index atau properti lain tak sengaja teranimasi setengah-setengah
+                  className={`absolute transition-[top,left,width] duration-[2500ms] ease-in-out transform-gpu ${posClasses} z-20`}
+                  style={{ willChange: 'top, left, width' }}
+                >
+                  <div 
+                    className={`w-full aspect-video bg-zinc-300 bg-cover bg-center rounded-sm shadow-xl animate-floating-${i}`}
+                    style={{ backgroundImage: `url('${img}')`, WebkitBackfaceVisibility: 'hidden', WebkitTransform: 'translate3d(0,0,0)' }}
+                  />
+                </div>
+              );
+            })}
           </div>
 
         </div>
