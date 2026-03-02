@@ -307,10 +307,10 @@ export default function ProgramPage() {
                 {/* ===== Small Card 1 ===== */}
                 <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-4 md:px-3 md:py-5 flex flex-col">
                   <h3 className="text-center font-newsreader text-base md:text-xl font-semibold text-white">
-                    Desa Pelopor
+                    Qurban
                   </h3>
                   <a
-                    href=""
+                    href="/program/qurban"
                     className="mt-auto block w-full md:w-5/6 mx-auto rounded-lg border border-black bg-white px-3 py-2 drop-shadow-lg hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
                   >
                     <h4 className="mt-1 font-newsreader text-sm md:text-lg font-medium text-zinc-700">
