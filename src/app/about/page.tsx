@@ -123,7 +123,7 @@ const milestones = [
   {
     year: "2021",
     title: "LAZ Provinsi\ndari Kemenag",
-    color: "#5DA630",
+    color: "#38681aff",
     align: "right" as const,
     logoRender: () => (
       <div className="flex items-center justify-center">
