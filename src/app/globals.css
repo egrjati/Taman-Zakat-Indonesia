@@ -12,17 +12,7 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-newsreader: var(--font-newsreader-google);
-  --font-ramadhan: 'AwalRamadhan', sans-serif;
-}
-
-@font-face {
-  font-family: 'AwalRamadhan';
-  src: 
-    url('/font/a_awal_ramadhan/aAwalRamadhan.ttf') format('truetype'),
-    url('/font/a_awal_ramadhan/aAwalRamadhan.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+  --font-ramadhan: var(--font-ramadhan-local);
 }
 
 @media (prefers-color-scheme: dark) {
