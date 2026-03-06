@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function RamadhanPage() {
   const ramadhanPrograms = [
@@ -46,6 +47,17 @@ export default function RamadhanPage() {
 
   return (
     <div className="w-full flex flex-col bg-[#FAF7F0] overflow-x-hidden">
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes borderWiggle {
+          0%   { transform: translateX(-4px) rotate(-2deg); }
+          50%  { transform: translateX(-4px) rotate(2deg); }
+          100% { transform: translateX(-4px) rotate(-2deg); }
+        }
+        .border-wiggle {
+          animation: borderWiggle 2.5s ease-in-out infinite;
+          transform-origin: center center;
+        }
+      `}} />
       
       {/* 1. Hero Section */}
       <section className="relative w-full min-h-[400px] md:min-h-[500px] bg-black flex flex-col items-center justify-center px-4 py-16">
@@ -68,11 +80,30 @@ export default function RamadhanPage() {
             Satu langkah sederhana Anda dapat membawa harapan bagi banyak orang
           </p>
           
-          <Link href="#programs" className="bg-[#7FC248] hover:bg-[#6CAE3D] transition text-white px-6 py-3 rounded-md font-medium text-sm md:text-base flex items-center gap-2">
-            Donasi Disini
-            {/* Empty icon placeholder */}
-            <span className="w-4 h-4 bg-white/20 rounded-full inline-block"></span>
-          </Link>
+          {/* Donasi Button */}
+          <div className="relative inline-block mt-6">
+            <div
+              aria-hidden
+              className="absolute inset-0 z-20 rounded-sm border-2 border-white border-wiggle"
+            />
+            <Link
+              href="#donasi"
+              className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
+            >
+              <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                <div className="relative z-10 inline-flex items-center gap-2 text-sm font-semibold font-newsreader text-white md:text-base">
+                  <span>Donasi Disini</span>
+                  <Image
+                    src="/images/icon/Donation.svg"
+                    alt="Ikon donasi"
+                    width={18}
+                    height={18}
+                    className="h-[18px] w-[18px]"
+                  />
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -104,12 +135,31 @@ export default function RamadhanPage() {
                   {program.description}
                 </p>
                 
+                {/* Button Container aligned to bottom-left */}
                 <div className="mt-auto">
-                  <Link href={program.link} className="inline-flex flex-row items-center gap-2 bg-white text-zinc-900 px-4 py-2 rounded-md font-medium text-xs md:text-sm hover:bg-zinc-200 transition">
-                    Donasi Disini
-                    {/* Tiny arrow icon as placeholder */}
-                    <span className="font-bold text-lg leading-none">&#8594;</span>
-                  </Link>
+                  <div className="relative inline-block mt-4">
+                    {/* The outline border to the left */}
+                    <div className="absolute top-[4px] -left-1 w-full h-full rounded-sm border-[1px] border-white/40 pointer-events-none"></div>
+                    
+                    {/* The main button */}
+                    <Link
+                      href={program.link}
+                      className="relative z-10 block bg-white rounded-sm px-4 py-1.5 shadow-sm hover:brightness-95 transition"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-zinc-900 font-semibold font-newsreader text-sm">
+                          Donasi Disini
+                        </span>
+                        <Image
+                          src="/images/icon/hitam logo taza 1.svg"
+                          alt="Ikon Taza"
+                          width={14}
+                          height={14}
+                          className="h-[14px] w-auto opacity-80"
+                        />
+                      </div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
