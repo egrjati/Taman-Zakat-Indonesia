@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
 
 export default function BidangKesehatanPage() {
   const [animateBadge, setAnimateBadge] = useState(false);
+  const [animateAmbulance, setAnimateAmbulance] = useState(false);
+  const ambulanceRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -14,6 +16,17 @@ export default function BidangKesehatanPage() {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !animateAmbulance) {
+        setAnimateAmbulance(true);
+      }
+    }, { threshold: 0.1 });
+
+    if (ambulanceRef.current) observer.observe(ambulanceRef.current);
+    return () => observer.disconnect();
+  }, [animateAmbulance]);
 
   return (
     <main className="min-h-screen w-full bg-white overflow-x-hidden">
@@ -67,6 +80,29 @@ export default function BidangKesehatanPage() {
           animation-delay: 1.5s;
           opacity: 0;
         }
+
+        @keyframes ambulanceDriveInRight {
+          0% {
+            transform: translateX(150%) scale(0.4) rotateY(180deg);
+            opacity: 0;
+          }
+          30% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(5%) scale(1) rotateY(180deg);
+            opacity: 1;
+          }
+        }
+        .ambulance-drive-right-animate {
+          animation: ambulanceDriveInRight 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+          transform-origin: bottom center;
+        }
+        .ambulance-hidden-right {
+          transform: translateX(150%) scale(0.4) rotateY(180deg);
+          transform-origin: bottom center;
+          opacity: 0;
+        }
       `}} />
 
       {/* ===================== HERO SECTION ===================== */}
@@ -84,7 +120,7 @@ export default function BidangKesehatanPage() {
 
          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 flex justify-center md:justify-end">
             {/* CARD RIGHT */}
-            <div className="bg-white rounded-md w-full max-w-[420px] p-6 md:p-8 lg:p-10 relative border border-green-50 shadow-[0px_4px_40px_rgba(127,194,72,0.5)]">
+            <div className="bg-white rounded-md w-full max-w-[420px] p-6 md:p-8 lg:p-10 relative border border-green-50 shadow-[25px_-15px_40px_rgba(127,194,72,0.25)]">
                {/* Badge Taza (Top Left corner) */}
                <div className={`absolute -top-10 -left-10 md:-top-12 md:-left-12 z-20 ${animateBadge ? 'badge-bounce' : 'opacity-0'}`}>
                  <div className="relative h-[84px] w-[84px] md:h-[100px] md:w-[100px]">
@@ -237,21 +273,32 @@ export default function BidangKesehatanPage() {
       </section>
 
       {/* ===================== LOREM IPSUM & AMBULANCE IMAGE ===================== */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3] relative overflow-hidden flex items-center min-h-[300px]">
-         <div className="max-w-6xl w-full mx-auto flex">
-            <div className="w-full md:w-3/5 z-10 pt-10 pb-20 md:py-10 text-center md:text-left">
-               <p className="text-zinc-800 text-sm md:text-base italic leading-relaxed md:max-w-md font-medium">
-                 Lorem ipsum dolor sit amet, consectetur lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula, consectetur.
+      <section className="w-full relative mt-16 md:mt-24 mb-20 md:mb-32 flex items-center min-h-[350px] md:min-h-[400px]" ref={ambulanceRef}>
+         {/* Background Layer (Cream Area) */}
+         <div className="absolute top-0 left-0 w-full h-[88%] bg-[#F8EED3] z-0" />
+         
+         {/* AMBULANCE RIGHT (Popping Out of Bottom) */}
+         <div className="absolute right-[-5%] md:right-[0%] bottom-0 z-20 w-[85%] sm:w-[70%] md:w-[55%] lg:w-[50%] xl:w-[45%] pointer-events-none flex justify-end">
+            <Image 
+              src="/images/gambardetaile/ambulance-removebg.svg"
+              alt="Ambulance"
+              width={800}
+              height={600}
+              className={`w-full max-w-[500px] md:max-w-none h-auto object-contain transition-all drop-shadow-xl ${
+                animateAmbulance ? "ambulance-drive-right-animate" : "ambulance-hidden-right"
+              }`}
+            />
+         </div>
+
+         <div className="max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center justify-start relative z-10 px-6 md:px-12 pt-10 pb-32 md:py-16">
+            {/* TEXT LEFT */}
+            <div className="w-full md:w-[55%] lg:w-[50%] flex flex-col items-center justify-center drop-shadow-sm px-2">
+               <h3 className="font-newsreader text-[22px] md:text-[26px] font-bold text-black mb-3 md:mb-5 text-center leading-tight">
+                 Lorem ipsum dolor sit amet, consectetur
+               </h3>
+               <p className="text-zinc-800 text-sm md:text-[16px] leading-relaxed max-w-md md:max-w-lg font-medium text-center">
+                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien fringilla, mattis ligula, consectetur.
                </p>
-            </div>
-            <div className="absolute right-[-10%] md:right-0 bottom-0 md:top-1/2 md:-translate-y-1/2 z-0 w-[60%] md:w-1/2 max-w-lg">
-               <Image 
-                 src="/images/gambardetaile/ambulance-removebg.svg"
-                 alt="Ambulance"
-                 width={800}
-                 height={600}
-                 className="w-full h-auto object-contain translate-x-[15%]"
-               />
             </div>
          </div>
       </section>
@@ -262,8 +309,13 @@ export default function BidangKesehatanPage() {
       <section className="w-full py-16 px-4 md:px-12 bg-white">
          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
             <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-               <div className="w-full max-w-md rounded bg-zinc-100 border-4 border-white shadow-lg overflow-hidden relative aspect-[4/3]">
-                  <Image src="/images/gambardetaile/footage ambul 2 1.svg" alt="Ambulan Gratis Taman Zakat" fill className="object-cover" />
+               <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                 {/* Card Background Putih dengan Shadow Kiri Atas Tebal dan Solid */}
+                 <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                 
+                 <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                   <Image src="/images/gambardetaile/footage ambul 2 1.svg" alt="Ambulan Gratis Taman Zakat" fill className="object-cover" />
+                 </div>
                </div>
             </div>
             <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
@@ -272,9 +324,19 @@ export default function BidangKesehatanPage() {
                  <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
                    Program infak ambulans Taman Zakat diharapkan dapat mengurangi hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas kesehatan yang layak dan terjamin dalam pertolongan pertama pada kesehatan.
                  </p>
-                 <div className="flex items-center justify-center md:justify-start gap-3">
-                   <button className="bg-[#7FC248] text-white shadow-md px-4 py-2 rounded hover:bg-[#6CAE37] transition font-semibold text-xs md:text-sm">Donasi Disini <span className="ml-1">➔</span></button>
-                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
+                 <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                   <div className="relative inline-block">
+                     <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                     <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5" >
+                       <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                         <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                           <span>Donasi Disini</span>
+                           <Image src="/images/icon/Donation.svg" alt="Ikon donasi" width={18} height={18} className="h-[18px] w-[18px]" />
+                         </div>
+                       </div>
+                     </a>
+                   </div>
+                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
                  </div>
                </div>
             </div>
@@ -284,21 +346,36 @@ export default function BidangKesehatanPage() {
       {/* Operasi Katarak Gratis */}
       <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-            <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-center text-center">
+            <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
                <div className="max-w-md">
                  <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">Operasi Katarak Gratis</h2>
                  <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
                    Program infak ambulans Taman Zakat diharapkan dapat mengurangi hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas kesehatan yang layak dan terjamin dalam pertolongan pertama pada kesehatan.
                  </p>
-                 <div className="flex items-center justify-center gap-3">
-                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
-                   <button className="bg-[#7FC248] text-white shadow-md px-4 py-2 rounded hover:bg-[#6CAE37] transition font-semibold text-xs md:text-sm">Donasi Disini <span className="ml-1">➔</span></button>
+                 <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
+                   <div className="relative inline-block">
+                     <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                     <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5" >
+                       <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                         <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                           <span>Donasi Disini</span>
+                           <Image src="/images/icon/Donation.svg" alt="Ikon donasi" width={18} height={18} className="h-[18px] w-[18px]" />
+                         </div>
+                       </div>
+                     </a>
+                   </div>
                  </div>
                </div>
             </div>
             <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
-               <div className="w-full max-w-md rounded border-4 border-white shadow-lg overflow-hidden relative aspect-[4/3] bg-zinc-100">
-                  <Image src="/images/gambardetaile/Oprasi Katarak.svg" alt="Operasi Katarak Gratis" fill className="object-cover" />
+               <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                 {/* Card Background Coklat dengan Shadow Kanan Atas Tebal dan Solid */}
+                 <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#F8EED3] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                 
+                 <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                   <Image src="/images/gambardetaile/Oprasi Katarak.svg" alt="Operasi Katarak Gratis" fill className="object-cover" />
+                 </div>
                </div>
             </div>
          </div>
@@ -308,8 +385,13 @@ export default function BidangKesehatanPage() {
       <section className="w-full py-16 px-4 md:px-12 bg-white">
          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
             <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-               <div className="w-full max-w-md rounded bg-zinc-100 border-4 border-white shadow-lg overflow-hidden relative aspect-[4/3]">
-                  <Image src="/images/gambardetaile/toilet keluarga  sehat.svg" alt="Toilet Keluarga Sehat" fill className="object-cover" />
+               <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                 {/* Card Background Putih dengan Shadow Kiri Atas Tebal dan Solid */}
+                 <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                 
+                 <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                   <Image src="/images/gambardetaile/toilet keluarga  sehat.svg" alt="Toilet Keluarga Sehat" fill className="object-cover" />
+                 </div>
                </div>
             </div>
             <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
@@ -318,9 +400,19 @@ export default function BidangKesehatanPage() {
                  <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
                    Program infak ambulans Taman Zakat diharapkan dapat mengurangi hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas kesehatan yang layak dan terjamin dalam pertolongan pertama pada kesehatan.
                  </p>
-                 <div className="flex items-center justify-center md:justify-start gap-3">
-                   <button className="bg-[#7FC248] text-white shadow-md px-4 py-2 rounded hover:bg-[#6CAE37] transition font-semibold text-xs md:text-sm">Donasi Disini <span className="ml-1">➔</span></button>
-                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
+                 <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                   <div className="relative inline-block">
+                     <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                     <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5" >
+                       <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                         <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                           <span>Donasi Disini</span>
+                           <Image src="/images/icon/Donation.svg" alt="Ikon donasi" width={18} height={18} className="h-[18px] w-[18px]" />
+                         </div>
+                       </div>
+                     </a>
+                   </div>
+                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
                  </div>
                </div>
             </div>
@@ -330,21 +422,36 @@ export default function BidangKesehatanPage() {
       {/* Cek Kesehatan Gratis */}
       <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
          <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
-            <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-center text-center">
+            <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
                <div className="max-w-md">
                  <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">Cek Kesehatan Gratis</h2>
                  <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
                    Program infak ambulans Taman Zakat diharapkan dapat mengurangi hambatan-hambatan bagi warga desa untuk mendapatkan fasilitas kesehatan yang layak dan terjamin dalam pertolongan pertama pada kesehatan.
                  </p>
-                 <div className="flex items-center justify-center gap-3">
-                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
-                   <button className="bg-[#7FC248] text-white shadow-md px-4 py-2 rounded hover:bg-[#6CAE37] transition font-semibold text-xs md:text-sm">Donasi Disini <span className="ml-1">➔</span></button>
+                 <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                   <button className="bg-white border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">Lihat Detail Program</button>
+                   <div className="relative inline-block">
+                     <div aria-hidden className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle" />
+                     <a href="#donasi" className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5" >
+                       <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                         <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                           <span>Donasi Disini</span>
+                           <Image src="/images/icon/Donation.svg" alt="Ikon donasi" width={18} height={18} className="h-[18px] w-[18px]" />
+                         </div>
+                       </div>
+                     </a>
+                   </div>
                  </div>
                </div>
             </div>
             <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
-               <div className="w-full max-w-md rounded bg-zinc-100 border-4 border-white shadow-lg overflow-hidden relative aspect-[4/3]">
-                  <Image src="/images/gambardetaile/cek kesehatan.svg" alt="Cek Kesehatan Gratis" fill className="object-cover object-top" />
+               <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+                 {/* Card Background Coklat dengan Shadow Kanan Atas Tebal dan Solid */}
+                 <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#F8EED3] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+                 
+                 <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
+                   <Image src="/images/gambardetaile/cek kesehatan.svg" alt="Cek Kesehatan Gratis" fill className="object-cover object-top" />
+                 </div>
                </div>
             </div>
          </div>
