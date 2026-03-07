@@ -138,7 +138,7 @@ export default function ProgramPage() {
               </a>
 
               {/* ================= CARD 4 ================= */}
-              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+              <a href="/program/kesehatan" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
                   <img 
                     src="/images/gambardetaile/bidang kesehatan.svg" 
