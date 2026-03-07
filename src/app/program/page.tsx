@@ -1,6 +1,5 @@
 export default function ProgramPage() {
-  const gridBgOffsetY = "260px";
-  const gridBgHeight = "970px";
+  const gridBgOffsetY = "150px";
 
   return (
     <section className="min-h-screen w-full bg-[#faf7f0] overflow-x-hidden">
@@ -72,310 +71,111 @@ export default function ProgramPage() {
         <section className="relative z-0 mt-16 md:mt-20 lg:mt-28">
           <div
             className="pointer-events-none absolute left-1/2 -translate-x-1/2 w-[100dvw] bg-[#F8EED3] z-0"
-            style={{ top: gridBgOffsetY, height: gridBgHeight }}
+            style={{ top: gridBgOffsetY, height: "calc(100% - 100px)" }}
           ></div>
 
           {/* Start Grid Besar */}
-          <div className="relative z-10 mx-auto w-full max-w-sm md:max-w-5xl lg:max-w-7xl p-3 md:p-5 lg:p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-[1400px] px-6 sm:px-8 md:px-12 lg:px-16 py-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20">
               {/* ================= CARD 1 ================= */}
-              <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
-                <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Desa Pelopor
-                </h3>
-                {/*
-             {/* CTA / BOX PUTIH DI BAWAH */}
-                <a
-                  href="/program/desa-pelopor"
-                  className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
-                       hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                >
-                  {/*
-              block:
-              - Biar <a> bisa punya width/height dengan benar
-
-              w-5/6:
-              - Lebar box putih 5/6 dari card (lebih kecil dari card)
-              - Kalau mau responsif:
-                w-full sm:w-5/6
-
-              px-4 py-2:
-              - Padding dalam
-
-              hover/active:
-              - Efek interaksi
-            */}
-                  <h4 className="mt-1 font-newsreader text-lg  md:text-xl font-medium text-zinc-700">
-                    Join the Spring <span className="ml-1 font-bold">→</span>
-                  </h4>
-
-                  <p className="text-sm font-light text-black">
-                    Join our monthly giving community to give clean water.
-                  </p>
-                </a>
-              </div>
-              {/* End Card*/}
+              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <img 
+                    src="/images/gambardetaile/bidang dakwah.svg" 
+                    alt="Bidang Dakwah" 
+                    className="w-full h-auto object-contain"
+                  />
+                  {/* Kotak Keterangan */}
+                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                      Bidang Dakwah <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                    </h4>
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                    </p>
+                  </div>
+                </div>
+              </a>
+              
               {/* ================= CARD 2 ================= */}
-              <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
-                <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Beasiswa Bintang
-                </h3>
-                {/*
-             {/* CTA / BOX PUTIH DI BAWAH */}
-                <a
-                  href="/program/beasiswa-bintang"
-                  className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
-                       hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                >
-                  {/*
-              block:
-              - Biar <a> bisa punya width/height dengan benar
-              w-5/6:
-              - Lebar box putih 5/6 dari card (lebih kecil dari card)
-              - Kalau mau responsif:
-                w-full sm:w-5/6
+              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <img 
+                    src="/images/gambardetaile/bidang ekonomi.svg" 
+                    alt="Bidang Ekonomi" 
+                    className="w-full h-auto object-contain"
+                  />
+                  {/* Kotak Keterangan */}
+                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                      Bidang Ekonomi <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                    </h4>
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                    </p>
+                  </div>
+                </div>
+              </a>
 
-              px-4 py-2:
-              - Padding dalam
-
-              hover/active:
-              - Efek interaksi
-            */}
-                  <h4 className="mt-1 font-newsreader text-lg  md:text-xl font-medium text-zinc-700">
-                    Join the Spring <span className="ml-1 font-bold">→</span>
-                  </h4>
-
-                  <p className="text-sm font-light text-black">
-                    Join our monthly giving community to give clean water.
-                  </p>
-                </a>
-              </div>
-              {/* End Card */}
               {/* ================= CARD 3 ================= */}
-              <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
-                <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  SEKOLAH BINTANG
-                </h3>
-                {/*
-             {/* CTA / BOX PUTIH DI BAWAH */}
-                <a
-                  href="/program/sekolah-bintang"
-                  className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
-                       hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                >
-                  {/*
-              block:
-              - Biar <a> bisa punya width/height dengan benar
+              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <img 
+                    src="/images/gambardetaile/bidang kemanusian.svg" 
+                    alt="Bidang Kemanusiaan" 
+                    className="w-full h-auto object-contain"
+                  />
+                  {/* Kotak Keterangan */}
+                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                      Bidang Kemanusiaan <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                    </h4>
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                    </p>
+                  </div>
+                </div>
+              </a>
 
-              w-5/6:
-              - Lebar box putih 5/6 dari card (lebih kecil dari card)
-              - Kalau mau responsif:
-                w-full sm:w-5/6
-
-              px-4 py-2:
-              - Padding dalam
-
-              hover/active:
-              - Efek interaksi
-            */}
-                  <h4 className="mt-1 font-newsreader text-lg  md:text-xl font-medium text-zinc-700">
-                    Join the Spring <span className="ml-1 font-bold">→</span>
-                  </h4>
-
-                  <p className="text-sm font-light text-black">
-                    Join our monthly giving community to give clean water.
-                  </p>
-                </a>
-              </div>
-              {/* End Card */}
               {/* ================= CARD 4 ================= */}
-              <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
-                <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Ambulance Gratis
-                </h3>
-                {/*
-             {/* CTA / BOX PUTIH DI BAWAH */}
-                <a
-                  href="program/ambulan-gratis"
-                  className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
-                       hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                >
-                  {/*
-              block:
-              - Biar <a> bisa punya width/height dengan benar
+              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <img 
+                    src="/images/gambardetaile/bidang kesehatan.svg" 
+                    alt="Bidang Kesehatan" 
+                    className="w-full h-auto object-contain"
+                  />
+                  {/* Kotak Keterangan */}
+                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                      Bidang Kesehatan <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                    </h4>
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                    </p>
+                  </div>
+                </div>
+              </a>
 
-              w-5/6:
-              - Lebar box putih 5/6 dari card (lebih kecil dari card)
-              - Kalau mau responsif:
-                w-full sm:w-5/6
-
-              px-4 py-2:
-              - Padding dalam
-
-              hover/active:
-              - Efek interaksi
-            */}
-                  <h4 className="mt-1 font-newsreader text-lg  md:text-xl font-medium text-zinc-700">
-                    Join the Spring <span className="ml-1 font-bold">→</span>
-                  </h4>
-
-                  <p className="text-sm font-light text-black">
-                    Join our monthly giving community to give clean water.
-                  </p>
-                </a>
-              </div>
-              {/* End Card 4 */}
               {/* ================= CARD 5 ================= */}
-              <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
-                <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Sedekah Beras Rakyat
-                </h3>
-                {/*
-             {/* CTA / BOX PUTIH DI BAWAH */}
-                <a
-                  href=""
-                  className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
-                       hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                >
-                  {/*
-              block:
-              - Biar <a> bisa punya width/height dengan benar
-
-              w-5/6:
-              - Lebar box putih 5/6 dari card (lebih kecil dari card)
-              - Kalau mau responsif:
-                w-full sm:w-5/6
-
-              px-4 py-2:
-              - Padding dalam
-
-              hover/active:
-              - Efek interaksi
-            */}
-                  <h4 className="mt-1 font-newsreader text-lg  md:text-xl font-medium text-zinc-700">
-                    Join the Spring <span className="ml-1 font-bold">→</span>
-                  </h4>
-
-                  <p className="text-sm font-light text-black">
-                    Join our monthly giving community to give clean water.
-                  </p>
-                </a>
-              </div>
-              {/* End Card 5 */}
-              {/* ================= CARD 6 ================= */}
-              <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-5 flex flex-col">
-                <h3 className="text-center font-newsreader text-xl md:text-2xl font-semibold text-white">
-                  Wakaf
-                </h3>
-                {/*
-             {/* CTA / BOX PUTIH DI BAWAH */}
-                <a
-                  href="/program/wakaf"
-                  className="mt-auto block w-5/6 rounded-lg border border-black bg-white px-4 py-2 drop-shadow-lg
-                       hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                >
-                  {/*
-              block:
-              - Biar <a> bisa punya width/height dengan benar
-
-              w-5/6:
-              - Lebar box putih 5/6 dari card (lebih kecil dari card)
-              - Kalau mau responsif:
-                w-full sm:w-5/6
-
-              px-4 py-2:
-              - Padding dalam
-
-              hover/active:
-              - Efek interaksi
-            */}
-                  <h4 className="mt-1 font-newsreader text-lg  md:text-xl font-medium text-zinc-700">
-                    Join the Spring <span className="ml-1 font-bold">→</span>
-                  </h4>
-
-                  <p className="text-sm font-light text-black">
-                    Join our monthly giving community to give clean water.
-                  </p>
-                </a>
-              </div>
-              {/* End Card  */}
-            </div>
-
-            {/* Start grid kecil*/}
-            <div className="mt-12 md:mt-16 lg:mt-20">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5">
-                {/* ===== Small Card 1 ===== */}
-                <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-4 md:px-3 md:py-5 flex flex-col">
-                  <h3 className="text-center font-newsreader text-base md:text-xl font-semibold text-white">
-                    Qurban
-                  </h3>
-                  <a
-                    href="/program/qurban"
-                    className="mt-auto block w-full md:w-5/6 mx-auto rounded-lg border border-black bg-white px-3 py-2 drop-shadow-lg hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                  >
-                    <h4 className="mt-1 font-newsreader text-sm md:text-lg font-medium text-zinc-700">
-                      Join the Spring <span className="ml-1 font-bold">-&gt;</span>
+              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+                <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
+                  <img 
+                    src="/images/gambardetaile/bidang pendidikan.svg" 
+                    alt="Bidang Pendidikan" 
+                    className="w-full h-auto object-contain"
+                  />
+                  {/* Kotak Keterangan */}
+                  <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
+                    <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
+                      Bidang Pendidikan <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
                     </h4>
-                    <p className="text-xs md:text-sm font-light text-black">
-                      Join our monthly giving community to give clean water.
+                    <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
+                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
                     </p>
-                  </a>
+                  </div>
                 </div>
-
-                {/* ===== Small Card 2 ===== */}
-                <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-4 md:px-3 md:py-5 flex flex-col">
-                  <h3 className="text-center font-newsreader text-base md:text-xl font-semibold text-white">
-                    Ramadhan
-                  </h3>
-                  <a
-                    href="/program/ramadhan"
-                    className="mt-auto block w-full md:w-5/6 mx-auto rounded-lg border border-black bg-white px-3 py-2 drop-shadow-lg hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                  >
-                    <h4 className="mt-1 font-newsreader text-sm md:text-lg font-medium text-zinc-700">
-                      Join the Spring <span className="ml-1 font-bold">-&gt;</span>
-                    </h4>
-                    <p className="text-xs md:text-sm font-light text-black">
-                      Join our monthly giving community to give clean water.
-                    </p>
-                  </a>
-                </div>
-
-                {/* ===== Small Card 3 ===== */}
-                <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-4 md:px-3 md:py-5 flex flex-col">
-                  <h3 className="text-center font-newsreader text-base md:text-xl font-semibold text-white">
-                    Desa Pelopor
-                  </h3>
-                  <a
-                    href=""
-                    className="mt-auto block w-full md:w-5/6 mx-auto rounded-lg border border-black bg-white px-3 py-2 drop-shadow-lg hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                  >
-                    <h4 className="mt-1 font-newsreader text-sm md:text-lg font-medium text-zinc-700">
-                      Join the Spring <span className="ml-1 font-bold">-&gt;</span>
-                    </h4>
-                    <p className="text-xs md:text-sm font-light text-black">
-                      Join our monthly giving community to give clean water.
-                    </p>
-                  </a>
-                </div>
-
-                {/* ===== Small Card 4 ===== */}
-                <div className="w-full aspect-square rounded-md bg-[#E0C29A] px-3 py-4 md:px-3 md:py-5 flex flex-col">
-                  <h3 className="text-center font-newsreader text-base md:text-xl font-semibold text-white">
-                    Desa Pelopor
-                  </h3>
-                  <a
-                    href=""
-                    className="mt-auto block w-full md:w-5/6 mx-auto rounded-lg border border-black bg-white px-3 py-2 drop-shadow-lg hover:border-[#7FC248] active:border-2 transition duration-100 ease-in-out"
-                  >
-                    <h4 className="mt-1 font-newsreader text-sm md:text-lg font-medium text-zinc-700">
-                      Join the Spring <span className="ml-1 font-bold">-&gt;</span>
-                    </h4>
-                    <p className="text-xs md:text-sm font-light text-black">
-                      Join our monthly giving community to give clean water.
-                    </p>
-                  </a>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
         </section>
