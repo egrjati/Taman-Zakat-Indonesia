@@ -106,24 +106,24 @@ export default function BidangKesehatanPage() {
       `}} />
 
       {/* ===================== HERO SECTION ===================== */}
-      <section className="relative w-full flex items-center min-h-[500px] md:min-h-[600px] py-16 md:py-24">
+      <section className="relative w-full flex items-end md:items-center min-h-[500px] md:min-h-[600px] pt-48 pb-10 md:py-24">
          {/* BACKGROUND IMAGE FILL */}
          <div className="absolute inset-0 z-0">
             <Image 
                src="/images/gambardetaile/hero page bidang kesehatan.svg" 
                alt="Background Bidang Kesehatan" 
                fill 
-               className="object-cover object-center"
+               className="object-cover object-[15%_center] md:object-center"
                priority
             />
          </div>
 
          <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 md:px-12 flex justify-center md:justify-end">
             {/* CARD RIGHT */}
-            <div className="bg-white rounded-md w-full max-w-[420px] p-6 md:p-8 lg:p-10 relative border border-green-50 shadow-[25px_-15px_40px_rgba(127,194,72,0.25)]">
+            <div className="bg-white rounded-2xl md:rounded-md w-full sm:max-w-[420px] p-5 sm:p-6 md:p-8 lg:p-10 relative border border-green-50 shadow-[15px_-10px_30px_rgba(127,194,72,0.25)] md:shadow-[25px_-15px_40px_rgba(127,194,72,0.25)]">
                {/* Badge Taza (Top Left corner) */}
-               <div className={`absolute -top-10 -left-10 md:-top-12 md:-left-12 z-20 ${animateBadge ? 'badge-bounce' : 'opacity-0'}`}>
-                 <div className="relative h-[84px] w-[84px] md:h-[100px] md:w-[100px]">
+               <div className={`absolute -top-6 -left-3 md:-top-12 md:-left-12 z-20 ${animateBadge ? 'badge-bounce' : 'opacity-0'}`}>
+                 <div className="relative h-[70px] w-[70px] md:h-[100px] md:w-[100px]">
                    <div
                      aria-hidden
                      className="absolute -top-[2px] left-[2px] h-full w-full rounded-full border border-black bg-transparent rotate-[-6deg]"
@@ -153,38 +153,38 @@ export default function BidangKesehatanPage() {
                        </text>
                      </svg>
 
-                     <div className="relative z-10 flex h-[35px] w-[35px] items-center justify-center rounded-full border-[2px] border-black bg-[#8cc63f] md:h-[45px] md:w-[45px]">
+                     <div className="relative z-10 flex h-[30px] w-[30px] md:h-[45px] md:w-[45px] items-center justify-center rounded-full border-[2px] border-black bg-[#8cc63f]">
                        <Image
                          src="/images/icon/hitam logo taza 1.svg"
                          alt="Logo Taza"
                          width={36}
                          height={36}
-                         className="h-[22px] w-auto md:h-[28px]"
+                         className="h-[18px] w-auto md:h-[28px]"
                        />
                      </div>
                    </div>
                  </div>
                </div>
                
-               <h1 className="text-2xl md:text-[32px] font-newsreader font-bold text-black mb-6 mt-4 ml-6 md:ml-8 text-left drop-shadow-sm">
+               <h1 className="text-[26px] md:text-[32px] font-newsreader font-bold text-black mb-5 mt-4 ml-6 md:ml-8 text-left drop-shadow-sm">
                  Bidang <span className="text-[#8cc63f]">Kesehatan</span>
                </h1>
 
-               <ul className="space-y-4 mb-10 ml-6 md:ml-8">
+               <ul className="space-y-3 md:space-y-4 mb-8 md:mb-10 ml-2 md:ml-8">
                  {[
                    "Layanan Ambulan",
                    "Oprasi Katarak Gratis",
                    "Toilet Keluarga Sehat",
                    "Cek Kesehatan Gratis"
                  ].map((item, idx) => (
-                   <li key={idx} className="flex items-center gap-4">
+                   <li key={idx} className="flex items-center gap-3 md:gap-4">
                      {/* Icon Centang khusus */}
-                     <div className="w-[28px] h-[28px] md:w-[32px] md:h-[32px] rounded-full bg-[#1e5b3a] flex items-center justify-center flex-shrink-0 relative overflow-hidden shadow-sm">
-                       <svg className="w-4 h-4 md:w-5 md:h-5 text-white stroke-white stroke-[4]" fill="none" viewBox="0 0 24 24" strokeLinecap="square" strokeLinejoin="miter">
+                     <div className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] rounded-full bg-[#1e5b3a] flex items-center justify-center flex-shrink-0 relative overflow-hidden shadow-sm">
+                       <svg className="w-3.5 h-3.5 md:w-5 md:h-5 text-white stroke-white stroke-[4]" fill="none" viewBox="0 0 24 24" strokeLinecap="square" strokeLinejoin="miter">
                           <polyline points="5 12 10 17 22 2"></polyline>
                        </svg>
                      </div>
-                     <span className="text-zinc-800 font-semibold text-[17px] md:text-[20px]">{item}</span>
+                     <span className="text-zinc-800 font-semibold text-[15px] md:text-[20px]">{item}</span>
                    </li>
                  ))}
                </ul>
@@ -290,7 +290,7 @@ export default function BidangKesehatanPage() {
             />
          </div>
 
-         <div className="max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center justify-start relative z-10 px-6 md:px-12 pt-10 pb-32 md:py-16">
+         <div className="max-w-6xl w-full mx-auto flex flex-col md:flex-row items-center justify-start relative z-10 px-6 md:px-12 pt-10 pb-60 sm:pb-64 md:py-16">
             {/* TEXT LEFT */}
             <div className="w-full md:w-[55%] lg:w-[50%] flex flex-col items-center justify-center drop-shadow-sm px-2">
                <h3 className="font-newsreader text-[22px] md:text-[26px] font-bold text-black mb-3 md:mb-5 text-center leading-tight">
