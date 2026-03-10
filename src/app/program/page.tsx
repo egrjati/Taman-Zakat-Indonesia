@@ -78,100 +78,130 @@ export default function ProgramPage() {
           <div className="relative z-10 mx-auto w-full max-w-7xl xl:max-w-[1400px] px-6 sm:px-8 md:px-12 lg:px-16 py-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20">
               {/* ================= CARD 1 ================= */}
-              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+              <a
+                href="#"
+                className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
+              >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img 
-                    src="/images/gambardetaile/bidang dakwah.svg" 
-                    alt="Bidang Dakwah" 
+                  <img
+                    src="/images/gambardetaile/bidang dakwah.svg"
+                    alt="Bidang Dakwah"
                     className="w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
                   <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
-                      Bidang Dakwah <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      Bidang Dakwah{" "}
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
                     </h4>
                     <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
-                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                      Join our monthly giving community to give clean water{" "}
+                      <br className="hidden lg:block" />
+                      (and so much more) each and every month.
                     </p>
                   </div>
                 </div>
               </a>
-              
+
               {/* ================= CARD 2 ================= */}
-              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+              <a
+                href="/program/ekonomi"
+                className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
+              >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img 
-                    src="/images/gambardetaile/bidang ekonomi.svg" 
-                    alt="Bidang Ekonomi" 
+                  <img
+                    src="/images/gambardetaile/bidang ekonomi.svg"
+                    alt="Bidang Ekonomi"
                     className="w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
                   <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
-                      Bidang Ekonomi <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      Bidang Ekonomi{" "}
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
                     </h4>
                     <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
-                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                      Join our monthly giving community to give clean water{" "}
+                      <br className="hidden lg:block" />
+                      (and so much more) each and every month.
                     </p>
                   </div>
                 </div>
               </a>
 
               {/* ================= CARD 3 ================= */}
-              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+              <a
+                href="#"
+                className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
+              >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img 
-                    src="/images/gambardetaile/bidang kemanusian.svg" 
-                    alt="Bidang Kemanusiaan" 
+                  <img
+                    src="/images/gambardetaile/bidang kemanusian.svg"
+                    alt="Bidang Kemanusiaan"
                     className="w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
                   <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
-                      Bidang Kemanusiaan <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      Bidang Kemanusiaan{" "}
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
                     </h4>
                     <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
-                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                      Join our monthly giving community to give clean water{" "}
+                      <br className="hidden lg:block" />
+                      (and so much more) each and every month.
                     </p>
                   </div>
                 </div>
               </a>
 
               {/* ================= CARD 4 ================= */}
-              <a href="/program/kesehatan" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+              <a
+                href="/program/kesehatan"
+                className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
+              >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img 
-                    src="/images/gambardetaile/bidang kesehatan.svg" 
-                    alt="Bidang Kesehatan" 
+                  <img
+                    src="/images/gambardetaile/bidang kesehatan.svg"
+                    alt="Bidang Kesehatan"
                     className="w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
                   <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
-                      Bidang Kesehatan <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      Bidang Kesehatan{" "}
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
                     </h4>
                     <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
-                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                      Join our monthly giving community to give clean water{" "}
+                      <br className="hidden lg:block" />
+                      (and so much more) each and every month.
                     </p>
                   </div>
                 </div>
               </a>
 
               {/* ================= CARD 5 ================= */}
-              <a href="#" className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block">
+              <a
+                href="#"
+                className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
+              >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
-                  <img 
-                    src="/images/gambardetaile/bidang pendidikan.svg" 
-                    alt="Bidang Pendidikan" 
+                  <img
+                    src="/images/gambardetaile/bidang pendidikan.svg"
+                    alt="Bidang Pendidikan"
                     className="w-full h-auto object-contain"
                   />
                   {/* Kotak Keterangan */}
                   <div className="absolute bottom-[3%] sm:bottom-[5%] left-[5%] w-[85%] rounded-md border border-zinc-400 bg-white px-3 py-2 sm:px-4 sm:py-3 shadow-lg z-10">
                     <h4 className="font-newsreader text-sm sm:text-lg md:text-xl font-medium text-black">
-                      Bidang Pendidikan <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
+                      Bidang Pendidikan{" "}
+                      <span className="ml-1 text-xs sm:text-base mb-0.5 inline-block">➔</span>
                     </h4>
                     <p className="mt-0.5 sm:mt-1 text-[8px] sm:text-[10px] md:text-xs font-normal text-black leading-tight sm:leading-snug">
-                      Join our monthly giving community to give clean water <br className="hidden lg:block"/>(and so much more) each and every month.
+                      Join our monthly giving community to give clean water{" "}
+                      <br className="hidden lg:block" />
+                      (and so much more) each and every month.
                     </p>
                   </div>
                 </div>
