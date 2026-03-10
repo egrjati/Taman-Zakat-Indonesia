@@ -590,48 +590,48 @@ export default function BidangEkonomiPage() {
       <section className="w-full pt-20 pb-16 px-4 md:px-12 bg-[#F8EED3] relative overflow-hidden">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-14">
           {/* Left: Collage */}
-          <div className="w-full md:w-1/2 relative min-h-[550px] md:min-h-[800px] my-8">
-            {/* Top Left */}
-            <div className="absolute top-0 left-[5%] w-[65%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-20 rotate-[-2deg] overflow-hidden">
+          <div className="w-full md:w-1/2 relative min-h-[500px] sm:min-h-[600px] md:min-h-[750px] lg:min-h-[800px] my-8 flex-shrink-0">
+            {/* Image 1 (Top Center) */}
+            <div className="absolute top-0 left-[15%] lg:left-[18%] w-[55%] xl:w-[50%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-40 rotate-[2deg] overflow-hidden">
               <Image
                 src="/images/gambardetaile/qurban pelosok desa 1.png"
-                alt="Collage Top Left"
+                alt="Tebar Hewan Qurban"
                 fill
                 className="object-cover"
               />
             </div>
-            {/* Middle Left */}
-            <div className="absolute top-[32%] left-[0%] w-[45%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-10 rotate-[3deg] overflow-hidden">
+            {/* Image 2 (Middle Left) */}
+            <div className="absolute top-[28%] left-[0%] w-[45%] xl:w-[42%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-20 rotate-[-3deg] overflow-hidden">
               <Image
                 src="/images/gambardetaile/santri 1.svg"
-                alt="Collage Middle Left"
+                alt="Santri"
                 fill
                 className="object-cover"
               />
             </div>
-            {/* Middle Right */}
-            <div className="absolute top-[40%] right-[2%] w-[60%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-30 rotate-[-1deg] overflow-hidden">
+            {/* Image 3 (Middle Right) */}
+            <div className="absolute top-[32%] right-[2%] lg:right-[5%] w-[52%] xl:w-[48%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-20 rotate-[1deg] overflow-hidden">
               <Image
                 src="/images/gambardetaile/qurban palestina.png"
-                alt="Collage Middle Right"
+                alt="Qurban Palestina"
                 fill
                 className="object-cover"
               />
             </div>
-            {/* Bottom Left */}
-            <div className="absolute bottom-[5%] left-[5%] w-[42%] aspect-[3/4] rounded border-[3px] border-[#8CC63F] shadow-md z-20 rotate-[-3deg] overflow-hidden">
+            {/* Image 4 (Bottom Left) */}
+            <div className="absolute top-[56%] left-[8%] lg:left-[10%] w-[40%] xl:w-[35%] aspect-[3/4] rounded border-[3px] border-[#8CC63F] shadow-md z-50 rotate-[2deg] overflow-hidden">
               <Image
                 src="/images/gambardetaile/diberi taza 1.svg"
-                alt="Collage Bottom Left"
+                alt="Santunan"
                 fill
                 className="object-cover"
               />
             </div>
-            {/* Bottom Right */}
-            <div className="absolute bottom-[12%] right-[5%] w-[55%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-10 rotate-[2deg] overflow-hidden">
+            {/* Image 5 (Bottom Right) */}
+            <div className="absolute top-[62%] right-[5%] lg:right-[10%] w-[48%] xl:w-[45%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-30 rotate-[-2deg] overflow-hidden">
               <Image
                 src="/images/gambardetaile/imagebukapuasa1.png"
-                alt="Collage Bottom Right"
+                alt="Buka Puasa"
                 fill
                 className="object-cover"
               />
