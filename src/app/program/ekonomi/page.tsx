@@ -587,10 +587,10 @@ export default function BidangEkonomiPage() {
       </section>
 
       {/* ===================== BOTTOM COLLAGE SECTION ===================== */}
-      <section className="w-full pt-20 pb-16 px-4 md:px-12 bg-[#F8EED3] relative overflow-hidden">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-14">
+      <section className="w-full pt-10 md:pt-20 pb-12 md:pb-16 px-4 md:px-12 bg-[#F8EED3] relative overflow-hidden">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-14">
           {/* Left: Collage */}
-          <div className="w-full md:w-1/2 relative min-h-[500px] sm:min-h-[600px] md:min-h-[750px] lg:min-h-[800px] my-8 flex-shrink-0">
+          <div className="w-full md:w-1/2 relative min-h-[350px] sm:min-h-[450px] md:min-h-[750px] lg:min-h-[800px] my-4 md:my-8 flex-shrink-0">
             {/* Image 1 (Top Center) */}
             <div className="absolute top-0 left-[15%] lg:left-[18%] w-[55%] xl:w-[50%] aspect-[4/3] rounded border-[3px] border-[#8CC63F] shadow-md z-40 rotate-[2deg] overflow-hidden">
               <Image
@@ -639,8 +639,8 @@ export default function BidangEkonomiPage() {
           </div>
 
           {/* Right: Text */}
-          <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right mt-10 md:mt-0">
-            <h2 className="text-2xl md:text-3xl font-newsreader font-bold text-black mb-3">
+          <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right mt-4 md:mt-0">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-newsreader font-bold text-black mb-3">
               Dari Amanah Menjadi Manfaat
             </h2>
             <p className="text-zinc-800 text-sm md:text-[16px] leading-relaxed mb-6 font-medium max-w-sm">
@@ -676,20 +676,20 @@ export default function BidangEkonomiPage() {
       {/* ===================== SEDEKAH BERAS DHUAFA ===================== */}
       <section className="w-full relative bg-[#FAF7F0] pb-0 mt-8 md:mt-16 overflow-visible">
         {/* Latar Putih & FAF7F0 (Porsi putih lebih sedikit dari krem bawah) */}
-        <div className="absolute top-0 left-0 right-0 h-[40%] md:h-[42%] bg-white z-0"></div>
+        <div className="absolute top-0 left-0 right-0 h-[45%] md:h-[42%] bg-white z-0"></div>
 
         <div className="max-w-5xl mx-auto px-4 md:px-8 relative z-10 flex flex-col md:flex-row md:items-end justify-center min-h-[300px] md:min-h-[340px]">
           
           {/* Tanda petik berpotongan di perbatasan putih & krem */}
-          <div className="absolute top-[40%] md:top-[42%] left-1/2 transform -translate-x-1/2 z-0">
-            <div className="text-[#F1E0B3] text-[130px] md:text-[160px] font-serif leading-none select-none relative -top-[35px] md:-top-[45px]">
+          <div className="absolute top-[45%] md:top-[42%] left-1/2 transform -translate-x-1/2 z-0">
+            <div className="text-[#F1E0B3] text-[90px] md:text-[160px] font-serif leading-none select-none relative -top-[25px] md:-top-[45px]">
               “
             </div>
           </div>
 
           {/* Bagian Teks (Berada di Kiri, Rata Kanan) */}
-          <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right relative z-10 pb-8 md:pb-20 pr-0 md:pr-16 lg:pr-28 pt-8 md:pt-16">
-            <h3 className="text-xl md:text-[28px] font-newsreader font-bold text-black mb-4">
+          <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right relative z-10 pb-6 md:pb-20 pr-0 md:pr-16 lg:pr-28 pt-8 md:pt-16">
+            <h3 className="text-xl md:text-[28px] font-newsreader font-bold text-black mb-2 md:mb-4">
               Sedekah Beras Dhuafa
             </h3>
             <p className="text-zinc-600 text-sm md:text-[16px] max-w-[280px] font-medium leading-relaxed">
@@ -698,7 +698,7 @@ export default function BidangEkonomiPage() {
           </div>
 
           {/* Bagian Gambar (Berada di Kanan, Diperkecil) */}
-          <div className="w-full md:w-1/2 flex justify-center md:justify-start relative z-20 pb-0 pl-0 md:pl-16 lg:pl-28 mt-4 md:mt-0">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-start relative z-20 pb-0 pl-0 md:pl-16 lg:pl-28 mt-2 md:mt-0">
             <Image
               src="/images/gambardetaile/sedekah-beras_1-removebg-preview 1.svg"
               alt="Sedekah Beras Dhuafa"
