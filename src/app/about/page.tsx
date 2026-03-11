@@ -145,17 +145,58 @@ const milestones = [
   },
 ];
 
-/* ───────── legal data ───────── */
-const legalCards = [
-  { label: "Akta Yayasan", color: "#5DA630" },
-  { label: "SK Kemenkumham", color: "#7FC248" },
-  { label: "SK Gubernur", color: "#1F4E27" },
-  { label: "NPWP", color: "#D4A843" },
-];
+/* ───────── kepengurusan data ───────── */
+const kepengurusanTabs = [
+  "Board of Director",
+  "Board of Trustee",
+  "Board of Trustees",
+  "Sharia Council",
+  "Sharia Reference",
+  "Expert Council",
+] as const;
+type KepengurusanTab = (typeof kepengurusanTabs)[number];
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+};
+
+export const kepengurusanData: Record<KepengurusanTab, TeamMember[]> = {
+  "Board of Director": [
+    { name: "Nama Direktur 1", role: "Jabatan Direktur", image: "" },
+    { name: "Nama Direktur 2", role: "Jabatan Direktur", image: "" },
+  ],
+  "Board of Trustee": [
+    { name: "H. Slamet Budiono, S.H., M.M", role: "Chief Executive Officer", image: "" },
+    { name: "Nama Trustee 2", role: "Role Trustee", image: "" },
+  ],
+  "Board of Trustees": [
+    { name: "Nama Trustees 1", role: "Role Trustees", image: "" },
+  ],
+  "Sharia Council": [
+    { name: "Nama Sharia Council 1", role: "Role Sharia Council", image: "" },
+  ],
+  "Sharia Reference": [
+    { name: "Nama Sharia Reference 1", role: "Role Sharia Reference", image: "" },
+  ],
+  "Expert Council": [
+    { name: "Nama Expert Council 1", role: "Role Expert Council", image: "" },
+  ],
+};
+
+/* ───────── stat details data ───────── */
+const statDetails = {
+  wilayah: "Lorem ipsum dolor sit amet, wilayah jangkauan meliputi berbagai pelosok negeri dengan fokus pada daerah tertinggal. Aliquam erat volutpat. Aenean varius, ipsum.",
+  manfaat: "Curabitur pretium tincidunt lacus, penerima manfaat merupakan dhuafa dan amil yang berhak. Nulla gravida orci a odio. Nullam varius, turpis et commodo.",
+  kebaikan: "Suspendisse dictum feugiat nisl, aksi kebaikan meliputi pendidikan, ekonomi, dan kesehatan. Ut sem vamus vulputate eleifend. Praesent dapibus, neque id cursus.",
+};
 
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState<Tab>("Sejarah");
+  const [activeKepengurusan, setActiveKepengurusan] = useState<KepengurusanTab>("Board of Trustee");
   const [activeColor, setActiveColor] = useState<string>("#5DA630");
+  const [activeModalInfo, setActiveModalInfo] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -221,13 +262,23 @@ export default function AboutPage() {
 
       <main>
         {/* TONGGAK PERJALANAN  (Milestones) */}
-        <section className="py-16 md:py-20 bg-white">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <section className="relative pt-16 md:pt-20 pb-16 md:pb-20 z-0">
+          {/* Sticky Background */}
+          <div className="absolute inset-0 -z-10">
+            <div className="sticky top-0 w-full h-screen overflow-hidden">
+              {/* Bagian Atas: Putih */}
+              <div className="absolute top-0 left-0 w-full h-[25vh] bg-white" />
+              {/* Bagian Bawah: FCF8ED (Krem) Dominan */}
+              <div className="absolute top-[25vh] bottom-0 left-0 w-full bg-[#FCF8ED]" />
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-0">
             <h2 className="text-center text-2xl md:text-3xl font-bold text-black">
               Tonggak Perjalanan
             </h2>
             <p className="text-center text-sm md:text-base text-zinc-500 mt-2">
-              Milestone Penting dalam Perjalanan Kami Organisasi
+              Momen Penting dalam Transformasi Organisasi
             </p>
 
             {/* timeline */}
@@ -250,7 +301,7 @@ export default function AboutPage() {
                         {m.align === "left" ? (
                           <div className="scale-[0.6] sm:scale-75 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
                         ) : (
-                          <div className="flex flex-col text-right bg-white/80 md:bg-transparent p-2 sm:p-4 md:p-0 rounded-xl backdrop-blur-sm md:backdrop-blur-none">
+                          <div className="flex flex-col text-right p-2 sm:p-4 md:p-0">
                              <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
@@ -263,14 +314,14 @@ export default function AboutPage() {
 
                       {/* Center dot */}
                       <div 
-                        className={`flex absolute left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full bg-white border-2 z-20 transition-colors duration-500`} 
+                        className={`flex absolute left-1/2 -translate-x-1/2 w-3 h-3 md:w-4 md:h-4 rounded-full bg-transparent border-2 z-20 transition-colors duration-500`} 
                         style={{ borderColor: activeColor }} 
                       />
 
                       {/* Right Side Content */}
                       <div className="w-1/2 flex justify-start pl-4 sm:pl-8 md:pl-14 pointer-events-auto">
                         {m.align === "left" ? (
-                           <div className="flex flex-col text-left bg-white/80 md:bg-transparent p-2 sm:p-4 md:p-0 rounded-xl backdrop-blur-sm md:backdrop-blur-none">
+                           <div className="flex flex-col text-left p-2 sm:p-4 md:p-0">
                              <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
@@ -279,7 +330,7 @@ export default function AboutPage() {
                              </h3>
                           </div>
                         ) : (
-                          <div className="scale-[0.6] sm:scale-75 md:scale-100 origin-left flex items-center">{m.logoRender()}</div>
+                          <div className={`scale-[0.6] sm:scale-75 md:scale-100 origin-left flex items-center ${m.year === '2019' ? 'bg-white rounded-xl shadow-md p-4 mt-6 z-20 relative' : ''}`}>{m.logoRender()}</div>
                         )}
                       </div>
                     </div>
@@ -341,8 +392,189 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* SUSUNAN KEPENGURUSAN */}
+        <section className="py-16 md:py-24 bg-[#FAF7F0]">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <span className="text-[#3b7ee2] text-[13px] md:text-[15px] font-medium tracking-wide uppercase">
+                THE EXECUTIVE TEAM
+              </span>
+              <h2 className="text-center text-[28px] md:text-[36px] font-medium text-black mt-4">
+                Change the world with us
+              </h2>
+              <p className="text-center text-[15px] md:text-[18px] text-black mt-5 max-w-[800px] mx-auto leading-relaxed">
+                Our executive team brings a wealth of experience, passion, and vision to guide our work and ensure we stay true to our values.
+              </p>
+            </div>
+
+            <div className="mt-14 flex flex-col md:flex-row gap-10 lg:gap-20 items-stretch">
+              {/* Sidebar Tabs */}
+              <div className="w-full md:w-[35%] flex flex-col border border-zinc-300 rounded-2xl py-8 px-4 gap-4 bg-[#FAF7F0] self-start shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+                {kepengurusanTabs.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveKepengurusan(tab)}
+                    className={`text-center px-4 py-2.5 rounded-lg text-[16px] md:text-[18px] transition-colors mx-4 sm:mx-8 ${
+                      activeKepengurusan === tab
+                        ? "bg-[#9FB3C8] text-white"
+                        : "bg-transparent text-black hover:bg-black/5"
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+
+              {/* Content Grid */}
+              <div className="w-full md:w-[65%]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10">
+                  {kepengurusanData[activeKepengurusan].map((member, idx) => (
+                    <div key={idx} className="flex flex-col bg-[#FAF7F0] rounded-xl overflow-hidden shadow-[0_4px_25px_rgba(180,210,180,0.4)] pb-8 border border-white">
+                       {/* Foto */}
+                       {member.image ? (
+                         <div className="relative w-full h-56 md:h-64 rounded-t-xl overflow-hidden">
+                           <Image src={member.image} alt={member.name} fill className="object-cover" />
+                         </div>
+                       ) : (
+                         <div className="w-full h-56 md:h-64 bg-[#EAEAEA] rounded-t-xl flex items-center justify-center">
+                           <span className="text-zinc-400 text-sm font-medium">Foto area</span>
+                         </div>
+                       )}
+                       
+                       {/* Nama & Posisi */}
+                       <div className="flex flex-col items-center pt-5 px-4 text-center bg-[#FAF7F0]">
+                         <h4 className="text-[#3b7ee2] font-medium text-[15px] md:text-[16px]">{member.name}</h4>
+                         <p className="text-zinc-500 text-[12px] md:text-[13px] mt-1.5 font-medium">{member.role}</p>
+                       </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* STATS COUNTER */}
+        <section className="py-16 md:py-24 bg-[#0A0A0A]">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center text-[#9FB3C8] text-[20px] md:text-[24px] mb-12 md:mb-16 tracking-wide font-medium">
+              Taman Zakat impact to date
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 md:gap-8 text-center">
+              <div className="flex flex-col items-center">
+                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">47</h3>
+                <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
+                  Wilayah Jangkauan
+                  <button onClick={() => setActiveModalInfo(statDetails.wilayah)} className="w-[18px] h-[18px] rounded-full bg-[#7FC248] text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">102.088</h3>
+                <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
+                  Penerima Manfaat
+                  <button onClick={() => setActiveModalInfo(statDetails.manfaat)} className="w-[18px] h-[18px] rounded-full bg-[#7FC248] text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <h3 className="text-[44px] md:text-[54px] font-bold text-white mb-2 leading-none">19</h3>
+                <div className="flex items-center gap-2 text-white text-sm md:text-[15px] font-medium">
+                  Aksi Kebaikan
+                  <button onClick={() => setActiveModalInfo(statDetails.kebaikan)} className="w-[18px] h-[18px] rounded-full bg-[#7FC248] text-black text-[12px] font-bold flex items-center justify-center outline-none hover:scale-110 transition-transform cursor-pointer">?</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* QUOTE / VALUE SECTION */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-12 md:gap-16">
+              {/* Left Box */}
+              <div className="relative w-full max-w-[280px] md:max-w-[340px] aspect-[4/3] flex-shrink-0 mx-auto md:mx-0">
+                {/* Yellow dot top left */}
+                <div className="absolute -top-4 -left-6 w-1.5 h-1.5 rounded-full bg-[#FDE047] z-20 hidden md:block"></div>
+
+                {/* gamabr bagian kiri*/}
+                <div className="w-full h-full border border-zinc-200/60 bg-[#FAFAFA] relative z-10 mt-6 md:mt-0 shadow-[10px_10px_15px_rgba(0,0,0,0.06)] flex items-center justify-center overflow-hidden">
+                   
+                   {/* hapus saja kalo sudah ada gamabrnya */}
+                   <span className="text-zinc-400 text-sm font-medium">Foto area</span>
+                   
+                   {/* Contoh kode Image siap pakai, hilangkan tanda komentar untuk menggunakannya */}
+                   {/* 
+                   <Image 
+                     src="/images/your-image-path.jpg" 
+                     alt="You have our word image" 
+                     fill 
+                     className="object-cover" 
+                   /> 
+                   */}
+                </div>
+                
+                {/* Taza Badge top right corner */}
+                <div className="absolute top-2 -right-5 md:-top-6 md:-right-8 z-20">
+                  <div className="relative h-[68px] w-[68px]">
+                    <div
+                      aria-hidden
+                      className="absolute -top-[2px] left-[2px] h-full w-full rounded-full border border-black bg-transparent rotate-[-6deg]"
+                    />
+                    <div className="relative z-10 flex h-full w-full items-center justify-center rounded-full border border-black bg-[#7FC248]">
+                      {/* Animasi spin infinite untuk teks */}
+                      <svg
+                        viewBox="0 0 300 300"
+                        aria-hidden
+                        className="absolute inset-0 h-full w-full fill-black animate-[spin_10s_linear_infinite]"
+                      >
+                        <defs>
+                          <path
+                            id="about-badge-path"
+                            d="M150,150 m0,-112 a112,112 0 1,1 0,224 a112,112 0 1,1 0,-224"
+                          />
+                        </defs>
+                        <text fontSize="30" fontWeight="500" className="font-newsreader">
+                          <textPath
+                            href="#about-badge-path"
+                            startOffset="50%"
+                            textAnchor="middle"
+                            textLength="680"
+                            lengthAdjust="spacing"
+                          >
+                            Taman Zakat - Indonesia - taza -
+                          </textPath>
+                        </text>
+                      </svg>
+
+                      {/* Ikon tengah statis */}
+                      <div className="relative z-10 flex h-[32px] w-[32px] items-center justify-center rounded-full border-[2px] border-black bg-[#7FC248]">
+                        <Image
+                          src="/images/icon/hitam logo taza 1.svg"
+                          alt="Logo Taza hitam"
+                          width={26}
+                          height={30}
+                          className="h-[22px] w-auto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Text */}
+              <div className="flex-1 text-center md:text-left pt-4 md:pt-14 md:pl-8">
+                 <h3 className="text-black text-[22px] md:text-[26px] leading-tight mb-4 font-semibold text-zinc-800">
+                   You have our word—and more
+                 </h3>
+                 <p className="text-[#333333] text-[15px] md:text-[17px] leading-relaxed max-w-[500px] mx-auto md:mx-0">
+                   When charity: water began, we made a bold promise: 100% of public donations would go directly to fund clean water projects. Private donors cover our operating costs so 100% of your money can fund water projects.
+                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* PENGHARGAAN TAMAN ZAKAT */}
-        <section className="bg-[#32446B] py-20 relative mt-16 pb-28">
+        <section className="bg-[#32446B] py-20 relative mt-0 pb-28">
           {/* Title Badge Overlapping */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[320px] sm:max-w-[400px]">
             <div className="bg-white rounded-2xl shadow-[0_4px_16px_rgba(0,0,0,0.15)] px-6 py-4 border-b-4 border-zinc-200 text-center">
@@ -355,7 +587,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 mt-14">
             {/* Awards grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-              <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform">
+              <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
                 <Image
                   src="/images/gambardetaile/fundraising award.jpg"
                   alt="Fundraising Award"
@@ -364,7 +596,7 @@ export default function AboutPage() {
                   className="w-full h-auto object-cover"
                 />
               </div>
-              <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform">
+              <div className="rounded-xl overflow-hidden shadow-xl hover:scale-105 transition-transform bg-white">
                 <Image
                   src="/images/gambardetaile/wtp award.jpeg"
                   alt="WTP Award 2023"
@@ -386,161 +618,45 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* LEGAL FORMAL */}
-        <section className="py-20 md:py-28 bg-white overflow-hidden">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 md:mb-20">
-            <h2 className="text-center text-[28px] md:text-4xl font-semibold text-black font-[var(--font-newsreader)] tracking-wide">
-              Legal <span className="text-[#8CC63F] font-normal italic">Formal</span>
+        {/* SMALL KINDNESS CTA */}
+        <section className="bg-[#F5EED8]">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
+            <div className="text-[#6B96D9] text-xs md:text-sm font-bold tracking-widest mb-4">
+              SMALL KINDNESS
+            </div>
+            <h2 className="text-[28px] md:text-[36px] font-bold text-black font-[var(--font-newsreader)] mb-4">
+              The craziest thing we can do is nothing
             </h2>
-          </div>
-
-          <div className="w-full relative py-4">
-            
-            {/* Row 1 */}
-            <div className="flex flex-col md:flex-row items-start justify-start relative w-full gap-0 px-4 md:px-0">
-              {/* Left Box (Sticky Left) */}
-              <div className="w-full md:w-[45%] lg:w-[40%] relative z-10">
-                <div className="bg-[#D1F4B9] text-center text-black py-3 text-lg sm:text-[20px] shadow-[2px_0_5px_rgba(0,0,0,0.05)] rounded-r-xl font-[var(--font-inter)] tracking-wide relative border-r-2 border-white/40">
-                  <div className="hidden md:block absolute top-0 bottom-0 right-full w-[100vw] bg-[#D1F4B9] -z-10" />
-                  Akta Yayasan
-                </div>
-                <div className="mt-6 text-[13px] md:text-[14px] text-black pl-2 md:pl-[15%] lg:pl-[20%]">
-                  <h4 className="font-bold text-[15px] md:text-[16px]">Taman Zakat Indonesia</h4>
-                  <p className="mb-3 text-zinc-600 mt-0.5">Notaris Wahyu Hidayat, SH., M.Kn</p>
-                  <ul className="text-[#888] space-y-2">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#D1F4B9] mt-1.5 flex-shrink-0" />
-                      <span>Akta No.34, Tanggal Berdiri 29 Desember 2018</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#D1F4B9] mt-1.5 flex-shrink-0" />
-                      <span>Akta Perubahan No. 01 Tanggal 01 Februari 2021</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Connecting Line */}
-              <div className="hidden md:block w-12 lg:w-20 relative z-0 mt-[26px]">
-                <div className="w-full h-[3px] bg-[#D1F4B9]"></div>
-              </div>
-
-              {/* Right Box (Past midline) */}
-              <div className="w-full md:w-[40%] lg:w-[35%] relative z-10 pt-4 md:pt-0">
-                <div className="bg-[#D1F4B9] text-center text-black py-3 text-lg sm:text-[20px] shadow-[0_2px_8px_rgba(0,0,0,0.08)] rounded-md font-[var(--font-inter)] tracking-wide">
-                  LKS Dinas Sosial
-                </div>
-                <div className="mt-6 text-[13px] md:text-[14px] text-black pl-2">
-                  <ul className="text-[#888] space-y-2">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#D1F4B9] mt-1.5 flex-shrink-0" />
-                      <span>Ijin LKS Dinsos. 466.4/2149/438.5.6/2019</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Row 2 */}
-            <div className="flex flex-col md:flex-row items-start justify-end relative w-full gap-0 px-4 md:px-0 mt-8 md:mt-12">
-              {/* Left Box (Past midline) */}
-              <div className="w-full md:w-[40%] lg:w-[35%] relative z-10 pb-4 md:pb-0">
-                <div className="bg-[#E23E3E] text-center text-white py-3 text-lg sm:text-[20px] shadow-[0_2px_8px_rgba(0,0,0,0.08)] rounded-md font-[var(--font-inter)] tracking-wide">
-                  SK Anggota FOZ
-                </div>
-                <div className="mt-6 text-[13px] md:text-[14px]">
-                  <ul className="text-[#888] space-y-2 flex flex-col items-center md:items-end md:pr-4">
-                    <li className="flex items-center gap-2 justify-end text-right">
-                      <span>Ijin LKS Dinsos. 466.4/2149/438.5.6/2019</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E23E3E] flex-shrink-0" />
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Connecting Line */}
-              <div className="hidden md:block w-12 lg:w-20 relative z-0 mt-[26px]">
-                <div className="w-full h-[3px] bg-[#E23E3E]"></div>
-              </div>
-
-              {/* Right Box (Sticky Right) */}
-              <div className="w-full md:w-[45%] lg:w-[40%] relative z-10">
-                <div className="bg-[#E23E3E] text-center text-white py-3 text-lg sm:text-[20px] shadow-[-2px_0_5px_rgba(0,0,0,0.05)] rounded-l-xl font-[var(--font-inter)] tracking-wide relative border-l-2 border-white/20">
-                  <div className="hidden md:block absolute top-0 bottom-0 left-full w-[100vw] bg-[#E23E3E] -z-10" />
-                  SK. KEMENKUMHAM
-                </div>
-                <div className="mt-6 text-[13px] md:text-[14px]">
-                  <ul className="text-[#888] space-y-2 flex flex-col items-center md:items-end md:pr-[15%] lg:pr-[20%]">
-                    <li className="flex items-center gap-2 justify-end text-right">
-                      <span>Kemenkumham AHU-0000016.AH.01.04 Tahun 2019</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E23E3E] flex-shrink-0" />
-                    </li>
-                    <li className="flex items-center gap-2 justify-end text-right">
-                      <span>Kemenkumham AHU-AH.01.06.0008536 Tahun 2021</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#E23E3E] flex-shrink-0" />
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Row 3 */}
-            <div className="flex flex-col md:flex-row items-start justify-start relative w-full gap-0 px-4 md:px-0 mt-8 md:mt-12">
-              {/* Left Box (Sticky Left) */}
-              <div className="w-full md:w-[45%] lg:w-[40%] relative z-10">
-                <div className="bg-[#FBC02D] text-center text-black py-3 text-lg sm:text-[20px] shadow-[2px_0_5px_rgba(0,0,0,0.05)] rounded-r-xl font-[var(--font-inter)] font-semibold tracking-wide relative border-r-2 border-white/40">
-                  <div className="hidden md:block absolute top-0 bottom-0 right-full w-[100vw] bg-[#FBC02D] -z-10" />
-                  SK. KEMENKUMHAM
-                </div>
-                <div className="mt-6 text-[13px] md:text-[14px] text-black pl-2 md:pl-[15%] lg:pl-[20%]">
-                  <ul className="text-[#888] space-y-2">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FBC02D] mt-1.5 flex-shrink-0" />
-                      <span>Nomor 245 Tahun 2021 dari Kemenag Republik Indonesia</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
+            <p className="text-zinc-600 text-[14px] md:text-[15px] max-w-lg mb-8">
+              Ambil peranmu sekarang. Berikan kebaikan kecilmu yang dapat mengubah hidup mereka yang membutuhkan!
+            </p>
+            <a href="#" className="border border-zinc-400 text-black px-8 py-3 rounded-md font-medium hover:bg-black hover:text-white transition-colors duration-300">
+              Donasi Disini
+            </a>
           </div>
         </section>
 
-        {/* CTA - DONATUR CARE */}
-        <section className="w-full bg-[#32446B]">
-          <div className="mx-auto max-w-[1100px] px-4 sm:px-6 lg:px-8 py-10 md:py-14">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 pl-4 md:pl-0 pr-4 md:pr-8">
-              
-              {/* Left Side: Avatar and Text */}
-              <div className="flex flex-col md:flex-row items-center md:items-center gap-6 md:gap-8 w-full md:w-auto text-center md:text-left">
-                {/* Circle Avatar */}
-                <div className="w-32 h-32 md:w-36 md:h-36 rounded-full bg-[#D9D9D9] flex-shrink-0" />
-                
-                {/* Text Content */}
-                <div className="flex flex-col mt-2 md:mt-0">
-                  <h3 className="text-3xl md:text-[34px] font-bold text-white mb-1.5 font-[var(--font-inter)]">
-                    Donatur Care
-                  </h3>
-                  <p className="text-white text-[15px] md:text-[17px] max-w-lg leading-[1.4]">
-                    Butuh bantuan atau informasi lainnya? Jangan<br className="hidden md:block" /> sungkan untuk menghubungi kami!
-                  </p>
-                </div>
-              </div>
-
-              {/* Right Side: Button */}
-              <div className="flex-shrink-0 mt-2 md:mt-0">
-                <a
-                  href="#"
-                  className="bg-white text-[#555] font-bold py-3.5 px-8 rounded-md shadow-sm flex flex-col items-center justify-center text-[15px] md:text-[16px] transition-transform hover:-translate-y-1 hover:shadow-lg leading-snug tracking-wide"
-                >
-                  <span className="block">Hubungi Via</span>
-                  <span className="block">Whatsapp</span>
-                </a>
-              </div>
-
+        {/* OVERLAY MODAL */}
+        {activeModalInfo && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 px-4" onClick={() => setActiveModalInfo(null)}>
+            <div className="bg-white rounded-md w-full max-w-xl p-8 md:p-10 relative shadow-2xl cursor-default" onClick={(e) => e.stopPropagation()}>
+              <button
+                onClick={() => setActiveModalInfo(null)}
+                className="absolute top-4 right-4 text-zinc-400 hover:text-black w-8 h-8 flex items-center justify-center rounded-full hover:bg-zinc-100 transition-colors"
+                aria-label="Close modal"
+              >
+                <span className="text-2xl leading-none">&times;</span>
+              </button>
+              <h4 className="text-[#9FB3C8] text-[13px] md:text-[14px] font-bold tracking-widest uppercase mb-6">
+                THE DETAILES
+              </h4>
+              <p className="text-black text-[15px] md:text-[16px] leading-[1.6] font-medium">
+                {activeModalInfo}
+              </p>
             </div>
           </div>
-        </section>
+        )}
+
       </main>
     </section>
   );
