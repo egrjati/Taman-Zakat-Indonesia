@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,32 +18,41 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isMobileMenuOpen]);
+
   return (
     <nav className={`sticky top-0 w-full z-[1000] flex flex-col transition-all duration-300 bg-white ${isScrolled ? 'shadow-md shadow-black/5' : ''}`}>
       
       {/* 1. Bagian Hijau (Top Bar) - Akan mengecil perlahan dan menghilang saat di-scroll menyatu */}
-      <div className={`w-full flex gap-5 justify-between items-center bg-[#5DA630] overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'h-0 opacity-0' : 'h-12 md:h-16 opacity-100'}`}>
+      <div className={`w-full flex gap-3 md:gap-5 justify-between items-center bg-[#5DA630] overflow-hidden transition-all duration-500 ease-in-out ${isScrolled ? 'h-0 opacity-0' : 'h-12 md:h-16 opacity-100'}`}>
         <Link href="/" aria-label="Ke halaman utama">
           <Image
             src="/images/icon/Taman Zakat Horizontal.png"
             alt="Logo Taman Zakat Indonesia"
             width={500}
             height={120}
-            className="h-9 ml-3 md:ml-5 md:h-12 w-auto"
+            className="h-8 ml-3 md:ml-5 md:h-12 w-auto"
             priority
           />
         </Link>
 
-        <div className="flex gap-3 md:gap-5 mr-3 md:mr-5 shrink-0">
+        <div className="flex gap-2 md:gap-5 mr-3 md:mr-5 shrink-0">
           <Link
             href="/program"
-            className="md:h-8 h-7 px-1 md:px-3 border-2 border-gray-800 text-black flex items-center justify-center font-medium"
+            className="md:h-8 h-7 px-2 md:px-3 text-sm md:text-base border-2 border-gray-800 text-black flex items-center justify-center font-medium"
           >
             Program
           </Link>
           <a
             href="#"
-            className="md:h-8 h-7 md:px-4 px-3 flex items-center justify-center rounded-lg text-[#196135] bg-white shadow-lg font-bold"
+            className="md:h-8 h-7 md:px-4 px-3 text-sm md:text-base flex items-center justify-center rounded-lg text-[#196135] bg-white shadow-lg font-bold"
           >
             Donasi
           </a>
@@ -50,7 +60,7 @@ export default function Navbar() {
       </div>
 
       {/* 2. Bagian Putih (Bottom Menu) - Akan berubah komposisi (menyatu jadi versi scroll down) */}
-      <div className={`w-full bg-white backdrop-blur transition-all duration-500 ease-in-out flex items-center ${isScrolled ? 'h-16 md:h-[72px]' : 'h-auto py-2 md:py-3 shadow-sm'}`}>
+      <div className={`w-full bg-white backdrop-blur transition-all duration-500 ease-in-out flex items-center ${isScrolled ? 'h-16 md:h-[72px]' : 'h-14 md:h-auto py-2 md:py-3 shadow-sm'}`}>
         <div className="w-full mx-auto px-4 md:px-6 lg:px-8 flex items-center justify-between relative h-full">
           
           {/* Logo Kiri (Muncul saat Scrolled - efek turun/drop dari atas) */}
@@ -67,12 +77,12 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Tengah: Menu Links - akan menggeser perlahan ke tengah tanpa w-0 */}
-          <ul className={`flex flex-wrap items-center gap-x-2 gap-y-3 text-xs md:text-[15px] font-[600] text-zinc-800 md:gap-6 lg:gap-8 xl:gap-10 transition-all duration-700 ease-in-out w-full ${isScrolled ? 'justify-center mx-auto' : 'justify-end'}`}>
+          {/* Tengah: Menu Links - Desktop Only */}
+          <ul className={`hidden md:flex items-center gap-x-2 lg:gap-8 xl:gap-10 text-[15px] font-[600] text-zinc-800 transition-all duration-700 ease-in-out w-full ${isScrolled ? 'justify-center mx-auto' : 'justify-end'}`}>
             <li className="shrink-0 flex">
               <Link
                 href="/about"
-                className="group inline-flex w-full cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-0 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
+                className="group inline-flex w-full cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] outline-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-2 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
               >
                 Tentang Kami
               </Link>
@@ -202,8 +212,21 @@ export default function Navbar() {
             </li>
           </ul>
 
-          {/* Kanan Donasi Button (Muncul saat Scrolled - drop down dari atas) */}
-          <div className={`absolute right-4 md:right-6 lg:right-8 flex items-center transition-all duration-500 ease-in-out ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'}`}>
+          {/* Hamburger Menu (Mobile Only) */}
+          <div className={`flex md:hidden absolute transition-all duration-500 ease-in-out right-4 items-center`}>
+            <button 
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="text-zinc-800 p-1 focus:outline-none hover:text-[#5DA630] transition-colors"
+              aria-label="Buka Menu"
+            >
+              <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
+
+          {/* Kanan Donasi Button (Skilled Desktop Only, Muncul saat Scrolled - drop down dari atas) */}
+          <div className={`hidden md:flex items-center absolute right-4 md:right-6 lg:right-8 transition-all duration-500 ease-in-out ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'}`}>
             <a
               href="#"
               className="h-8 md:h-10 px-4 md:px-6 flex items-center justify-center rounded-md text-[14px] font-[600] text-[#196135] bg-white border border-zinc-200 shadow-sm hover:shadow-md hover:border-[#5DA630] transition-all whitespace-nowrap shrink-0"
@@ -214,6 +237,90 @@ export default function Navbar() {
 
         </div>
       </div>
+
+      {/* 3. Mobile Sidebar Menu Overlay */}
+      {/* Background Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black/60 z-[1001] md:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
+
+      {/* Sidebar Panel */}
+      <div 
+        className={`fixed top-0 right-0 h-full w-[280px] bg-white z-[1002] shadow-2xl md:hidden flex flex-col transition-transform duration-300 ease-in-out transform ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+      >
+        <div className="flex items-center justify-between p-4 border-b border-zinc-100">
+          <Image
+            src="/images/icon/Taman zakat hijau hitam.png"
+            alt="Logo Taman Zakat"
+            width={150}
+            height={36}
+            className="h-7 w-auto"
+          />
+          <button 
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="p-2 text-zinc-500 hover:text-zinc-800 transition-colors bg-zinc-50 rounded-full"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto py-4 px-2">
+          <ul className="flex flex-col gap-2 text-[15px] font-[600] text-zinc-800">
+            <li>
+              <Link 
+                href="/about" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
+              >
+                Tentang Kami
+              </Link>
+            </li>
+            
+            {/* Dropdown Mobile - Simplified as accordion or just links */}
+            <li className="flex flex-col">
+              <div className="px-4 py-3 text-zinc-500 font-semibold text-xs uppercase tracking-wider mt-2 border-t border-zinc-50 pt-4">Layanan</div>
+              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 1</Link>
+              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 2</Link>
+            </li>
+
+            <li className="flex flex-col">
+              <div className="px-4 py-3 text-zinc-500 font-semibold text-xs uppercase tracking-wider mt-2 border-t border-zinc-50 pt-4">Kolaborasi</div>
+              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 1</Link>
+              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 2</Link>
+            </li>
+
+            <li className="flex flex-col border-b border-zinc-50 pb-4">
+              <div className="px-4 py-3 text-zinc-500 font-semibold text-xs uppercase tracking-wider mt-2 border-t border-zinc-50 pt-4">Tata Kelola</div>
+              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 1</Link>
+              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 2</Link>
+            </li>
+            
+            <li className="mt-2">
+              <Link 
+                href="/program" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors"
+              >
+                Program
+              </Link>
+            </li>
+          </ul>
+        </div>
+        
+        <div className="p-4 border-t border-zinc-100 bg-zinc-50">
+          <a
+            href="#"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="w-full h-11 flex items-center justify-center rounded-xl text-[15px] font-[600] text-white bg-[#5DA630] shadow-md hover:bg-[#4d8f28] transition-all"
+          >
+            Donasi Sekarang
+          </a>
+        </div>
+      </div>
+
     </nav>
   );
 }
