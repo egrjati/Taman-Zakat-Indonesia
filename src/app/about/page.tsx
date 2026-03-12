@@ -612,20 +612,20 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* SMALL KINDNESS CTA */}
-        <section className="bg-[#F5EED8]">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center">
-            <div className="text-[#6B96D9] text-xs md:text-sm font-bold tracking-widest mb-4">
-              SMALL KINDNESS
+        {/* OPPORTUNITIES CTA */}
+        <section className="bg-[#f8eed3]">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20 md:py-10 text-center flex flex-col items-center">
+            <div className="text-[#9FB3C8] text-[13px] md:text-[15px] font-medium tracking-widest uppercase mb-4">
+              OPPORTUNITIES
             </div>
-            <h2 className="text-[28px] md:text-[36px] font-bold text-black font-[var(--font-newsreader)] mb-4">
-              The craziest thing we can do is nothing
+            <h2 className="text-[32px] md:text-[44px] font-medium text-black mb-4">
+              Change the world with us
             </h2>
-            <p className="text-zinc-600 text-[14px] md:text-[15px] max-w-lg mb-8">
-              Ambil peranmu sekarang. Berikan kebaikan kecilmu yang dapat mengubah hidup mereka yang membutuhkan!
+            <p className="text-black text-[16px] md:text-[18px] mb-10 font-medium">
+              Explore our openings and join the team
             </p>
-            <a href="#" className="border border-zinc-400 text-black px-8 py-3 rounded-md font-medium hover:bg-black hover:text-white transition-colors duration-300">
-              Donasi Disini
+            <a href="#" className="text-black font-semibold text-[15px] md:text-[16px] pb-1 border-b-[2px] border-[#7FC248] hover:text-[#7FC248] transition-colors">
+              Salurkan Kebaikan
             </a>
           </div>
         </section>
