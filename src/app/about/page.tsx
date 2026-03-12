@@ -263,15 +263,9 @@ export default function AboutPage() {
       <main>
         {/* TONGGAK PERJALANAN  (Milestones) */}
         <section className="relative pt-16 md:pt-20 pb-16 md:pb-20 z-0">
-          {/* Sticky Background */}
-          <div className="absolute inset-0 -z-10">
-            <div className="sticky top-0 w-full h-screen overflow-hidden">
-              {/* Bagian Atas: Putih */}
-              <div className="absolute top-0 left-0 w-full h-[25vh] bg-white" />
-              {/* Bagian Bawah: FCF8ED (Krem) Dominan */}
-              <div className="absolute top-[25vh] bottom-0 left-0 w-full bg-[#FCF8ED]" />
-            </div>
-          </div>
+          {/* Static Background that scrolls normally */}
+          <div className="absolute top-0 left-0 w-full h-[410px] sm:h-[460px] md:h-[540px] bg-white -z-10" />
+          <div className="absolute top-[410px] sm:top-[460px] md:top-[540px] bottom-0 left-0 w-full bg-[#FCF8ED] -z-10" />
 
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 relative z-0">
             <h2 className="text-center text-2xl md:text-3xl font-bold text-black">
@@ -299,13 +293,13 @@ export default function AboutPage() {
                       {/* Left Side Content */}
                       <div className="w-1/2 flex justify-end pr-4 sm:pr-8 md:pr-14 pointer-events-auto">
                         {m.align === "left" ? (
-                          <div className="scale-[0.6] sm:scale-75 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
+                          <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
                         ) : (
-                          <div className="flex flex-col text-right p-2 sm:p-4 md:p-0">
+                          <div className="flex flex-col text-right p-2 sm:p-4 md:p-0 bg-white/60 md:bg-transparent rounded-xl backdrop-blur-sm md:backdrop-blur-none">
                              <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
-                             <h3 className="text-xs md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
+                             <h3 className="text-sm md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
                                {m.title}
                              </h3>
                           </div>
@@ -321,16 +315,16 @@ export default function AboutPage() {
                       {/* Right Side Content */}
                       <div className="w-1/2 flex justify-start pl-4 sm:pl-8 md:pl-14 pointer-events-auto">
                         {m.align === "left" ? (
-                           <div className="flex flex-col text-left p-2 sm:p-4 md:p-0">
+                           <div className="flex flex-col text-left p-2 sm:p-4 md:p-0 bg-white/60 md:bg-transparent rounded-xl backdrop-blur-sm md:backdrop-blur-none">
                              <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
-                             <h3 className="text-xs md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
+                             <h3 className="text-sm md:text-base whitespace-pre-line mt-1 font-semibold leading-relaxed text-black">
                                {m.title}
                              </h3>
                           </div>
                         ) : (
-                          <div className={`scale-[0.6] sm:scale-75 md:scale-100 origin-left flex items-center ${m.year === '2019' ? 'bg-white rounded-xl shadow-md p-4 mt-6 z-20 relative' : ''}`}>{m.logoRender()}</div>
+                          <div className={`scale-[0.8] sm:scale-90 md:scale-100 origin-left flex items-center ${m.year === '2019' ? 'bg-white rounded-xl shadow-md p-4 z-20 relative' : ''}`}>{m.logoRender()}</div>
                         )}
                       </div>
                     </div>
