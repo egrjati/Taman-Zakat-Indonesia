@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const BADGE_TEXT = "Taman Zakat - Indonesia - taza -";
 
@@ -14,6 +14,34 @@ export default function BidangPendidikanPage() {
     }, 100);
     return () => clearTimeout(timer);
   }, []);
+
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isDown, setIsDown] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!sliderRef.current) return;
+    setIsDown(true);
+    setStartX(e.pageX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDown(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDown || !sliderRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Kecepatan scroll
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
     <main className="min-h-screen w-full bg-white overflow-x-hidden">
@@ -152,37 +180,71 @@ export default function BidangPendidikanPage() {
       </section>
 
       {/* ===================== BLACK BANNER PLACEHOLDER ===================== */}
-      <section className="w-full bg-[#2E3133] py-8 border-y-8 border-[#3A3D40]">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-           <h3 className="text-white text-lg font-newsreader mb-6">Program Pendidikan Taman Zakat</h3>
-           <div className="flex gap-4 overflow-x-auto justify-center md:pb-0 pb-4 no-scrollbar">
-             {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="min-w-[120px] w-[140px] aspect-[4/5] bg-zinc-300 rounded shrink-0 flex items-center justify-center">
-                   <p className="text-zinc-500 text-xs">Beasiswa Bintang</p>
+      <section className="w-full bg-[#323232] pt-8 pb-6 border-y-8 border-[#3A3D40]">
+        <div className="w-full text-center">
+           <h3 className="text-white text-xl md:text-2xl font-newsreader mb-8">
+             Program Pendidikan - Taman Zakat
+           </h3>
+            <div 
+              ref={sliderRef}
+              onMouseDown={handleMouseDown}
+              onMouseLeave={handleMouseLeave}
+              onMouseUp={handleMouseUp}
+              onMouseMove={handleMouseMove}
+              className={`flex gap-4 md:gap-6 overflow-x-auto justify-start px-4 md:px-12 pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${isDown ? 'cursor-grabbing' : 'cursor-grab'}`}
+            >
+             {[
+               { title: "Beasiswa Bintang", image: "/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg" },
+               { title: "Beasiswa Bintang", image: "/images/gambardetaile/santri 1.svg" },
+               { title: "Beasiswa Bintang", image: "/images/gambardetaile/bidang pendidikan.svg" },
+               { title: "Beasiswa Bintang", image: "/images/gambardetaile/beasiswa-santri 1.svg" },
+               { title: "Beasiswa Bintang", image: "/images/gambardetaile/footage ambul 2 1.svg" }
+             ].map((program, i) => (
+                <div key={i} className={`relative min-w-[220px] md:min-w-[280px] h-[180px] md:h-[220px] bg-[#d9d9d9] rounded-lg shrink-0 flex items-center justify-center shadow-lg transition-transform ${isDown ? '' : 'hover:scale-[1.02]'} overflow-hidden group select-none`}>
+                   {/* Kontainer untuk Image */}
+                   <Image 
+                     src={program.image}
+                     alt={program.title}
+                     fill
+                     className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                   />
+                   {/* Teks Overlay */}
+                   <div className="absolute inset-0 flex items-center p-4 justify-center bg-black/40 group-hover:bg-black/60 transition-colors duration-300">
+                     <p className="text-white font-medium text-base md:text-xl drop-shadow-md z-10 text-center">{program.title}</p>
+                   </div>
                 </div>
              ))}
            </div>
+           
+           <hr className="border-t border-zinc-500 mt-6 mb-4 mx-4 md:mx-12" />
+           <p className="text-zinc-300 text-sm md:text-base">
+             Berikut Program - Program Kami
+           </p>
         </div>
       </section>
       
       {/* ===================== PROGRAM PENDIDIKAN (IMAGE CLUSTER RIGHT) ===================== */}
-      <section className="w-full py-16 px-4 md:px-12 bg-[#F8EED3]">
-         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10">
-           <div className="w-full md:w-1/2 md:pr-10">
-              <h2 className="text-2xl md:text-4xl font-newsreader font-bold text-black mb-6">Program Pendidikan</h2>
+      <section className="relative w-full py-20 md:py-32 bg-[#faf7f0] overflow-hidden md:overflow-visible">
+         {/* Background Strip Tengah */}
+         <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[60%] md:h-[45%] bg-[#F8EED3] z-0 shadow-sm border-y border-[#F8EED3]/80"></div>
+
+         <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 px-6 md:px-12">
+           <div className="w-full md:w-1/2 md:pr-10 py-4 md:py-8 text-center md:text-left">
+              <h2 className="text-2xl md:text-4xl font-newsreader font-bold text-black mb-4">Program Pendidikan</h2>
               <p className="text-zinc-800 text-sm md:text-lg leading-relaxed font-medium">
                 Program pendidikan Taman Zakat adalah inisiatif yang bertujuan untuk membuka akses pendidikan bagi anak-anak dari keluarga prasejahtera agar mereka dapat belajar, berkembang, dan meraih masa depan yang lebih baik.
               </p>
            </div>
            
-           <div className="w-full md:w-1/2 relative h-[300px] md:h-[400px]">
-             {/* Collage of images specific to education */}
-              <Image 
-                src="/images/gambardetaile/bidang pendidikan.svg" 
-                alt="Collage Pendidikan" 
-                fill 
-                className="object-contain" 
-              />
+           <div className="w-full md:w-1/2 relative h-[400px] md:h-[600px] flex justify-center md:justify-end">
+             <div className="relative w-full h-full max-w-[660px] hover:scale-[1.03] transition-transform duration-500 select-none">
+                <Image 
+                  src="/images/gambardetaile/bidang pendidikan.svg" 
+                  alt="Collage Pendidikan" 
+                  fill 
+                  className="object-contain object-center md:object-right drop-shadow-2xl scale-110 md:scale-125 pointer-events-none" 
+                />
+             </div>
            </div>
          </div>
       </section>
@@ -190,282 +252,410 @@ export default function BidangPendidikanPage() {
       {/* ===================== ALTERNATING PROGRAM LIST ===================== */}
 
       {/* 1. Beasiswa Bintang */}
-      <section className="w-full py-20 px-4 md:px-12 bg-[#FAEDCD]">
-         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative">
-            
-            <div className="absolute top-0 left-0 md:-left-4 text-[#E83C31] text-6xl md:text-8xl font-serif font-bold opacity-30 select-none z-0">
-               1
+      <section className="w-full py-16 px-4 md:px-12 bg-[#FAEDCD]">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FAEDCD] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+
+              {/* Icon Percantik 1 */}
+              <div className="absolute -top-5 left-4 md:left-6 z-20 w-[24px] md:w-[28px] h-[55px] md:h-[65px]">
+                 <Image src="/images/icon/penjepit kertas.svg" alt="Penjepit Kertas" fill className="object-contain" />
+              </div>
+
+              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
+                <Image
+                  src="/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg"
+                  alt="Beasiswa Bintang"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
-
-            <div className="w-full md:w-[45%] flex justify-center md:justify-end relative z-10">
-               <div className="relative w-full max-w-[400px] aspect-video">
-                 <div className="absolute inset-0 bg-white p-2 md:p-3 pb-8 md:pb-12 shadow-lg transform -rotate-2 border border-zinc-200">
-                   <div className="relative w-full h-full border border-dashed border-zinc-300 p-1">
-                     <Image src="/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg" alt="Beasiswa Bintang" fill className="object-cover" />
-                   </div>
-                 </div>
-               </div>
-            </div>
-
-            <div className="w-full md:w-[50%] flex flex-col items-center md:items-start text-center md:text-left relative z-10">
-               <h2 className="text-xl md:text-2xl font-newsreader font-bold text-black mb-3">Beasiswa Bintang</h2>
-               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                 Hanya dengan <span className="text-[#E83C31] font-bold">Rp 10.000</span>, Anda bisa menjadi bagian dari harapan – membantu melunasi biaya SPP anak-anak dan menghadirkan masa depan bagi saudara dhuafa yang sedang berjuang di masa sulit ini.
-               </p>
-               <div className="flex flex-col sm:flex-row items-center gap-4">
-                 <div className="relative inline-block">
-                   <a href="#donasi" className="relative z-10 inline-block hover:scale-105 transition-transform duration-300" >
-                     <div className="relative bg-[#5DA630] border border-black shadow-[3px_3px_0px_#000] px-5 py-2.5">
-                       <span className="font-semibold text-white">Donasi Rutin</span>
-                     </div>
-                   </a>
-                 </div>
-                 <button className="bg-transparent border border-[#5DA630] text-[#5DA630] px-5 py-2.5 flex items-center gap-2 font-medium hover:bg-[#5DA630]/10 transition-colors">
-                   <span>Lihat Detail Program</span>
-                 </button>
-               </div>
-            </div>
-         </div>
-      </section>
-
-
-      {/* 2. Peduli Yatim */}
-      <section className="w-full py-20 px-4 md:px-12 bg-white">
-         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative">
-            
-            <div className="absolute top-0 right-0 md:-right-4 text-[#E83C31] text-6xl md:text-8xl font-serif font-bold opacity-30 select-none z-0">
-               2
-            </div>
-
-            <div className="w-full md:w-[50%] order-2 md:order-1 flex flex-col items-center md:items-end text-center md:text-right relative z-10">
-               <h2 className="text-xl md:text-2xl font-newsreader font-bold text-black mb-3">Peduli Yatim</h2>
-               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium max-w-md">
-                 Program Peduli Yatim dari Taman Zakat diharapkan dapat menolong anak yatim dan keluarga dhuafa dan anak mendapatkan kualitas pendidikan yang layak demi menjamin cita-cita dan pertolongan pertama pada pendidikan.
-               </p>
-               <div className="flex flex-col-reverse sm:flex-row-reverse items-center justify-start gap-4">
-                 <div className="relative inline-block">
-                   <a href="#donasi" className="relative z-10 inline-block hover:scale-105 transition-transform duration-300" >
-                     <div className="relative bg-[#5DA630] border border-black shadow-[3px_3px_0px_#000] px-5 py-2.5">
-                       <span className="font-semibold text-white">Donasi Rutin</span>
-                     </div>
-                   </a>
-                 </div>
-                 <button className="bg-transparent border border-[#5DA630] text-[#5DA630] px-5 py-2.5 flex items-center gap-2 font-medium hover:bg-[#5DA630]/10 transition-colors">
-                   <span>Lihat Detail Program</span>
-                 </button>
-               </div>
-            </div>
-
-            <div className="w-full md:w-[45%] order-1 md:order-2 flex justify-center md:justify-start relative z-10">
-               <div className="relative w-full max-w-[400px] aspect-video">
-                 {/* Pushpin visual */}
-                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 w-8 h-8">
-                    <div className="w-6 h-6 rounded-full bg-blue-700 shadow-md flex items-center justify-center border border-black absolute top-0 -left-1 transform -rotate-12">
-                       <div className="w-2 h-2 rounded-full bg-blue-400 absolute top-1 left-1" />
-                    </div>
-                    <div className="w-[3px] h-4 bg-zinc-300 absolute top-5 left-2 border-l border-r border-black transform rotate-[25deg] shadow-lg" />
-                 </div>
-                 <div className="absolute inset-0 border-[3px] border-[#5DA630] bg-[#F2F9EC] p-2 mt-4 ml-4 z-0" />
-                 <div className="absolute inset-0 border border-zinc-300 z-10 bg-white">
-                   <Image src="/images/gambardetaile/santri 1.svg" alt="Peduli Yatim" fill className="object-cover" />
-                 </div>
-               </div>
-            </div>
-
-         </div>
-      </section>
-
-      {/* 3. Kajian Parenting */}
-      <section className="w-full py-20 px-4 md:px-12 bg-[#FAEDCD]">
-         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative">
-            
-            <div className="absolute top-0 left-0 md:-left-4 text-[#E83C31] text-6xl md:text-8xl font-serif font-bold opacity-30 select-none z-0">
-               3
-            </div>
-
-            <div className="w-full md:w-[45%] flex justify-center md:justify-end relative z-10">
-               <div className="relative w-full max-w-[400px] aspect-video">
-                 <div className="absolute inset-0 bg-white p-2 md:p-3 pb-8 md:pb-12 shadow-md border-x-[3px] border-b-[3px] border-t-0 border-[#5DA630] transform rotate-1">
-                   <div className="relative w-full h-full border border-dashed border-zinc-200">
-                     {/* Replace with actual image later */}
-                     <Image src="/images/gambardetaile/bidang pendidikan.svg" alt="Kajian Parenting" fill className="object-cover" />
-                   </div>
-                 </div>
-               </div>
-            </div>
-
-            <div className="w-full md:w-[50%] flex flex-col items-center md:items-start text-center md:text-left relative z-10">
-               <h2 className="text-xl md:text-2xl font-newsreader font-bold text-black mb-3">Kajian Parenting</h2>
-               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                 Hanya dengan <span className="text-[#E83C31] font-bold">Rp 10.000</span>, Anda bisa menjadi bagian dari harapan – membantu melunasi biaya kegiatan edukasi parenting dan menghadirkan pemahaman bagi orang tua untuk bekal membina anak.
-               </p>
-               <div className="flex flex-col sm:flex-row items-center gap-4">
-                 <div className="relative inline-block">
-                   <a href="#donasi" className="relative z-10 inline-block hover:scale-105 transition-transform duration-300" >
-                     <div className="relative bg-[#5DA630] border border-black shadow-[3px_3px_0px_#000] px-5 py-2.5">
-                       <span className="font-semibold text-white">Donasi Rutin</span>
-                     </div>
-                   </a>
-                 </div>
-                 <button className="bg-transparent border border-[#5DA630] text-[#5DA630] px-5 py-2.5 flex items-center gap-2 font-medium hover:bg-[#5DA630]/10 transition-colors">
-                   <span>Lihat Detail Program</span>
-                 </button>
-               </div>
-            </div>
-         </div>
-      </section>
-
-
-      {/* 4. Guru Teladan */}
-      <section className="w-full py-20 px-4 md:px-12 bg-white">
-         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative">
-            
-            <div className="absolute top-0 right-0 md:-right-4 text-[#E83C31] text-6xl md:text-8xl font-serif font-bold opacity-30 select-none z-0">
-               4
-            </div>
-
-            <div className="w-full md:w-[50%] order-2 md:order-1 flex flex-col items-center md:items-end text-center md:text-right relative z-10">
-               <h2 className="text-xl md:text-2xl font-newsreader font-bold text-black mb-3">Guru Teladan</h2>
-               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium max-w-md">
-                 Program Infaq Guru Teladan dari Taman Zakat diharapkan dapat menolong guru berdedikasi tinggi demi memajukan kualitas pendidikan murid dan menjamin kemajuan peradaban yang berkualitas.
-               </p>
-               <div className="flex flex-col-reverse sm:flex-row-reverse items-center justify-start gap-4">
-                 <div className="relative inline-block">
-                   <a href="#donasi" className="relative z-10 inline-block hover:scale-105 transition-transform duration-300" >
-                     <div className="relative bg-[#5DA630] border border-black shadow-[3px_3px_0px_#000] px-5 py-2.5">
-                       <span className="font-semibold text-white">Donasi Rutin</span>
-                     </div>
-                   </a>
-                 </div>
-                 <button className="bg-transparent border border-[#5DA630] text-[#5DA630] px-5 py-2.5 flex items-center gap-2 font-medium hover:bg-[#5DA630]/10 transition-colors">
-                   <span>Lihat Detail Program</span>
-                 </button>
-               </div>
-            </div>
-
-            <div className="w-full md:w-[45%] order-1 md:order-2 flex justify-center md:justify-start relative z-10">
-               <div className="relative w-full max-w-[400px]">
-                 {/* Strings decoration */}
-                 <div className="absolute -top-[50px] w-full flex justify-between px-10 z-0">
-                    <div className="w-[1px] h-[55px] bg-[#9C7945]" />
-                    <div className="w-[1px] h-[65px] bg-[#9C7945]" />
-                 </div>
-                 {/* Clothespin clips */}
-                 <div className="absolute -top-3 left-8 z-20">
-                    <div className="w-2 h-7 bg-[#B89B65] border border-black rounded-sm transform rotate-6" />
-                 </div>
-                 <div className="absolute -top-3 right-8 z-20">
-                    <div className="w-2 h-7 bg-[#B89B65] border border-black rounded-sm transform rotate-12" />
-                 </div>
-
-                 <div className="relative w-full aspect-[4/3] bg-white border border-black shadow-md mt-4 p-2 transform -rotate-1">
-                   <div className="relative z-10 w-full h-full border border-dashed border-zinc-300">
-                     <Image src="/images/gambardetaile/beasiswa-santri 1.svg" alt="Guru Teladan" fill className="object-cover" />
-                   </div>
-                 </div>
-               </div>
-            </div>
-
-         </div>
-      </section>
-
-      {/* 5. Mitigasi Bencana */}
-      <section className="w-full py-20 px-4 md:px-12 bg-[#FAEDCD]">
-         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 relative">
-            
-            <div className="absolute top-0 left-0 md:-left-4 text-[#E83C31] text-6xl md:text-8xl font-serif font-bold opacity-30 select-none z-0">
-               5
-            </div>
-
-            <div className="w-full md:w-[45%] flex justify-center md:justify-end relative z-10">
-               <div className="relative w-full max-w-[400px] aspect-video">
-                 <div className="absolute inset-0 bg-white p-2 md:p-3 shadow-lg transform rotate-2 border border-zinc-200">
-                   <div className="relative w-full h-full">
-                     <Image src="/images/gambardetaile/footage ambul 2 1.svg" alt="Mitigasi Bencana" fill className="object-cover" />
-                   </div>
-                 </div>
-               </div>
-            </div>
-
-            <div className="w-full md:w-[50%] flex flex-col items-center md:items-start text-center md:text-left relative z-10">
-               <h2 className="text-xl md:text-2xl font-newsreader font-bold text-black mb-3">Mitigasi Bencana</h2>
-               <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
-                 Hanya dengan <span className="text-[#E83C31] font-bold">Rp 10.000</span>, Anda bisa menjadi bagian dari harapan – membantu melengkapi sosialisasi siaga bencana dan menghadirkan bantuan bagi saudara dhuafa yang sedang berjuang di masa sulit ini.
-               </p>
-               <div className="flex flex-col sm:flex-row items-center gap-4">
-                 <div className="relative inline-block">
-                   <a href="#donasi" className="relative z-10 inline-block hover:scale-105 transition-transform duration-300" >
-                     <div className="relative bg-[#5DA630] border border-black shadow-[3px_3px_0px_#000] px-5 py-2.5">
-                       <span className="font-semibold text-white">Donasi Rutin</span>
-                     </div>
-                   </a>
-                 </div>
-                 <button className="bg-transparent border border-[#5DA630] text-[#5DA630] px-5 py-2.5 flex items-center gap-2 font-medium hover:bg-[#5DA630]/10 transition-colors">
-                   <span>Lihat Detail Program</span>
-                 </button>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      {/* ===================== DARI TITIPAN MENJADI HARAPAN ===================== */}
-      <section className="w-full bg-[#2E3133] py-16 px-4 md:px-12 flex items-center min-h-[400px]">
-          <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-10 relative">
-             
-             {/* Text Block */}
-             <div className="w-full md:w-[40%] text-left z-10">
-                <h2 className="text-white text-3xl md:text-4xl font-newsreader font-bold mb-4 leading-tight">
-                  Dari Titipan Menjadi Harapan
-                </h2>
-                <p className="text-zinc-300 text-base md:text-lg mb-8 leading-relaxed max-w-sm">
-                  Amanah Anda kami jaga, dari kemapanan sampai menjadi manfaat nyata.
-                </p>
+          </div>
+          <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+            <div className="max-w-md">
+              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+                Beasiswa Bintang
+              </h2>
+              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
+                Hanya dengan <span className="text-[#FF5B5B] font-bold">Rp10.000</span>, Anda bisa
+                menjadi bagian dari harapan—membantu melunasi biaya SPP anak-anak dan menghadirkan
+                masa depan bagi saudara dhuafa yang sedang berjuang di masa sulit ini.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
                 <div className="relative inline-block">
-                  <a href="#donasi" className="relative z-10 inline-block hover:scale-105 transition-transform duration-300" >
-                    <div className="relative bg-transparent border border-[#7FC248] text-[#7FC248] shadow-[3px_3px_0px_#7FC248] px-6 py-2">
-                       <span className="font-semibold tracking-wide">Jemput Donasi</span>
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
+                  />
+                  <a
+                    href="#donasi"
+                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
+                  >
+                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                        <span>Donasi Disini</span>
+                        <Image
+                          src="/images/icon/Donation.svg"
+                          alt="Ikon donasi"
+                          width={18}
+                          height={18}
+                          className="h-[18px] w-[18px]"
+                        />
+                      </div>
                     </div>
                   </a>
                 </div>
+                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                  Lihat Detail Program
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Peduli Yatim */}
+      <section className="w-full py-16 px-4 md:px-12 bg-white">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
+          <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="max-w-md">
+              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+                Peduli Yatim
+              </h2>
+              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
+                Program Peduli Yatim dari Taman Zakat diharapkan dapat menolong anak yatim dan keluarga dhuafa dan anak mendapatkan kualitas pendidikan yang layak demi menjamin cita-cita dan pertolongan pertama pada pendidikan.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                  Lihat Detail Program
+                </button>
+                <div className="relative inline-block">
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
+                  />
+                  <a
+                    href="#donasi"
+                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
+                  >
+                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                        <span>Donasi Disini</span>
+                        <Image
+                          src="/images/icon/Donation.svg"
+                          alt="Ikon donasi"
+                          width={18}
+                          height={18}
+                          className="h-[18px] w-[18px]"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
+            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+
+              {/* Icon Percantik 2 (Pushpin) */}
+              <div className="absolute -top-[25px] right-[25%] z-20 w-[45px] h-[50px] md:w-[50px] md:h-[55px] drop-shadow-md">
+                 <Image src="/images/icon/pin paku.svg" alt="Pin Paku" fill className="object-contain" />
+              </div>
+
+              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
+                <Image
+                  src="/images/gambardetaile/santri 1.svg"
+                  alt="Peduli Yatim"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Kajian Parenting */}
+      <section className="w-full py-16 px-4 md:px-12 bg-[#FAEDCD]">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FAEDCD] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+
+              {/* Icon Percantik 3 */}
+              <div className="absolute -top-5 left-4 md:left-6 z-20 w-[24px] md:w-[28px] h-[55px] md:h-[65px]">
+                 <Image src="/images/icon/penjepit kertas.svg" alt="Penjepit Kertas" fill className="object-contain" />
+              </div>
+
+              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
+                <Image
+                  src="/images/gambardetaile/bidang pendidikan.svg"
+                  alt="Kajian Parenting"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+            <div className="max-w-md">
+              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+                Kajian Parenting
+              </h2>
+              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
+                 Hanya dengan <span className="text-[#FF5B5B] font-bold">Rp 10.000</span>, Anda bisa menjadi bagian dari harapan – membantu melunasi biaya kegiatan edukasi parenting dan menghadirkan pemahaman bagi orang tua untuk bekal membina anak.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                <div className="relative inline-block">
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
+                  />
+                  <a
+                    href="#donasi"
+                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
+                  >
+                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                        <span>Donasi Disini</span>
+                        <Image
+                          src="/images/icon/Donation.svg"
+                          alt="Ikon donasi"
+                          width={18}
+                          height={18}
+                          className="h-[18px] w-[18px]"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                  Lihat Detail Program
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Guru Teladan */}
+      <section className="w-full py-16 px-4 md:px-12 bg-white">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
+          <div className="w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="max-w-md">
+              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+                Guru Teladan
+              </h2>
+              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
+                 Program Infaq Guru Teladan dari Taman Zakat diharapkan dapat menolong guru berdedikasi tinggi demi memajukan kualitas pendidikan murid dan menjamin kemajuan peradaban yang berkualitas.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                  Lihat Detail Program
+                </button>
+                <div className="relative inline-block">
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
+                  />
+                  <a
+                    href="#donasi"
+                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
+                  >
+                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                        <span>Donasi Disini</span>
+                        <Image
+                          src="/images/icon/Donation.svg"
+                          alt="Ikon donasi"
+                          width={18}
+                          height={18}
+                          className="h-[18px] w-[18px]"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 order-1 md:order-2 flex justify-center md:justify-start">
+            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+              <div className="absolute -top-3 -right-3 md:-top-4 md:-right-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+
+              {/* Icon Percantik 4 (Penjepit Majalah x2) */}
+              <div className="absolute -top-[14px] md:-top-[18px] left-[20%] z-20 w-[14px] md:w-[16px] h-[35px] md:h-[45px]">
+                 <Image src="/images/icon/penjepit majalah.svg" alt="Clip" fill className="object-contain" />
+              </div>
+              <div className="absolute -top-[14px] md:-top-[18px] right-[20%] z-20 w-[14px] md:w-[16px] h-[35px] md:h-[45px]">
+                 <Image src="/images/icon/penjepit majalah.svg" alt="Clip" fill className="object-contain" />
+              </div>
+
+              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
+                <Image
+                  src="/images/gambardetaile/beasiswa-santri 1.svg"
+                  alt="Guru Teladan"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Mitigasi Bencana */}
+      <section className="w-full py-16 px-4 md:px-12 bg-[#FAEDCD]">
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8 md:gap-14">
+          <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+            <div className="relative w-[90%] md:w-full max-w-[400px] aspect-[4/3] mt-6 md:mt-0">
+              <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FAEDCD] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
+
+              {/* Icon Percantik 5 */}
+              <div className="absolute -top-5 left-4 md:left-6 z-20 w-[24px] md:w-[28px] h-[55px] md:h-[65px]">
+                 <Image src="/images/icon/penjepit kertas.svg" alt="Penjepit Kertas" fill className="object-contain" />
+              </div>
+
+              <div className="relative z-10 w-full h-full rounded-xl overflow-hidden border-[1.5px] border-[#D5D5D5]/40">
+                <Image
+                  src="/images/gambardetaile/footage ambul 2 1.svg"
+                  alt="Mitigasi Bencana"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="w-full md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
+            <div className="max-w-md">
+              <h2 className="text-lg md:text-2xl font-newsreader font-bold text-black mb-3">
+                Mitigasi Bencana
+              </h2>
+              <p className="text-zinc-800 text-sm leading-relaxed mb-6 font-medium">
+                 Hanya dengan <span className="text-[#FF5B5B] font-bold">Rp 10.000</span>, Anda bisa menjadi bagian dari harapan – membantu melengkapi sosialisasi siaga bencana dan menghadirkan bantuan bagi saudara dhuafa yang sedang berjuang di masa sulit ini.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
+                <div className="relative inline-block">
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 z-20 rounded-sm border-2 border-black border-wiggle"
+                  />
+                  <a
+                    href="#donasi"
+                    className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
+                  >
+                    <div className="relative rounded-sm bg-[#7FC248] px-4 py-2 md:px-5 md:py-2.5">
+                      <div className="relative z-10 inline-flex items-center gap-2 text-[15px] font-semibold font-newsreader text-white">
+                        <span>Donasi Disini</span>
+                        <Image
+                          src="/images/icon/Donation.svg"
+                          alt="Ikon donasi"
+                          width={18}
+                          height={18}
+                          className="h-[18px] w-[18px]"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <button className="bg-transparent border text-[#7FC248] shadow-sm px-4 py-2 md:px-5 md:py-2.5 rounded hover:bg-[#F3F9EF] transition font-semibold text-xs md:text-sm border-[#7FC248]/30">
+                  Lihat Detail Program
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===================== DARI AMANAH MENJADI MANFAAT (COLLAGE VERTICAL 1-2-2) ===================== */}
+      <section className="w-full relative bg-[#FEFDF9] py-16 md:py-24 overflow-visible mt-8 md:mt-16">
+        
+        {/* Dark Background Strip - Extends full width left to right, bounded fixed height */}
+        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[350px] md:h-[380px] bg-[#313131] z-0 shadow-lg" />
+
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 pl-4 md:pl-12 pr-0 relative z-10">
+          
+          {/* Text Block */}
+          <div className="w-full md:w-[45%] lg:w-[40%] text-left py-12 md:py-0 px-2 md:px-0 z-20">
+             <h2 className="text-white text-3xl md:text-3xl lg:text-4xl font-newsreader font-bold mb-4 leading-tight drop-shadow-sm">
+               Dari Amanah Menjadi Manfaat
+             </h2>
+             <p className="text-zinc-200 text-[15px] md:text-lg mb-8 leading-relaxed max-w-sm font-medium">
+               Amanah Anda kami jaga, dan kami pastikan sampai menjadi manfaat nyata.
+             </p>
+             <div className="relative inline-block">
+               <div
+                 aria-hidden
+                 className="absolute inset-0 z-20 rounded-sm border-[1.5px] border-white/60 border-wiggle"
+               />
+               <a
+                 href="#donasi"
+                 className="relative z-10 inline-block transition-transform duration-150 hover:-translate-y-0.5"
+               >
+                 <div className="relative rounded-sm bg-[#7FC248] px-5 py-2.5 md:px-6 md:py-3 shadow-md hover:bg-[#6CAE3D] transition-colors">
+                   <div className="relative z-10 inline-flex items-center gap-2 text-[15px] md:text-[16px] font-semibold font-newsreader text-white">
+                     <span>Donasi Disini</span>
+                     <Image
+                       src="/images/icon/Donation.svg"
+                       alt="Ikon donasi"
+                       width={18}
+                       height={18}
+                       className="h-[18px] w-[18px]"
+                     />
+                   </div>
+                 </div>
+               </a>
+             </div>
+          </div>
+
+          {/* Collage Block Using Flex To Prevent Full Overlap */}
+          <div className="w-full md:w-[55%] lg:w-[60%] flex flex-col gap-6 md:gap-2 mt-8 md:mt-0 items-end overflow-visible z-10 lg:pr-12 md:pr-4">
+             
+             {/* 1. Top Row: 1 Image */}
+             <div className="w-[85%] sm:w-[50%] md:w-[55%] lg:w-[45%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-xl z-50 rotate-[3deg] transition-transform hover:scale-[1.03] hover:z-[60] ml-auto">
+               <div className="relative w-full h-full overflow-hidden">
+                 <Image src="/images/gambardetaile/bidang pendidikan.svg" alt="Image 1" fill className="object-cover" />
+               </div>
              </div>
 
-             {/* Collage Block */}
-             <div className="w-full md:w-[50%] h-[400px] relative z-0">
-               {/* Using CSS grid for masonry or just absolute positions */}
-               <div className="w-full h-full relative grid grid-cols-2 grid-rows-2 gap-3 transform -rotate-3 overflow-visible pointer-events-none">
-                  
-                  {/* Photo 1 */}
-                  <div className="relative bg-white border border-gray-100 p-2 shadow-xl transform rotate-3 -translate-y-6">
-                    <div className="relative w-full h-full">
-                       <Image src="/images/gambardetaile/kasih ke anak sma 1.svg" alt="Photo 1" fill className="object-cover" />
-                    </div>
+             {/* 2. Middle Row: 2 Images */}
+             <div className="flex flex-row justify-end items-center gap-2 md:gap-4 w-full md:w-[95%] lg:w-[85%] mt-[-10px] md:mt-[-20px]">
+               {/* Left */}
+               <div className="w-[48%] md:w-[50%] lg:w-[48%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-lg z-20 rotate-[-3deg] transition-transform hover:scale-[1.03] hover:z-[60]">
+                  <div className="relative w-full h-full overflow-hidden">
+                    <Image src="/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg" alt="Image 2" fill className="object-cover object-top" />
                   </div>
-                  
-                  {/* Photo 2 */}
-                  <div className="relative bg-white border border-gray-100 p-2 shadow-xl transform -rotate-2 scale-110 z-10 translate-y-6">
-                    <div className="relative w-full h-full">
-                       <Image src="/images/gambardetaile/Yatim-Beasiswa-Sekolah-Yatimn 1.svg" alt="Photo 2" fill className="object-cover" />
-                    </div>
+               </div>
+               {/* Right */}
+               <div className="w-[45%] md:w-[45%] lg:w-[42%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-lg z-40 rotate-[2deg] transition-transform hover:scale-[1.03] hover:z-[60] mt-4 md:mt-8">
+                  <div className="relative w-full h-full overflow-hidden">
+                    <Image src="/images/gambardetaile/santri 1.svg" alt="Image 3" fill className="object-cover" />
                   </div>
-                  
-                  {/* Photo 3 */}
-                  <div className="relative bg-white border border-gray-100 p-2 shadow-xl transform rotate-6 scale-95 translate-x-4 -translate-y-4">
-                    <div className="relative w-full h-full">
-                       <Image src="/images/gambardetaile/santri 1.svg" alt="Photo 3" fill className="object-cover" />
-                    </div>
-                  </div>
-                  
-                  {/* Photo 4 */}
-                  <div className="relative bg-white border border-gray-100 p-2 shadow-xl transform shrink -rotate-6 translate-x-3 translate-y-2">
-                    <div className="relative w-full h-full">
-                       <Image src="/images/gambardetaile/beasiswa-santri 1.svg" alt="Photo 4" fill className="object-cover" />
-                    </div>
-                  </div>
+               </div>
+             </div>
 
+             {/* 3. Bottom Row: 2 Images */}
+             <div className="flex flex-row justify-end items-center gap-2 md:gap-6 w-full md:w-[95%] lg:w-[85%] mt-[-5px] md:mt-[-10px]">
+               {/* Left */}
+               <div className="w-[50%] md:w-[55%] lg:w-[52%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-xl z-30 rotate-[-2deg] transition-transform hover:scale-[1.03] hover:z-[60]">
+                  <div className="relative w-full h-full overflow-hidden">
+                    <Image src="/images/gambardetaile/footage ambul 2 1.svg" alt="Image 4" fill className="object-cover" />
+                  </div>
+               </div>
+               {/* Right */}
+               <div className="w-[48%] md:w-[50%] lg:w-[46%] aspect-[4/3] rounded-sm border-[4px] md:border-[6px] border-white bg-white shadow-2xl z-50 rotate-[3deg] transition-transform hover:scale-[1.03] hover:z-[60] -mt-6 md:-mt-10">
+                  <div className="relative w-full h-full overflow-hidden">
+                    <Image src="/images/gambardetaile/beasiswa-santri 1.svg" alt="Image 5" fill className="object-cover" />
+                  </div>
                </div>
              </div>
 
           </div>
+        </div>
       </section>
 
     </main>
