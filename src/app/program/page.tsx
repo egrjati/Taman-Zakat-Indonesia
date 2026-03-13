@@ -79,7 +79,7 @@ export default function ProgramPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20">
               {/* ================= CARD 1 ================= */}
               <a
-                href="#"
+                href="/program/dakwah"
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
@@ -131,7 +131,7 @@ export default function ProgramPage() {
 
               {/* ================= CARD 3 ================= */}
               <a
-                href="#"
+                href="/program/kemanusiaan"
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
