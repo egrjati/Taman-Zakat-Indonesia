@@ -183,7 +183,7 @@ export default function ProgramPage() {
 
               {/* ================= CARD 5 ================= */}
               <a
-                href="#"
+                href="/program/pendidikan"
                 className="w-full relative group hover:drop-shadow-xl transition-all duration-300 ease-in-out block"
               >
                 <div className="w-full h-auto relative transition-transform duration-300 group-hover:scale-[1.02]">
