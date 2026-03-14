@@ -1,7 +1,9 @@
+import React from "react";
 import Image from "next/image";
 import IndonesiaMap from "@/components/ui/indonesia-map";
 import HeroSliderHome from "@/components/ui/hero-slider-home";
 import BerbagiMengubahKehidupan from "@/components/ui/berbagi-mengubah-kehidupan";
+import BeritaTabs from "@/components/ui/berita-tabs";
 
 export default function Home() {
   return (
@@ -58,117 +60,45 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Map / Stats Section (Black Background) */}
-        <section className="bg-black text-white pt-16 pb-20 w-full mt-24">
-          <div className="max-w-6xl mx-auto px-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 leading-tight">
+        
+        {/* Map / Stats Section */}
+        <section className="w-full mt-24 relative z-0 pt-16 pb-12 bg-[linear-gradient(180deg,#000000_62%,#ffffff_62%)] sm:bg-[linear-gradient(180deg,#000000_65%,#ffffff_65%)]">
+          <div className="max-w-[1000px] mx-auto px-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4 leading-tight text-white drop-shadow-md">
               Know that your donation is making <br className="hidden sm:block"/> a difference
             </h2>
-            <p className="text-center text-sm sm:text-base text-gray-400 mb-12 max-w-4xl mx-auto opacity-80">
-              charity water uses 100% of your donation to fund clean water, we will never fix this unless we grow single drop event. companies with 2M over directs employee donations. Grow push like you right here.
+            <p className="text-center text-sm sm:text-base text-gray-300 mb-12 max-w-4xl mx-auto opacity-90 drop-shadow-md">
+              charity: water uses 100% of your donation to fund clean water around the world and then proves every single project you fund, complete with GPS coordinates and photos. Give water. Get proof. Every single time.
             </p>
             
-            <div className="border border-gray-700 rounded-2xl p-6 sm:p-10 pt-12 relative overflow-hidden">
-              <div className="flex justify-center mb-10">
-                <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 border border-[#7FC248] flex items-center justify-center text-[#7FC248] rounded-md font-bold text-xs p-1">
-                    <div className="w-6 h-6 border-2 border-[#7FC248] rounded-sm"></div>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-bold leading-none tracking-wide text-white">TAMAN</h4>
-                    <h4 className="text-lg font-bold leading-none tracking-wide text-[#7FC248]">ZAKAT</h4>
-                    <span className="text-[0.4rem] tracking-widest text-gray-400 block -mt-1">INDONESIA</span>
-                  </div>
-                </div>
-              </div>
+            <div className="border border-gray-600 rounded-lg relative overflow-hidden flex flex-col items-center pt-10 shadow-lg">
+                <Image src="/images/icon/logo taza font putih.png" width={240} height={70} className="h-[45px] sm:h-[50px] w-auto drop-shadow" alt="Taman Zakat Logo" />
+                <p className="text-center text-[10px] sm:text-xs text-gray-400 mt-2 mb-10 font-medium">Last updated: March 6, 2026</p>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 text-center mb-[4rem] sm:mb-16 gap-8 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-gray-700">
-                <div className="pt-4 sm:pt-0">
-                  <h3 className="text-4xl font-bold text-white mb-2">47</h3>
-                  <p className="text-sm text-gray-400">Program berjalan</p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 text-center w-full max-w-3xl gap-8 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-gray-700 px-4">
+                  <div className="pt-4 sm:pt-0">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">47</h3>
+                    <p className="text-xs sm:text-sm text-gray-400">Wilayah Jangkauan</p>
+                  </div>
+                  <div className="pt-4 sm:pt-0">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">102.088</h3>
+                    <p className="text-xs sm:text-sm text-gray-400">Penerima Manfaat</p>
+                  </div>
+                  <div className="pt-4 sm:pt-0">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2">19</h3>
+                    <p className="text-xs sm:text-sm text-gray-400">Aksi Kebaikan</p>
+                  </div>
                 </div>
-                <div className="pt-4 sm:pt-0">
-                  <h3 className="text-4xl font-bold text-white mb-2">102.088</h3>
-                  <p className="text-sm text-gray-400">Penerima Manfaat</p>
-                </div>
-                <div className="pt-4 sm:pt-0">
-                  <h3 className="text-4xl font-bold text-white mb-2">12</h3>
-                  <p className="text-sm text-gray-400">Provinsi</p>
-                </div>
-              </div>
 
-              <div className="flex justify-center w-full pb-8">
-                <IndonesiaMap />
-              </div>
+                <div className="w-[95%] md:w-[90%] mt-8 pb-6 relative z-20">
+                  <IndonesiaMap />
+                </div>
             </div>
           </div>
         </section>
 
-        {/* Section Berita */}
-        <section className="mt-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="relative flex items-center justify-center mb-4">
-               {/* Line Behind Title */}
-              <div className="absolute left-0 bottom-1/2 right-0 h-[2px] bg-[#97D769] -z-10"></div>
-              
-              <div className="bg-white px-2">
-                <h2 className="rounded-sm border border-[#97D769] bg-white px-8 py-2 text-2xl sm:text-3xl font-bold text-black text-center shadow-sm">
-                  Berita <span className="text-[#97D769] font-light">Taman Zakat</span>
-                </h2>
-              </div>
-            </div>
-
-            <div className="border-y border-[#97D769] py-3 mb-8">
-              <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-14 text-sm sm:text-base font-medium text-[#3B7A1C]">
-                <li className="cursor-pointer hover:text-[#71C935]">Aksi Taman Zakat</li>
-                <li className="cursor-pointer hover:text-[#71C935]">Report Program</li>
-                <li className="cursor-pointer hover:text-[#71C935]">Annual Report</li>
-                <li className="cursor-pointer hover:text-[#71C935]">Artikel</li>
-              </ul>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6">
-              <div className="space-y-4 flex flex-col">
-                <div className="h-[300px] sm:h-[400px] rounded-lg border border-[#D1D1D1] bg-white shadow-sm flex items-center justify-center">
-                </div>
-                <div className="grid grid-cols-2 gap-4 flex-1">
-                  <div className="h-32 sm:h-44 rounded-lg border border-[#D1D1D1] bg-white shadow-sm flex items-center justify-center">
-                  </div>
-                  <div className="h-32 sm:h-44 rounded-lg border border-[#D1D1D1] bg-white shadow-sm flex items-center justify-center">
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4">
-                {[
-                  "#0000A400\\n02MEI20YYYY\\nAWAL / 000000XXX00",
-                  "#0000224A\\n02MEI20YYYY\\nBARU / 0000045XXX0",
-                  "#00001A8V\\n02MEI20ZZZZ\\nPER / 0000055XXX0",
-                  "#0000A175\\n02MEI20QQQQ\\nTER / 0000075XXX0",
-                ].map((title, id) => (
-                  <article key={id} className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] items-start gap-4 flex-1">
-                    <div className="h-full min-h-[90px] sm:min-h-[110px] w-full rounded-lg border border-[#D1D1D1] bg-white shadow-sm flex items-center justify-center">
-                    </div>
-                    <div className="pt-2 flex flex-col h-full bg-white rounded-lg border border-[#D1D1D1] shadow-sm px-4 py-3 justify-center">
-                      <p className="text-xs font-mono text-black break-words leading-relaxed whitespace-pre-wrap font-bold">
-                        {title}
-                      </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-8 mb-4">
-              <a
-                href="#"
-                className="inline-flex w-fit items-center text-white bg-[#97D769] px-10 py-2 rounded-md font-medium text-sm shadow-sm hover:bg-[#7FC248] transition-colors"
-              >
-                Lihat Lebih Banyak
-              </a>
-            </div>
-          </div>
-        </section>
+        {/* Section Berita Interactive */}
+        <BeritaTabs />
 
         {/* Section Artikel (Green BG) */}
         <section className="bg-[#D3ECC4] border-t border-[#B8DDA1] pt-12 pb-16 w-full mt-10">
