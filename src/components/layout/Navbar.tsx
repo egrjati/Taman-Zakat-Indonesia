@@ -212,7 +212,7 @@ export default function Navbar() {
             </li>
           </ul>
 
-          {/* Hamburger Menu (Mobile Only) */}
+          {/* tampilan mobile */}
           <div className={`flex md:hidden absolute transition-all duration-500 ease-in-out right-4 items-center`}>
             <button 
               onClick={() => setIsMobileMenuOpen(true)}
@@ -225,7 +225,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Kanan Donasi Button (Skilled Desktop Only, Muncul saat Scrolled - drop down dari atas) */}
+          {/* tampilan desktop */}
           <div className={`hidden md:flex items-center absolute right-4 md:right-6 lg:right-8 transition-all duration-500 ease-in-out ${isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-10 opacity-0 pointer-events-none'}`}>
             <a
               href="#"
@@ -238,7 +238,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* 3. Mobile Sidebar Menu Overlay */}
+      {/* tampilan mobile */}
       {/* Background Overlay */}
       <div 
         className={`fixed inset-0 bg-black/60 z-[1001] md:hidden transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
