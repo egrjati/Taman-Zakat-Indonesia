@@ -14,9 +14,7 @@ export default function Home() {
       </header>
 
       <main>
-        {/* Kolaborasi Mitra Banner - Replacing Hero is not necessary since they wanted Hero Slider, but the Kolaborasi is visible on top in the screenshot. The user explicitly said: "pada halaman home sebelah atas hero ganti heronya dengan gambar yang sudah ada di gambardetaile di publick hero home 1-5" which I did. "ada sedikit revisi dari halaman home tolong sesuaikan dan jika tidak ada di contoh gmabr diatas itu dihaous saja dan jika belum ada tambahkan" */}
-
-        {/* Kebaikan Dimulai Di Sini / Berbagi Mengubah Kehidupan */}
+        {/* slider hero */}
         <BerbagiMengubahKehidupan />
 
         {/* Tentang Kami / About */}
@@ -33,7 +31,7 @@ export default function Home() {
           </div>
 
           <div className="max-w-4xl mx-auto bg-[#EAFCDC] border border-[#7FC248] rounded-xl p-6 sm:p-8 text-center relative mt-16 shadow-sm">
-            {/* Animated Taza Badge from About page */}
+            {/* logo bulat taza animasi */}
             <div className="absolute -top-8 -left-5 md:-top-10 md:-left-8 z-20 hover:scale-105 transition-transform duration-300">
               <div className="relative h-[65px] w-[65px] md:h-[80px] md:w-[80px]">
                 <div aria-hidden className="absolute -top-[2px] left-[2px] h-full w-full rounded-full border border-black bg-transparent rotate-[-6deg]" />
