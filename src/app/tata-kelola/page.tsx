@@ -8,7 +8,6 @@ export default function TataKelolaPage() {
   const [activeSection, setActiveSection] = useState("legal-formal");
 
   useEffect(() => {
-    // We insert document.title here to replace Next.js metadata behavior for client components
     document.title = "Tata Kelola - Taman Zakat";
 
     const handleScroll = () => {
@@ -19,7 +18,6 @@ export default function TataKelolaPage() {
         const element = document.getElementById(id);
         if (element) {
           const rect = element.getBoundingClientRect();
-          // Jika section sudah mulai masuk viewport (contoh offset 300px)
           if (rect.top <= 300) {
             current = id;
           }
@@ -37,7 +35,7 @@ export default function TataKelolaPage() {
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      const offset = 120; // offset untuk sticky navbar
+      const offset = 120; 
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -279,7 +277,6 @@ export default function TataKelolaPage() {
               </h2>
               <div className="h-[2px] bg-zinc-400 mt-4 flex-1"></div>
             </div>
-            {/* The image doesn't show content for this yet, keeping it intentionally blank as in the slicing design */}
             <div className="min-h-[100px]"></div>
           </section>
 
