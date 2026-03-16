@@ -160,7 +160,7 @@ export default function Navbar() {
 
             <li className="shrink-0 flex">
               <Link
-                href="/#"
+                href="/tata-kelola"
                 className="group inline-flex w-full cursor-pointer items-center gap-1 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] outline-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-2 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]"
               >
                 Tata Kelola
