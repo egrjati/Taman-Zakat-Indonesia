@@ -23,7 +23,7 @@ export default function HeroSliderHome() {
   }, []);
 
   return (
-    <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] lg:aspect-[3/1] xl:aspect-[4/1] bg-black overflow-hidden flex items-center justify-center">
+    <div className="relative w-full aspect-[2/1] md:aspect-[21/9] lg:aspect-[3/1] xl:aspect-[10/3] bg-gradient-to-r from-white to-[#F4Fdf0] overflow-hidden flex items-center justify-center">
       {images.map((img, index) => (
         <div
           key={index}
@@ -35,7 +35,7 @@ export default function HeroSliderHome() {
             src={img}
             alt={`Hero Home ${index + 1}`}
             fill
-            className="object-cover"
+            className="object-contain md:object-cover"
             priority={index === 0}
           />
         </div>
