@@ -41,7 +41,7 @@ export default function HeroSliderHome() {
         </div>
       ))}
       
-      {/* Slider Indicators (Optional, but good for UX) */}
+      {/* Slider Indicators */}
       <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-2 z-20">
         {images.map((_, index) => (
           <button
