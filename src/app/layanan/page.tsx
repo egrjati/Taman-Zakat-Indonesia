@@ -8,8 +8,8 @@ export default function page() {
         
         {/* Title Section */}
         <div className="flex justify-center mb-10 md:mb-12">
-          <div className="relative inline-block text-center mt-8">
-            <div className="absolute left-[-15px] right-[-15px] bottom-1 h-3 md:h-4 bg-[#fbe7e6] -z-10" aria-hidden="true"></div>
+          <div className="relative inline-block text-center mt-8 z-0">
+            <div className="absolute -left-4 -right-4 -top-1 -bottom-1 sm:-top-2 sm:-bottom-2 bg-[#ffeeee] -rotate-[3deg] -z-10" aria-hidden="true"></div>
             <h1 className="text-3xl md:text-4xl lg:text-[42px] font-newsreader font-bold text-black relative z-10 px-2 tracking-tight">
               Layanan Taman Zakat
             </h1>
