@@ -88,24 +88,31 @@ export default function Navbar() {
               </Link>
             </li>
 
-            <li tabIndex={0} className="group relative inline-flex shrink-0 cursor-pointer items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] outline-none md:rounded-none md:border-0 md:bg-transparent md:px-0 md:py-2 md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]">
-              Layanan
-              <svg
-                className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 group-focus:rotate-180 md:h-4 md:w-5 md:text-black group-hover:text-[#5DA630]"
-                viewBox="4 2 18 17"
-                fill="none"
-                stroke="currentColor"
-              >
-                <path d="M6 9l6 6 6-6" />
-              </svg>
+            <li tabIndex={0} className="group relative inline-flex shrink-0 cursor-pointer items-center rounded-full border border-zinc-200 bg-zinc-50 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#7FC248] hover:bg-[#F2F9EC] active:scale-[0.98] outline-none md:rounded-none md:border-0 md:bg-transparent md:hover:translate-y-0 md:hover:border-transparent md:hover:bg-transparent md:hover:text-[#5DA630]">
+              <Link href="/layanan" className="flex items-center gap-1.5 px-3 py-1.5 md:px-0 md:py-2 w-full h-full outline-none">
+                Layanan
+                <svg
+                  className="h-3.5 w-3.5 text-zinc-500 stroke-2 transition-transform duration-300 group-hover:rotate-180 group-focus:rotate-180 md:h-4 md:w-5 md:text-black group-hover:text-[#5DA630]"
+                  viewBox="4 2 18 17"
+                  fill="none"
+                  stroke="currentColor"
+                >
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
+              </Link>
               
               {/* Dropdown Menu */}
               <div className={`absolute left-0 sm:left-1/2 sm:-translate-x-1/2 top-full ${isScrolled ? 'pt-4' : 'pt-2 md:pt-3'} opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-300 z-50`}>
                 <div className="flex w-[260px] md:w-[280px] flex-col overflow-hidden bg-white shadow-xl shadow-black/5 border border-zinc-100 whitespace-normal text-left rounded-xl text-black">
-                  {[1, 2].map((_, idx) => (
-                    <Link key={idx} href="#" className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== 1 ? 'border-b border-zinc-100' : ''}`}>
+                  {[
+                    { title: "Konfirmasi Donasi", desc: "Layanan konfirmasi setelah melakukan donasi." },
+                    { title: "Kantor Pelayanan", desc: "Informasi lokasi dan kontak kantor pelayanan kami." },
+                    { title: "Hitung Zakat", desc: "Kalkulator untuk menghitung kewajiban zakat Anda." },
+                    { title: "No. Rekening", desc: "Daftar nomor rekening resmi Taman Zakat." }
+                  ].map((item, idx, arr) => (
+                    <Link key={idx} href="#" className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== arr.length - 1 ? 'border-b border-zinc-100' : ''}`}>
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-[14px] sm:text-[15px] text-zinc-700 group-hover/item:text-zinc-900 transition-colors">Lorem Ipsum</span>
+                        <span className="font-medium text-[14px] sm:text-[15px] text-zinc-700 group-hover/item:text-zinc-900 transition-colors">{item.title}</span>
                         <div className="opacity-0 -translate-x-2 w-0 overflow-hidden group-hover/item:w-5 group-hover/item:overflow-visible group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 h-5 rounded-full bg-[#8DC63F] border border-black flex items-center justify-center">
                           <svg className="w-3 h-3 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -114,7 +121,7 @@ export default function Navbar() {
                       </div>
                       <div className="max-h-0 opacity-0 overflow-hidden group-hover/item:max-h-24 group-hover/item:opacity-100 transition-all duration-300 ease-in-out">
                         <p className="text-[12px] sm:text-[13px] text-zinc-500 mt-1.5 leading-tight font-normal">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod.
+                          {item.desc}
                         </p>
                       </div>
                     </Link>
@@ -254,10 +261,20 @@ export default function Navbar() {
             </li>
             
             {/* Dropdown Mobile - Simplified as accordion or just links */}
-            <li className="flex flex-col">
-              <div className="px-4 py-3 text-zinc-500 font-semibold text-xs uppercase tracking-wider mt-2 border-t border-zinc-50 pt-4">Layanan</div>
-              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 1</Link>
-              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 2</Link>
+            <li className="flex flex-col pt-2 mt-2 border-t border-zinc-50">
+              <Link 
+                href="/layanan" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-[600]"
+              >
+                Layanan
+              </Link>
+              <div className="flex flex-col gap-1 pl-4 mt-1">
+                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Konfirmasi Donasi</Link>
+                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Kantor Pelayanan</Link>
+                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Hitung Zakat</Link>
+                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">No. Rekening</Link>
+              </div>
             </li>
 
             <li className="flex flex-col">
