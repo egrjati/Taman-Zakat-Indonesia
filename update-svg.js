@@ -5,7 +5,7 @@ let svg = fs.readFileSync(path, 'utf8');
 // The 12 active provinces matching the image
 const activeIds = [
   'ID-RI', 'ID-SS', 'ID-LA',
-  'ID-BT', 'ID-JB', 'ID-JT', 'ID-JK', 'ID-JI',
+  'ID-BT', 'ID-JT', 'ID-JK', 'ID-JI',
   'ID-KB', 'ID-KT', 'ID-KS',
   'ID-SN'
 ];
