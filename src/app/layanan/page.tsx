@@ -30,19 +30,19 @@ export default function page() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-20">
           
           {[
-            "Konfirmasi Donasi",
-            "Kantor Pelayanan",
-            "QR Code Donasi",
-            "No. Rekening",
-            "Hitung Zakat",
-            "TZ Majalah"
-          ].map((title, index) => (
+            { title: "Konfirmasi Donasi", href: "/layanan/konfirmasi-donasi" },
+            { title: "Kantor Pelayanan", href: "#" },
+            { title: "QR Code Donasi", href: "/layanan/qr-code-donasi" },
+            { title: "No. Rekening", href: "#" },
+            { title: "Hitung Zakat", href: "#" },
+            { title: "TZ Majalah", href: "#" }
+          ].map((item, index) => (
             <div key={index} className="border border-black rounded-lg bg-white relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] flex flex-col justify-end p-5 md:p-6 transition-transform hover:-translate-y-1 hover:shadow-lg group overflow-hidden">
-              <Link href="#" className="absolute inset-0 z-20" aria-label={title}></Link>
+              <Link href={item.href} className="absolute inset-0 z-20" aria-label={item.title}></Link>
               
               <div className="border border-black rounded-md px-4 py-3 bg-white w-[90%] md:w-[85%] z-10 shadow-sm flex flex-col justify-center transition-colors group-hover:border-zinc-500">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="font-newsreader text-base md:text-lg text-black font-medium">{title}</h3>
+                  <h3 className="font-newsreader text-base md:text-lg text-black font-medium">{item.title}</h3>
                   <span className="text-black text-lg leading-none font-bold">&#10140;</span>
                 </div>
                 <p className="text-[10px] md:text-[11px] text-zinc-500 font-sans tracking-wide mt-1">
