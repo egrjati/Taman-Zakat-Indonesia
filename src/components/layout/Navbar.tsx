@@ -113,7 +113,7 @@ export default function Navbar() {
                     { title: "No. Rekening", desc: "Daftar nomor rekening resmi Taman Zakat." }
 
                   ].map((item, idx, arr) => (
-                    <Link key={idx} href={item.title === 'Konfirmasi Donasi' ? '/layanan/konfirmasi-donasi' : item.title === 'Qr Code Donasi' ? '/layanan/qr-code-donasi' : '#'} className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== arr.length - 1 ? 'border-b border-zinc-100' : ''}`}>
+                    <Link key={idx} href={item.title === 'Konfirmasi Donasi' ? '/layanan/konfirmasi-donasi' : item.title === 'Qr Code Donasi' ? '/layanan/qr-code-donasi' : item.title === 'Kantor Pelayanan' ? '/layanan/kantor-layanan' : '#'} className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== arr.length - 1 ? 'border-b border-zinc-100' : ''}`}>
                       <div className="flex items-center gap-2">
                         <span className="font-medium text-[14px] sm:text-[15px] text-zinc-700 group-hover/item:text-zinc-900 transition-colors">{item.title}</span>
                         <div className="opacity-0 -translate-x-2 w-0 overflow-hidden group-hover/item:w-5 group-hover/item:overflow-visible group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 h-5 rounded-full bg-[#8DC63F] border border-black flex items-center justify-center">
@@ -275,7 +275,7 @@ export default function Navbar() {
               <div className="flex flex-col gap-1 pl-4 mt-1">
                 <Link href="/layanan/konfirmasi-donasi" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Konfirmasi Donasi</Link>
                 <Link href="/layanan/qr-code-donasi" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">QR Code Donasi</Link>
-                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Kantor Pelayanan</Link>
+                <Link href="/layanan/kantor-layanan" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Kantor Pelayanan</Link>
                 <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Hitung Zakat</Link>
                 <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">No. Rekening</Link>
               </div>
