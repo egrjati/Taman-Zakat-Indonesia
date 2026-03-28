@@ -31,7 +31,7 @@ export default function page() {
           
           {[
             { title: "Konfirmasi Donasi", href: "/layanan/konfirmasi-donasi" },
-            { title: "Kantor Pelayanan", href: "#" },
+            { title: "Kantor Pelayanan", href: "/layanan/kantor-layanan" },
             { title: "QR Code Donasi", href: "/layanan/qr-code-donasi" },
             { title: "No. Rekening", href: "#" },
             { title: "Hitung Zakat", href: "#" },
