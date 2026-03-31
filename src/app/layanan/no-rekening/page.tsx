@@ -61,35 +61,34 @@ export default function NoRekeningPage() {
     <div className="bg-[#fcfee1] min-h-screen">
       {/* Hero Section */}
       <div className="relative w-full h-[450px] md:h-[500px]">
-        {/* We use object-cover to make the hero image span the designated area elegantly */}
         <Image 
           src="/images/gambardetaile/hero no rekening.svg" 
           alt="Hero Pilihan Rekening Donasi" 
           fill
           priority
-          className="object-cover object-top"
+          className="object-cover object-[center_65%]"
         />
-        {/* Transparent overlay for gradient if necessary, but svg hero is likely complete. 
-            However, checking the design the hero image doesn't stretch over all text.
-            The text is placed below it on a white/yellow background. */}
       </div>
 
-      <div className="bg-[#fcfeeb] w-full pb-20 pt-16">
-        <div className="max-w-[1100px] mx-auto px-6">
+      <div className="w-full pb-20 -mt-32 md:-mt-44 relative z-10 px-4 md:px-8">
+        <div className="max-w-[1100px] mx-auto bg-white pt-10 md:pt-14 pb-16 md:pb-20 px-6 md:px-12 shadow-sm">
           
           {/* Header Title and Description */}
-          <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-start mb-20 bg-white/70 backdrop-blur-sm p-6 md:p-10 rounded-2xl shadow-sm border border-green-50">
-            <div className="md:w-5/12">
-              <h1 className="text-3xl md:text-[40px] font-bold text-[#86bf54] leading-tight">
+          <div className="flex flex-col md:flex-row gap-6 md:gap-12 items-center md:items-start mb-8 w-full">
+            <div className="md:w-5/12 flex py-2 items-center justify-center md:justify-start">
+              <h1 className="text-3xl md:text-[36px] font-bold text-[#86bf54] leading-tight text-center md:text-left">
                 Pilihan Rekening Donasi
               </h1>
             </div>
             <div className="md:w-7/12">
-              <p className="text-sm md:text-base text-zinc-700 leading-[1.8] text-justify md:text-left font-medium">
-                Dengan informasi rekening donasi berikut, Anda dapat bertransaksi donasi secara langsung untuk membantu menciptakan dampak positif bagi mereka yang memerlukan. Terima kasih atas kebaikan dan kepedulian hati Anda.
+              <p className="text-[#555555] text-sm md:text-[15px] leading-[1.8] text-left font-medium">
+                Dengan informasi rekening donasi berikut, Anda dapat berkontribusi secara langsung untuk membantu menciptakan dampak positif bagi mereka yang memerlukan. Terima kasih atas kebaikan dan kemurahan hati Anda.
               </p>
             </div>
           </div>
+          
+          {/* Separator Line */}
+          <div className="w-full h-[2px] bg-[#d4d4d4] mb-16 mx-auto"></div>
 
           {/* Bank Sections */}
           <div className="space-y-16">
@@ -105,16 +104,10 @@ export default function NoRekeningPage() {
                   {sec.accounts.map((acc, accIdx) => (
                     <div 
                       key={accIdx} 
-                      className="w-[300px] flex flex-col overflow-hidden bg-transparent group hover:transform hover:-translate-y-1 transition-all duration-300"
+                      className="w-[300px] flex flex-col overflow-hidden bg-white rounded-xl border border-zinc-400/60 group hover:transform hover:-translate-y-1 transition-all duration-300 shadow-sm"
                     >
-                      {/* Top White Box with Corner Brackets */}
-                      <div className="h-[95px] w-full bg-white relative">
-                        {/* Brackets decoration using borders */}
-                        <div className="absolute top-2 left-2 w-2 h-2 border-t-[1.5px] border-l-[1.5px] border-zinc-300"></div>
-                        <div className="absolute top-2 right-2 w-2 h-2 border-t-[1.5px] border-r-[1.5px] border-zinc-300"></div>
-                        <div className="absolute bottom-2 left-2 w-2 h-2 border-b-[1.5px] border-l-[1.5px] border-zinc-300"></div>
-                        <div className="absolute bottom-2 right-2 w-2 h-2 border-b-[1.5px] border-r-[1.5px] border-zinc-300"></div>
-                        
+                      {/* Top White Box */}
+                      <div className="h-[95px] w-full relative">
                         <div className="relative w-full h-full flex items-center justify-center p-4">
                           <Image 
                             src={acc.logo} 
@@ -127,10 +120,11 @@ export default function NoRekeningPage() {
                       </div>
                       
                       {/* Bottom Green Box */}
-                      <div className="bg-[#598b3c] px-6 py-4 flex flex-col justify-center shadow-md border border-[#598b3c]">
-                        <p className="text-[#c1f07b] text-[11px] font-medium mb-1 tracking-wide uppercase opacity-90">Nomor Rekening</p>
-                        <p className="text-white text-2xl font-bold mb-1 tracking-widest">{acc.number}</p>
-                        <p className="text-[10px] text-white/80 font-medium">a.n: Yayasan Taman Zakat Indonesia</p>
+                      <div className="bg-gradient-to-r from-[#89DC45] to-[#496B2D] px-6 py-4 flex flex-col justify-center flex-1">
+                        <p className="text-white text-sm font-medium mb-1">Nomer Rekening</p>
+                        <p className="text-white text-[26px] font-bold tracking-wide">{acc.number}</p>
+                        <div className="w-full h-[1px] bg-white/30 my-2"></div>
+                        <p className="text-xs text-white/90">a.n Yayasan Taman Zakat Indonesia</p>
                       </div>
                     </div>
                   ))}
