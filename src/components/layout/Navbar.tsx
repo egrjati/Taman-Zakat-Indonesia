@@ -147,10 +147,13 @@ export default function Navbar() {
               {/* Dropdown Menu */}
               <div className={`absolute right-0 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto top-full ${isScrolled ? 'pt-4' : 'pt-2 md:pt-3'} opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus:opacity-100 group-focus:visible transition-all duration-300 z-50`}>
                 <div className="flex w-[260px] md:w-[280px] flex-col overflow-hidden bg-white shadow-xl shadow-black/5 border border-zinc-100 whitespace-normal text-left rounded-xl text-black">
-                  {[1, 2].map((_, idx) => (
-                    <Link key={idx} href="#" className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== 1 ? 'border-b border-zinc-100' : ''}`}>
+                  {[
+                    { title: "Mitra Kami", desc: "Informasi rekanan layanan dan partner koalisi kebaikan Taman Zakat.", href: "/kolaborasi/mitra" },
+                    { title: "Lorem ipsum", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.", href: "#" }
+                  ].map((item, idx, arr) => (
+                    <Link key={idx} href={item.href} className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== arr.length - 1 ? 'border-b border-zinc-100' : ''}`}>
                       <div className="flex items-center gap-2">
-                        <span className="font-medium text-[14px] sm:text-[15px] text-zinc-700 group-hover/item:text-zinc-900 transition-colors">Lorem Ipsum</span>
+                        <span className="font-medium text-[14px] sm:text-[15px] text-zinc-700 group-hover/item:text-zinc-900 transition-colors">{item.title}</span>
                         <div className="opacity-0 -translate-x-2 w-0 overflow-hidden group-hover/item:w-5 group-hover/item:overflow-visible group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300 h-5 rounded-full bg-[#8DC63F] border border-black flex items-center justify-center">
                           <svg className="w-3 h-3 text-black shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -159,7 +162,7 @@ export default function Navbar() {
                       </div>
                       <div className="max-h-0 opacity-0 overflow-hidden group-hover/item:max-h-24 group-hover/item:opacity-100 transition-all duration-300 ease-in-out">
                         <p className="text-[12px] sm:text-[13px] text-zinc-500 mt-1.5 leading-tight font-normal">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod.
+                          {item.desc}
                         </p>
                       </div>
                     </Link>
@@ -281,10 +284,18 @@ export default function Navbar() {
               </div>
             </li>
 
-            <li className="flex flex-col">
-              <div className="px-4 py-3 text-zinc-500 font-semibold text-xs uppercase tracking-wider mt-2 border-t border-zinc-50 pt-4">Kolaborasi</div>
-              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 1</Link>
-              <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block pl-6 pr-4 py-2.5 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium">Lorem Ipsum 2</Link>
+            <li className="flex flex-col pt-2 mt-2 border-t border-zinc-50">
+              <Link 
+                href="/kolaborasi" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block px-4 py-3 rounded-xl hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-[600]"
+              >
+                Kolaborasi
+              </Link>
+              <div className="flex flex-col gap-1 pl-4 mt-1">
+                <Link href="/kolaborasi/mitra" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Mitra</Link>
+                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-400">Segera Hadir</Link>
+              </div>
             </li>
 
             <li className="mt-2">
