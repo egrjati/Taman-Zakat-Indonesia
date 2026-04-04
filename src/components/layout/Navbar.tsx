@@ -149,7 +149,7 @@ export default function Navbar() {
                 <div className="flex w-[260px] md:w-[280px] flex-col overflow-hidden bg-white shadow-xl shadow-black/5 border border-zinc-100 whitespace-normal text-left rounded-xl text-black">
                   {[
                     { title: "Mitra Kami", desc: "Informasi rekanan layanan dan partner koalisi kebaikan Taman Zakat.", href: "/kolaborasi/mitra" },
-                    { title: "Lorem ipsum", desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.", href: "#" }
+                    { title: "Permohonan Bantuan", desc: "Formulir pengajuan untuk permohonan bantuan kepada Taman Zakat.", href: "/kolaborasi/permohonan-bantuan" }
                   ].map((item, idx, arr) => (
                     <Link key={idx} href={item.href} className={`group/item flex flex-col px-5 py-3 md:py-4 hover:bg-[#F2F9EC]/50 transition-colors ${idx !== arr.length - 1 ? 'border-b border-zinc-100' : ''}`}>
                       <div className="flex items-center gap-2">
@@ -294,7 +294,7 @@ export default function Navbar() {
               </Link>
               <div className="flex flex-col gap-1 pl-4 mt-1">
                 <Link href="/kolaborasi/mitra" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Mitra</Link>
-                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-400">Segera Hadir</Link>
+                <Link href="/kolaborasi/permohonan-bantuan" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Permohonan Bantuan</Link>
               </div>
             </li>
 
