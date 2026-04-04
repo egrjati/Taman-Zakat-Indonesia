@@ -390,7 +390,7 @@ export default function BidangKesehatanPage() {
                  <div className="absolute -top-3 -left-3 md:-top-4 md:-left-4 w-[65%] h-[98%] bg-[#FFFFFF] rounded-xl shadow-[-12px_-12px_15px_rgba(127,194,72,0.2)] z-0" />
                  
                  <div className="relative z-10 w-full h-full rounded-xl overflow-hidden">
-                   <Image src="/images/gambardetaile/toilet keluarga  sehat.svg" alt="Toilet Keluarga Sehat" fill className="object-cover" />
+                   <Image src="/images/gambardetaile/toilet keluarga  sehat.svg" alt="Toilet Keluarga Sehat" fill className="object-cover scale-x-[-1]" />
                  </div>
                </div>
             </div>
