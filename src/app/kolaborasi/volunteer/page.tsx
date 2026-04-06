@@ -7,7 +7,6 @@ export default function VolunteerPage() {
       <div className="max-w-[700px] w-full z-10 flex flex-col items-center px-4 md:px-8">
         
         {/* Header 'VOLUNTEER' */}
-        {/* Header 'VOLUNTEER' */}
         <div className="relative mb-12 mt-10">
             <div className="relative inline-block">
                 {/* Back rotated box */}
@@ -38,8 +37,8 @@ export default function VolunteerPage() {
         {/* Form Title */}
         <div className="relative mb-10 text-center flex items-center justify-center w-full max-w-[500px]">
             {/* spark on the left */}
-            <svg className="absolute -left-2 md:-left-8 top-1 w-10 h-10 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/>
+            <svg className="absolute -left-2 md:-left-8 top-1 w-10 h-10 text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 4v16M4 12h16M6.34 6.34l11.32 11.32M6.34 17.66L17.66 6.34"/>
             </svg>
             <h1 className="text-[20px] sm:text-[22px] md:text-[24px] font-bold text-[#358249] px-8 leading-tight">
                 Siap Beraksi? Daftarkan<br/>Dirimu di Sini
@@ -68,11 +67,11 @@ export default function VolunteerPage() {
                 <label className="text-zinc-600 mb-1.5 ml-1 text-[14px] sm:text-[15px] font-medium">Email</label>
                 <input 
                   type="email" 
-                  className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-[18px] px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/30 focus:border-[#5DA630] transition-colors"
+                  className="w-full bg-[#eff4fd] border border-[#d2def2] text-zinc-800 rounded-[18px] px-4 py-3 min-h-[50px] focus:outline-none focus:ring-2 focus:ring-[#5DA630]/30 focus:border-[#5DA630] transition-colors relative z-10"
                 />
                 {/* Spark */}
-                <svg className="absolute -right-4 md:-right-12 top-10 w-9 h-9 text-black block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/>
+                <svg className="absolute z-0 -right-4 md:-right-12 top-10 w-9 h-9 text-zinc-400 block" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 4v16M4 12h16M6.34 6.34l11.32 11.32M6.34 17.66L17.66 6.34"/>
                 </svg>
             </div>
 
