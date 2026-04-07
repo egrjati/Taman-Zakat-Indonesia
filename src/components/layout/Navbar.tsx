@@ -281,8 +281,8 @@ export default function Navbar() {
                 <Link href="/layanan/konfirmasi-donasi" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Konfirmasi Donasi</Link>
                 <Link href="/layanan/qr-code-donasi" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">QR Code Donasi</Link>
                 <Link href="/layanan/kantor-layanan" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Kantor Pelayanan</Link>
-                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Hitung Zakat</Link>
-                <Link href="#" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">No. Rekening</Link>
+                <Link href="https://donasi.tamanzakat.org/kalkulator/" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">Hitung Zakat</Link>
+                <Link href="/layanan/no-rekening" onClick={() => setIsMobileMenuOpen(false)} className="block px-4 py-2 rounded-xl text-[14px] hover:bg-[#F2F9EC] hover:text-[#5DA630] transition-colors font-medium text-zinc-600">No. Rekening</Link>
               </div>
             </li>
 
