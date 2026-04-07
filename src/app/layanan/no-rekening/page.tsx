@@ -19,7 +19,7 @@ const sections: SectionData[] = [
   {
     title: "Dana Sosial",
     accounts: [
-      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7900950067", width: 140, height: 40 },
+      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7900950057", width: 140, height: 40 },
       { logo: "/images/logo bank/bank mandiri.svg", name: "Mandiri", number: "1410075075051", width: 140, height: 40 },
       { logo: "/images/logo bank/bank-jatim-logo 1.svg", name: "Bank Jatim", number: "1862032515", width: 140, height: 40 }
     ]
@@ -51,7 +51,7 @@ const sections: SectionData[] = [
   {
     title: "Non Halal",
     accounts: [
-      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7900950083", width: 140, height: 40 }
+      { logo: "/images/logo bank/bank-bsi-logo 1.svg", name: "BSI", number: "7900960063", width: 140, height: 40 }
     ]
   }
 ];
