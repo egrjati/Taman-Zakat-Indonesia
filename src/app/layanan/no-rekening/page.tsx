@@ -66,7 +66,7 @@ export default function NoRekeningPage() {
           alt="Hero Pilihan Rekening Donasi" 
           fill
           priority
-          className="object-cover object-[center_65%]"
+          className="object-cover object-[center_34%]"
         />
       </div>
 
