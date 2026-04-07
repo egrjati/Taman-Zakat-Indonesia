@@ -295,7 +295,7 @@ export default function AboutPage() {
                         {m.align === "left" ? (
                           <div className="scale-[0.8] sm:scale-90 md:scale-100 origin-right flex items-center">{m.logoRender()}</div>
                         ) : (
-                          <div className="flex flex-col text-right p-2 sm:p-4 md:p-0 bg-white/60 md:bg-transparent rounded-xl backdrop-blur-sm md:backdrop-blur-none">
+                          <div className="flex flex-col text-right p-2 sm:p-4 md:p-0">
                              <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
@@ -315,7 +315,7 @@ export default function AboutPage() {
                       {/* Right Side Content */}
                       <div className="w-1/2 flex justify-start pl-4 sm:pl-8 md:pl-14 pointer-events-auto">
                         {m.align === "left" ? (
-                           <div className="flex flex-col text-left p-2 sm:p-4 md:p-0 bg-white/60 md:bg-transparent rounded-xl backdrop-blur-sm md:backdrop-blur-none">
+                           <div className="flex flex-col text-left p-2 sm:p-4 md:p-0">
                              <span className="text-lg md:text-2xl font-bold" style={{ color: m.color }}>
                                {m.year}
                              </span>
