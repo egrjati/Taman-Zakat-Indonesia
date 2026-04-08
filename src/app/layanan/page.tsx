@@ -35,7 +35,7 @@ export default function page() {
             { title: "QR Code Donasi", href: "/layanan/qr-code-donasi" },
             { title: "No. Rekening", href: "/layanan/no-rekening" },
             { title: "Hitung Zakat", href: "#" },
-            { title: "TZ Majalah", href: "#" }
+            { title: "FAQ", href: "/layanan/faq" }
           ].map((item, index) => (
             <div key={index} className="border border-black rounded-lg bg-white relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] flex flex-col justify-end p-5 md:p-6 transition-transform hover:-translate-y-1 hover:shadow-lg group overflow-hidden">
               <Link href={item.href} className="absolute inset-0 z-20" aria-label={item.title}></Link>
