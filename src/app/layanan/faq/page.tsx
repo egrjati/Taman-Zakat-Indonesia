@@ -10,8 +10,14 @@ const faqList = Array(8).fill({
 
 export default function FAQPage() {
   return (
-    <main className="w-full bg-white overflow-x-hidden">
-      {/* Container utama */}
+    <>
+      <style>{`
+        body {
+          overflow-x: hidden;
+        }
+      `}</style>
+      <main className="w-full bg-white">
+        {/* Container utama */}
       <div className="mx-auto w-full max-w-[1200px] px-6 py-16 md:px-10 lg:px-12">
         {/* Title & Search */}
         <div className="mb-14">
@@ -61,7 +67,7 @@ export default function FAQPage() {
 
           {/* Right Column - Popular Topics */}
           <div className="relative w-full lg:translate-x-16 xl:translate-x-28">
-            <div className="relative h-full min-h-[450px] w-full bg-[#F4F9F2] p-8 md:p-10">
+            <div className="sticky top-[120px] h-fit w-full bg-[#F4F9F2] p-8 md:p-10 pb-10">
               <h3 className="relative z-10 mb-5 text-[17px] font-bold text-zinc-800">
                 Populer Topic
               </h3>
@@ -108,5 +114,6 @@ export default function FAQPage() {
         </div>
       </section>
     </main>
+    </>
   );
 }
